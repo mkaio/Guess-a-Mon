@@ -1,0 +1,16 @@
+body {
+    background: rgb(217, 15, 15);
+    background: linear-gradient(180deg, rgba(217, 15, 15, 1) 43%, rgba(0, 0, 0, 1) 50%, rgba(255, 255, 255, 1) 57%);
+    background-attachment: fixed;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#gam-logo{
+    width: 350px;
+    margin-top: 2%;
+}
