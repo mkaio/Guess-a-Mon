@@ -13,7 +13,19 @@
     <header>
         <img src="../images/GAM-curved.png" id="gam-logo">
     </header>
-
+    <section id="game">
+        <div id="pokebox">
+            <img id="poke-picture">
+        </div>
+        <button id="startbutton" onclick="getRandomPokemon()">Começar</button>
+        <form id="guessform">
+            <p id="guessit">
+              Qual é o nome desse Pokémon?  
+            </p>
+            <input type="text" id="guessbox">
+            <button id="enviar" onclick="check()">Check</button>
+        </form>
+    </section>
 
     <script src="main.js"></script>
 </body>
