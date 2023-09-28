@@ -115,9 +115,8 @@ header{
     font-weight: bold;
 }
 
-#loading-bar {
-    height: 10px; 
-    background-color: #007bff; 
-    width: 0; 
-    transition: width 5s ease; 
+#loading{
+    display: none;
+    width: 45px;
+    margin-top: 15px;
 }

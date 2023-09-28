@@ -66,11 +66,13 @@ function check() {
 
     if (userGuess === currentPokemonName) {
         document.getElementById('poke-picture').src = "../images/GAM-correto.png"
+        document.getElementById('loading').style.display = "block"
         pontos=pontos+3
     } else {
         if(pontos>0){
             document.getElementById('poke-picture').src = "../images/GAM-errado.png"
             document.getElementById('correction').innerHTML = "O Pokémon era: "+nome
+            document.getElementById('loading').style.display = "block"
             pontos = pontos-1
         } else{
             document.getElementById('poke-picture').src = "../images/GAM-endgame.png"
@@ -84,7 +86,17 @@ function check() {
     guessBox.value = '';
     document.getElementById('points').innerHTML = "Pontos: "+pontos
 
+    if(pontos>=20){
+        document.getElementById('poke-picture').src = "../images/win-GAM.png"
+        document.getElementById('loading').style.display = "none"
+        setTimeout(function () {
+            location.reload();
+        }, 4000);
+        return;
+    }
+
     setTimeout(function () {
+        document.getElementById('loading').style.display = "none"
         keep();
     }, 5000);
 }
