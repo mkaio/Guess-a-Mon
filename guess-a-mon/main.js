@@ -56,27 +56,42 @@ function keep() {
         .catch(function (error) {
             console.error('Ocorreu um erro:', error);
         });
+    document.getElementById('correction').innerHTML = ''
 }
 
-
+const guessBox = document.getElementById('guessbox');
 function check() {
-    const guessBox = document.getElementById('guessbox');
     const userGuess = guessBox.value.toLowerCase();
+    let nome = currentPokemonName.charAt(0).toUpperCase() + currentPokemonName.slice(1); 
 
     if (userGuess === currentPokemonName) {
-        alert("Você acertou")
+        document.getElementById('poke-picture').src = "../images/GAM-correto.png"
         pontos=pontos+3
-        keep()
     } else {
         if(pontos>0){
-            alert("Errado! Tente novamente. Nome correto: "+currentPokemonName)
-            pontos = pontos-1 
-            keep()
+            document.getElementById('poke-picture').src = "../images/GAM-errado.png"
+            document.getElementById('correction').innerHTML = "O Pokémon era: "+nome
+            pontos = pontos-1
         } else{
-            alert("Errado! Fim de jogo. Tente novamente. Nome correto: "+currentPokemonName)
-            location.reload()
+            document.getElementById('poke-picture').src = "../images/GAM-endgame.png"
+            document.getElementById('correction').innerHTML = "O Pokémon era: "+nome
+            setTimeout(function () {
+                location.reload();
+            }, 3000);
+            return;
         }
-        
     }
+    guessBox.value = '';
     document.getElementById('points').innerHTML = "Pontos: "+pontos
+
+    setTimeout(function () {
+        keep();
+    }, 5000);
 }
+
+guessBox.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        check();
+    }
+})

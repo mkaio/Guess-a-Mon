@@ -29,6 +29,7 @@ header {
 
 #main{
     flex: 1;
+    margin-bottom: 50px;
 }
 
 #slogan {
@@ -80,4 +81,69 @@ footer {
     text-align: center;
     font-family: 'Merriweather', serif;
     font-size: 100%;
+}
+
+#games{
+    display: flex;
+    justify-content: center;
+}
+
+#GAM{
+    background-color: white;
+    border: 2px solid lightgray;
+    border-radius: 8px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+}
+
+#topgam{
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+#gampic{
+    width: 80%;
+    padding: 10px;
+    align-self: center;
+}
+
+#preview{
+    width: 70%;
+    border-radius: 5px;
+    align-self: center;
+}
+
+hr{
+    background-color: rgba(211, 211, 211, 0.259);
+    height: .3px;
+    width: 100%;
+}
+
+#descgam{
+    padding: 10px;
+    text-align: justify;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+#gogam{
+    padding-bottom: 5px;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-weight: bold;
+    width: 50%;
+    height: 30px;
+    align-self: center;
+    margin-top: 5px;
+    margin-bottom: 5%;
+    background-color: #facb04;
+    border: 1px solid blue;
+    border-radius: 5px;
+}
+
+#gogam:hover{
+    cursor: pointer;
+    background-color: #ffde4a;
+    color: rgb(35, 35, 35);
 }
