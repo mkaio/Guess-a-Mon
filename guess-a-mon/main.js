@@ -1,3 +1,40 @@
+// Cronômetro:
+
+var mm = 0;
+var ss = 0;
+
+var tempo = 1000;
+var cron;
+
+function start() {
+    cron = setInterval(() => { timer(); }, tempo);
+}
+
+function pause() {
+    clearInterval(cron);
+}
+
+function timer() {
+    ss++;
+
+    if (ss == 60) {
+        ss = 0;
+        mm++;
+        if(mm == 60){
+            pause()
+        }
+
+    }
+
+    var format = 'Tempo: ' + (mm < 10 ? '0' + mm : mm) + ':' + (ss < 10 ? '0' + ss : ss);
+
+    document.getElementById('cronometro').innerText = format;
+
+    return format;
+}
+
+// Funcionamento do jogo:
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 };
@@ -29,15 +66,15 @@ function getRandomPokemon() {
                 .catch(function (error) {
                     console.error('Ocorreu um erro:', error);
                 });
-
-            console.log(randomPokemonId)
         });
 
+    document.getElementById('bar').style.display = 'flex'
     const botao = document.getElementById('startbutton')
     const guessform = document.getElementById('guessform')
     botao.style.display = 'none'
     guessform.style.display = 'flex'
 
+    start()
 }
 
 function keep() {
@@ -51,7 +88,7 @@ function keep() {
             console.log(response);
             document.getElementById('poke-picture').src = response.sprites.front_default
 
-            currentPokemonName =  response.name
+            currentPokemonName = response.name
         })
         .catch(function (error) {
             console.error('Ocorreu um erro:', error);
@@ -62,21 +99,29 @@ function keep() {
 const guessBox = document.getElementById('guessbox');
 function check() {
     const userGuess = guessBox.value.toLowerCase();
-    let nome = currentPokemonName.charAt(0).toUpperCase() + currentPokemonName.slice(1); 
+    let nome = currentPokemonName.charAt(0).toUpperCase() + currentPokemonName.slice(1);
+
+    let crono = document.getElementById('cronometro').innerText;
+    let tempofinal = crono.replace('Tempo: ', '');
 
     if (userGuess === currentPokemonName) {
         document.getElementById('poke-picture').src = "../images/GAM-correto.png"
         document.getElementById('loading').style.display = "block"
-        pontos=pontos+3
+        document.getElementById('pokebox').style.paddingBottom = "1%";
+        pause();
+        pontos = pontos + 3
     } else {
-        if(pontos>0){
+        if (pontos > 0) {
             document.getElementById('poke-picture').src = "../images/GAM-errado.png"
-            document.getElementById('correction').innerHTML = "O Pokémon era: "+nome
+            document.getElementById('correction').innerHTML = "O Pokémon era: " + nome
             document.getElementById('loading').style.display = "block"
-            pontos = pontos-1
-        } else{
+            document.getElementById('pokebox').style.paddingBottom = "20px"
+            pause();
+            pontos = pontos - 1
+        } else {
             document.getElementById('poke-picture').src = "../images/GAM-endgame.png"
-            document.getElementById('correction').innerHTML = "O Pokémon era: "+nome
+            document.getElementById('correction').innerHTML = "O Pokémon era: " + nome
+            pause();
             setTimeout(function () {
                 location.reload();
             }, 3000);
@@ -84,21 +129,26 @@ function check() {
         }
     }
     guessBox.value = '';
-    document.getElementById('points').innerHTML = "Pontos: "+pontos
+    document.getElementById('points').innerHTML = "Pontuação: " + pontos + " / 20"
 
-    if(pontos>=20){
+    if (pontos >= 20) {
         document.getElementById('poke-picture').src = "../images/win-GAM.png"
         document.getElementById('loading').style.display = "none"
+        pause();
+        document.getElementById('time-feedback').innerHTML = "Seu tempo foi de "+tempofinal
+        document.getElementById('pokebox').style.paddingBottom = "20px"
         setTimeout(function () {
             location.reload();
-        }, 4000);
+        }, 6000);
         return;
     }
 
     setTimeout(function () {
         document.getElementById('loading').style.display = "none"
+        document.getElementById('pokebox').style.paddingBottom = "3%"
         keep();
-    }, 5000);
+        start();
+    }, 4000);
 }
 
 guessBox.addEventListener('keypress', function (event) {

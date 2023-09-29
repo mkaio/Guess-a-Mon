@@ -14,20 +14,23 @@
         <img src="../images/GAM-curved.png" id="gam-logo">
     </header>
     <section id="game">
+        <div id="bar">
+            <div id="cronometro">Tempo: 00:00</div>
+            <div id="points">Pontuação: 0 / 20</div>
+        </div>
         <div id="pokebox">
             <img id="poke-picture">
             <div id="correction"></div>
-            <img id="loading" src = "../images/runningpikachu.gif"></img>
+            <div id="time-feedback"></div>
+            <img id="loading" src="../images/runningpikachu.gif"></img>
         </div>
         <button id="startbutton" onclick="getRandomPokemon()">Começar</button>
         <div id="guessform">
             <p id="guessit">
-              Qual é o nome desse Pokémon?  
+                Qual é o nome desse Pokémon?
             </p>
             <input type="text" id="guessbox">
-            <button id="enviar" onclick="check()">Check</button>
-
-            <div id="points">Pontos: 0</div>
+            <button id="enviar" onclick="check()">Verificar</button>
         </div>
     </section>
 
