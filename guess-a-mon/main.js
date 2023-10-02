@@ -196,6 +196,7 @@ function check() {
         document.getElementById('loading').style.display = "block"
         document.getElementById('pokebox').style.paddingBottom = "1%";
         pause();
+        document.getElementById('enviar').disabled = true
         pontos = pontos + 3
     } else {
         if (pontos > 0) {
@@ -204,11 +205,13 @@ function check() {
             document.getElementById('loading').style.display = "block"
             document.getElementById('pokebox').style.paddingBottom = "20px"
             pause();
+            document.getElementById('enviar').disabled = true
             pontos = pontos - 1
         } else {
             document.getElementById('poke-picture').src = "../images/GAM-endgame.png"
             document.getElementById('correction').innerHTML = "O Pokémon era: " + nome
             pause();
+            document.getElementById('enviar').disabled = true
             guessBox.value = '';
             setTimeout(function () {
                 location.reload();
@@ -223,6 +226,7 @@ function check() {
         document.getElementById('poke-picture').src = "../images/win-GAM.png"
         document.getElementById('loading').style.display = "none"
         pause();
+        document.getElementById('enviar').disabled = true
         document.getElementById('time-feedback').innerHTML = "Seu tempo foi de " + tempofinal
         document.getElementById('pokebox').style.paddingBottom = "20px"
         setTimeout(function () {
@@ -234,6 +238,7 @@ function check() {
     setTimeout(function () {
         document.getElementById('loading').style.display = "none"
         document.getElementById('pokebox').style.paddingBottom = "3%"
+        document.getElementById('enviar').disabled = false
         keep();
         start();
     }, 4000);
