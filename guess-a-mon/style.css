@@ -212,3 +212,83 @@ header{
     font-size: large;
     color: white;
 }
+
+#pop-up{
+    display: none;
+    position: fixed;
+    z-index: 2;
+    margin-top: 1%;
+    background-color: white;
+    width: 30%;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#close{
+    border: double red;
+    border-radius: 5px;
+    padding-top: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+#close:hover{
+    cursor: pointer;
+    color: black;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+}
+
+#htptitle{
+    font-size: 25px;
+    font-family: cursive;
+    margin-right: 10px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: red;
+    text-shadow: 1px 1px black;
+}
+
+
+#htpcontent{
+    font-family: cursive;
+    text-align: justify;
+    font-size: large;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+#backfilter{
+    width: 10%;
+    height: 30px;
+    font-family: cursive;
+    font-weight: bold;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 15px;
+    font-size: medium;
+    align-self: center;
+}
+
+#backfilter:hover{
+    cursor: pointer;
+}

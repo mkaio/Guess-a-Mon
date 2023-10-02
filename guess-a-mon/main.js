@@ -219,3 +219,20 @@ function filters() {
     document.getElementById('actions').style.display = 'none'
     document.getElementById('filterbar').style.display = 'flex'
 }
+
+function backfilter(){
+    document.getElementById('startbutton').style.display = 'block'
+    document.getElementById('actions').style.display = 'flex'
+    document.getElementById('filterbar').style.display = 'none'
+}
+
+function howtoplay(){
+    document.getElementById('overlay').style.display = 'block';
+    document.getElementById('pop-up').style.display = 'block';
+}
+
+function closepopup(){
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('pop-up').style.display = 'none';
+}
+

@@ -27,7 +27,19 @@
         <button id="startbutton" onclick="gen()">Começar</button>
         <div id="actions">
             <button id="filter" onclick="filters()">Filtros</button>
-            <button id="HTP">Como jogar</button>
+            <button id="HTP" onclick="howtoplay()">Como jogar</button>
+        </div>
+        <div id="overlay"></div>
+        <div id="pop-up">
+            <div id="close" onclick="closepopup()">&times;</div>
+            <div id="htptitle">
+                Como jogar o Guess-a-mon?
+            </div>
+            <div id="htpcontent">
+                Desafie-se a adivinhar o nome dos Pokémons enquanto acumula 20 pontos o mais rápido 
+                possível. Ganhe 3 pontos por acerto e perca 1 por erro. Use filtros para escolher 
+                sua geração preferida. Chame seus amigos e descubra quem é o melhor treinador Pokémon!
+            </div>
         </div>
         <div id="guessform">
             <p id="guessit">
@@ -52,6 +64,7 @@
                 <input id="genfilter" type="button" value="8ª Geração" onclick="gen(8)">
                 <input id="genfilter" type="button" value="9ª Geração" onclick="gen(9)">
             </div>
+            <button id="backfilter" onclick="backfilter()">Voltar</button>
         </div>
     </section>
 
