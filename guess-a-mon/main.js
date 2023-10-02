@@ -20,7 +20,7 @@ function timer() {
     if (ss == 60) {
         ss = 0;
         mm++;
-        if(mm == 60){
+        if (mm == 60) {
             pause()
         }
 
@@ -35,9 +35,64 @@ function timer() {
 
 // Funcionamento do jogo:
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 };
+
+function gen(number) {
+    switch (number) {
+        case 1:
+            min = 1;
+            max = 151;
+            getRandomPokemon();
+            break;
+        case 2:
+            min = 152;
+            max = 251;
+            getRandomPokemon();
+            break;
+        case 3:
+            min = 252;
+            max = 386;
+            getRandomPokemon();
+            break;
+        case 4:
+            min = 387;
+            max = 493;
+            getRandomPokemon();
+            break;
+        case 5:
+            min = 494;
+            max = 649;
+            getRandomPokemon();
+            break;
+        case 6:
+            min = 650;
+            max = 721;
+            getRandomPokemon();
+            break;
+        case 7:
+            min = 722;
+            max = 809;
+            getRandomPokemon();
+            break;
+        case 8:
+            min = 810;
+            max = 905;
+            getRandomPokemon();
+            break;
+        case 9:
+            min = 906;
+            max = 1017;
+            getRandomPokemon();
+            break;
+        default:
+            min = 1;
+            max = 1017;
+            getRandomPokemon();
+            break;
+    }
+}
 
 let pontos = 0
 
@@ -47,8 +102,7 @@ function getRandomPokemon() {
             return response.json();
         })
         .then(function (data) {
-            const maxPokemonCount = 1018;
-            const randomPokemonId = getRandomInt(maxPokemonCount)
+            const randomPokemonId = getRandomInt(min, max)
 
             fetch(`https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`)
                 .then(function (response) {
@@ -73,13 +127,14 @@ function getRandomPokemon() {
     const guessform = document.getElementById('guessform')
     botao.style.display = 'none'
     guessform.style.display = 'flex'
+    document.getElementById('actions').style.display = 'none'
+    document.getElementById('filterbar').style.display = 'none'
 
     start()
 }
 
 function keep() {
-    const maxPokemonCount = 1018;
-    let randomPokemonId = getRandomInt(maxPokemonCount)
+    let randomPokemonId = getRandomInt(min,max)
     fetch(`https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`)
         .then(function (response) {
             return response.json();
@@ -122,6 +177,7 @@ function check() {
             document.getElementById('poke-picture').src = "../images/GAM-endgame.png"
             document.getElementById('correction').innerHTML = "O Pokémon era: " + nome
             pause();
+            guessBox.value = '';
             setTimeout(function () {
                 location.reload();
             }, 3000);
@@ -135,7 +191,7 @@ function check() {
         document.getElementById('poke-picture').src = "../images/win-GAM.png"
         document.getElementById('loading').style.display = "none"
         pause();
-        document.getElementById('time-feedback').innerHTML = "Seu tempo foi de "+tempofinal
+        document.getElementById('time-feedback').innerHTML = "Seu tempo foi de " + tempofinal
         document.getElementById('pokebox').style.paddingBottom = "20px"
         setTimeout(function () {
             location.reload();
@@ -157,3 +213,9 @@ guessBox.addEventListener('keypress', function (event) {
         check();
     }
 })
+
+function filters() {
+    document.getElementById('startbutton').style.display = 'none'
+    document.getElementById('actions').style.display = 'none'
+    document.getElementById('filterbar').style.display = 'flex'
+}

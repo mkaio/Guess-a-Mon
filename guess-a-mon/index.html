@@ -24,13 +24,34 @@
             <div id="time-feedback"></div>
             <img id="loading" src="../images/runningpikachu.gif"></img>
         </div>
-        <button id="startbutton" onclick="getRandomPokemon()">Começar</button>
+        <button id="startbutton" onclick="gen()">Começar</button>
+        <div id="actions">
+            <button id="filter" onclick="filters()">Filtros</button>
+            <button id="HTP">Como jogar</button>
+        </div>
         <div id="guessform">
             <p id="guessit">
                 Qual é o nome desse Pokémon?
             </p>
             <input type="text" id="guessbox">
             <button id="enviar" onclick="check()">Verificar</button>
+        </div>
+
+        <div id="filterbar">
+            <p id="filtertitle">Escolha a geração para jogar:</p>
+            <div id="lay1">
+                <input id="genfilter" type="button" value="1ª Geração" onclick="gen(1)">
+                <input id="genfilter" type="button" value="2ª Geração" onclick="gen(2)">
+                <input id="genfilter" type="button" value="3ª Geração" onclick="gen(3)">
+                <input id="genfilter" type="button" value="4ª Geração" onclick="gen(4)">
+                <input id="genfilter" type="button" value="5ª Geração" onclick="gen(5)">
+            </div>
+            <div id="lay2">
+                <input id="genfilter" type="button" value="6ª Geração" onclick="gen(6)">
+                <input id="genfilter" type="button" value="7ª Geração" onclick="gen(7)">
+                <input id="genfilter" type="button" value="8ª Geração" onclick="gen(8)">
+                <input id="genfilter" type="button" value="9ª Geração" onclick="gen(9)">
+            </div>
         </div>
     </section>
 

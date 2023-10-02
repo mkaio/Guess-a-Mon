@@ -148,3 +148,67 @@ header{
     color: red;
     text-shadow: 1px 1px 1px black;
 }
+
+#filter,#HTP{
+    width: 8%;
+    height: 25px;
+    font-family: sans-serif;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 3px;
+}
+
+#filter:hover{
+    color: red;
+    transition: ease-in-out .2s;
+    cursor: pointer;
+}
+#HTP:hover{
+    color: red;
+    transition: ease-in-out .2s;
+    cursor: pointer;
+}
+
+#actions{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#genfilter{
+    width: 15%;
+    height: 35px;
+    background-color: #facb04;
+    font-family: cursive;
+    font-weight: bold;
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin: 8px;
+}
+
+#genfilter:hover{
+    background-color: #ffda34;
+    color: rgb(55, 55, 55);
+    cursor: pointer;
+}
+
+#filterbar{
+    width: 100%;
+    display: none;
+    flex-direction: column;
+}
+
+#lay1,#lay2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#filtertitle{
+    align-self: center;
+    font-family: cursive;
+    font-size: large;
+    color: white;
+}
