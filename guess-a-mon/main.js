@@ -113,8 +113,23 @@ function getRandomPokemon() {
                     const pokebox = document.getElementById('pokebox');
                     pokebox.style.display = 'flex';
 
-                    document.getElementById('poke-picture').src = response.sprites.front_default;
-
+                    if (randomPokemonId === 1011) {
+                        document.getElementById('poke-picture').src = "../images/1011-Dipplin.png"
+                    } else if (randomPokemonId === 1012) {
+                        document.getElementById('poke-picture').src = "../images/1012-poltchageist.jpg"
+                    } else if (randomPokemonId === 1013) {
+                        document.getElementById('poke-picture').src = "../images/1013-sinistcha.png"
+                    } else if (randomPokemonId === 1014) {
+                        document.getElementById('poke-picture').src = "../images/1014-Okidogi.webp"
+                    } else if (randomPokemonId === 1015) {
+                        document.getElementById('poke-picture').src = "../images/1015-munkidori.jpg"
+                    } else if (randomPokemonId === 1016) {
+                        document.getElementById('poke-picture').src = "../images/1016-Fezandipiti.png"
+                    } else if (randomPokemonId === 1017) {
+                        document.getElementById('poke-picture').src = "../images/1017-ogerpon.jpg"
+                    } else {
+                        document.getElementById('poke-picture').src = response.sprites.front_default;
+                    }
                     currentPokemonName = response.name;
                 })
                 .catch(function (error) {
@@ -134,14 +149,31 @@ function getRandomPokemon() {
 }
 
 function keep() {
-    let randomPokemonId = getRandomInt(min,max)
+    let randomPokemonId = getRandomInt(min, max)
     fetch(`https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`)
         .then(function (response) {
             return response.json();
         })
         .then(function (response) {
             console.log(response);
-            document.getElementById('poke-picture').src = response.sprites.front_default
+            
+            if (randomPokemonId === 1011) {
+                document.getElementById('poke-picture').src = "../images/1011-Dipplin.png"
+            } else if (randomPokemonId === 1012) {
+                document.getElementById('poke-picture').src = "../images/1012-poltchageist.jpg"
+            } else if (randomPokemonId === 1013) {
+                document.getElementById('poke-picture').src = "../images/1013-sinistcha.png"
+            } else if (randomPokemonId === 1014) {
+                document.getElementById('poke-picture').src = "../images/1014-Okidogi.webp"
+            } else if (randomPokemonId === 1015) {
+                document.getElementById('poke-picture').src = "../images/1015-munkidori.jpg"
+            } else if (randomPokemonId === 1016) {
+                document.getElementById('poke-picture').src = "../images/1016-Fezandipiti.png"
+            } else if (randomPokemonId === 1017) {
+                document.getElementById('poke-picture').src = "../images/1017-ogerpon.jpg"
+            } else {
+                document.getElementById('poke-picture').src = response.sprites.front_default;
+            }
 
             currentPokemonName = response.name
         })
@@ -220,19 +252,18 @@ function filters() {
     document.getElementById('filterbar').style.display = 'flex'
 }
 
-function backfilter(){
+function backfilter() {
     document.getElementById('startbutton').style.display = 'block'
     document.getElementById('actions').style.display = 'flex'
     document.getElementById('filterbar').style.display = 'none'
 }
 
-function howtoplay(){
+function howtoplay() {
     document.getElementById('overlay').style.display = 'block';
     document.getElementById('pop-up').style.display = 'block';
 }
 
-function closepopup(){
+function closepopup() {
     document.getElementById('overlay').style.display = 'none';
     document.getElementById('pop-up').style.display = 'none';
 }
-
