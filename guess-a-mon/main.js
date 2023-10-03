@@ -35,6 +35,8 @@ function timer() {
 
 // Funcionamento do jogo:
 
+let feedbackactive = false
+
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
@@ -156,7 +158,7 @@ function keep() {
         })
         .then(function (response) {
             console.log(response);
-            
+
             if (randomPokemonId === 1011) {
                 document.getElementById('poke-picture').src = "../images/1011-Dipplin.png"
             } else if (randomPokemonId === 1012) {
@@ -196,6 +198,7 @@ function check() {
         document.getElementById('loading').style.display = "block"
         document.getElementById('pokebox').style.paddingBottom = "1%";
         pause();
+        feedbackactive = true
         document.getElementById('enviar').disabled = true
         pontos = pontos + 3
     } else {
@@ -205,12 +208,14 @@ function check() {
             document.getElementById('loading').style.display = "block"
             document.getElementById('pokebox').style.paddingBottom = "20px"
             pause();
+            feedbackactive = true
             document.getElementById('enviar').disabled = true
             pontos = pontos - 1
         } else {
             document.getElementById('poke-picture').src = "../images/GAM-endgame.png"
             document.getElementById('correction').innerHTML = "O Pokémon era: " + nome
             pause();
+            feedbackactive = true
             document.getElementById('enviar').disabled = true
             guessBox.value = '';
             setTimeout(function () {
@@ -226,6 +231,7 @@ function check() {
         document.getElementById('poke-picture').src = "../images/win-GAM.png"
         document.getElementById('loading').style.display = "none"
         pause();
+        feedbackactive = true
         document.getElementById('enviar').disabled = true
         document.getElementById('time-feedback').innerHTML = "Seu tempo foi de " + tempofinal
         document.getElementById('pokebox').style.paddingBottom = "20px"
@@ -241,13 +247,16 @@ function check() {
         document.getElementById('enviar').disabled = false
         keep();
         start();
+        feedbackactive = false
     }, 4000);
 }
 
 guessBox.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
-        event.preventDefault();
-        check();
+        if (!feedbackactive) {
+            event.preventDefault();
+            check();
+        }
     }
 })
 
