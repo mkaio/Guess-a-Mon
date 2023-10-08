@@ -35,6 +35,49 @@ function timer() {
 
 // Funcionamento do jogo:
 
+let selectedDifficulty = "Médio";
+const selectButton = document.getElementById("level");
+const dropdown = document.getElementById("dropdown");
+
+function toggleDropdown() {
+    if (dropdown.style.display === "block") {
+        dropdown.style.display = "none";
+    } else {
+        dropdown.style.display = "block";
+    }
+}
+
+function selectDifficulty(difficulty) {
+    selectedDifficulty = difficulty;
+    selectButton.textContent = `Dificuldade`;
+    selectButton.blur();
+    dropdown.style.display = "none";
+    updateSelectedStyle(difficulty);
+    document.getElementById("selected-difficulty").textContent = difficulty;
+}
+
+function updateSelectedStyle(difficulty) {
+    const options = document.querySelectorAll(".dropdown li");
+    options.forEach(option => option.classList.remove("selected-option"));
+    options.forEach(option => {
+        if (option.textContent === difficulty) {
+            option.classList.add("selected-option");
+        }
+    });
+}
+
+window.addEventListener("click", function (event) {
+    if (!selectButton.contains(event.target) && event.target !== selectButton) {
+        dropdown.style.display = "none";
+    }
+});
+
+window.onload = function () {
+    updateSelectedStyle("Médio");
+};
+
+
+
 let feedbackactive = false
 
 function getRandomInt(min, max) {
@@ -99,6 +142,9 @@ function gen(number) {
 let pontos = 0
 
 function getRandomPokemon() {
+    if (selectedDifficulty === "Fácil") {
+        document.getElementById("guessbox").oninput = buscar;
+    }
     fetch('https://pokeapi.co/api/v2/pokemon?limit=1')
         .then(function (response) {
             return response.json();
@@ -146,6 +192,7 @@ function getRandomPokemon() {
     guessform.style.display = 'flex'
     document.getElementById('actions').style.display = 'none'
     document.getElementById('filterbar').style.display = 'none'
+    document.getElementById('level').style.display = 'none'
 
     start()
 }
@@ -264,12 +311,14 @@ function filters() {
     document.getElementById('startbutton').style.display = 'none'
     document.getElementById('actions').style.display = 'none'
     document.getElementById('filterbar').style.display = 'flex'
+    document.getElementById('level').style.display = 'none'
 }
 
 function backfilter() {
     document.getElementById('startbutton').style.display = 'block'
     document.getElementById('actions').style.display = 'flex'
     document.getElementById('filterbar').style.display = 'none'
+    document.getElementById('level').style.display = 'block'
 }
 
 function howtoplay() {
@@ -281,3 +330,110 @@ function closepopup() {
     document.getElementById('overlay').style.display = 'none';
     document.getElementById('pop-up').style.display = 'none';
 }
+
+let resultadosFiltrados = [];
+let resultadoSelecionadoIndex = -1;
+
+async function buscar() {
+    var pkName = document.querySelector('#guessbox').value.trim().toLowerCase();
+
+    if (pkName === "") {
+        document.querySelector('#resultados').innerHTML = "";
+        return;
+    }
+
+    const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=1018`;
+
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        if (data.results) {
+            resultadosFiltrados = data.results.filter(pokemon =>
+                pokemon.name.startsWith(pkName)
+            ).slice(0, 3);
+
+            const resultados = document.querySelector('#resultados');
+            resultados.innerHTML = ""; // Limpar as recomendações anteriores
+
+            resultadosFiltrados.forEach((pokemon, index) => {
+                const resultadoBotao = document.createElement('div');
+                resultadoBotao.textContent = pokemon.name;
+                resultadoBotao.classList.add('resultado-botao');
+                resultadoBotao.addEventListener('click', () => {
+                    selecionarResultado(index);
+                    document.querySelector('#guessbox').value = resultadosFiltrados[index].name;
+                    resultados.innerHTML = ""; // Limpar as recomendações após a seleção
+                });
+                resultados.appendChild(resultadoBotao);
+            });
+
+            resultados.style.display = "block"; // Mostrar caixa de recomendações
+            document.addEventListener('keydown', handleKeyDown);
+        }
+    } catch (error) {
+        console.error('Ocorreu um erro:', error);
+    }
+}
+
+function selecionarResultado(index) {
+    if (resultadoSelecionadoIndex >= 0) {
+        document
+            .querySelectorAll('.resultado-botao')
+        [resultadoSelecionadoIndex].classList.remove('resultado-selecionado');
+    }
+
+    resultadoSelecionadoIndex = index;
+
+    if (resultadoSelecionadoIndex >= 0) {
+        document
+            .querySelectorAll('.resultado-botao')
+        [resultadoSelecionadoIndex].classList.add('resultado-selecionado');
+    }
+}
+
+function handleKeyDown(event) {
+    if (resultadosFiltrados.length === 0) {
+        return;
+    }
+
+    switch (event.key) {
+        case 'ArrowDown':
+            event.preventDefault();
+            if (resultadoSelecionadoIndex < resultadosFiltrados.length - 1) {
+                selecionarResultado(resultadoSelecionadoIndex + 1);
+            } else {
+                selecionarResultado(0);
+            }
+            break;
+        case 'ArrowUp':
+            event.preventDefault();
+            if (resultadoSelecionadoIndex > 0) {
+                selecionarResultado(resultadoSelecionadoIndex - 1);
+            } else {
+                selecionarResultado(resultadosFiltrados.length - 1);
+            }
+            break;
+        case 'Enter':
+            event.preventDefault();
+            if (document.querySelector('#resultados').style.display === 'block') {
+                if (resultadoSelecionadoIndex >= 0) {
+                    document.querySelector('#guessbox').value = resultadosFiltrados[resultadoSelecionadoIndex].name;
+                    document.querySelector('#resultados').style.display = 'none';
+                    document.querySelector('#guessbox').focus(); // Focar na caixa de entrada após a seleção
+                }
+            } else {
+                check(); // Chamar a função de verificação quando a caixa de recomendações não estiver visível
+            }
+            break;
+    }
+}
+
+
+document.addEventListener('click', function (event) {
+    const searchContainer = document.querySelector('#search-container');
+    if (!searchContainer.contains(event.target)) {
+        document.querySelector('#resultados').innerHTML = '';
+    }
+});
+

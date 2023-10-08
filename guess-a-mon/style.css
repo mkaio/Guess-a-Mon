@@ -4,19 +4,19 @@ body {
     background-attachment: fixed;
 }
 
-header{
+header {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#gam-logo{
+#gam-logo {
     width: 350px;
     margin-top: 2%;
     margin-bottom: 1%;
 }
 
-#pokebox{
+#pokebox {
     background-color: white;
     width: 20%;
     border: 1px solid;
@@ -27,18 +27,18 @@ header{
     align-items: center;
 }
 
-#game{
+#game {
     min-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#poke-picture{
+#poke-picture {
     width: 80%;
 }
 
-#startbutton{
+#startbutton {
     margin: 2%;
     background-color: #facb04;
     width: 200px;
@@ -50,19 +50,19 @@ header{
     border-radius: 5px;
 }
 
-#startbutton:hover{
+#startbutton:hover {
     cursor: pointer;
 }
 
-#guessform{
+#guessform {
     margin-top: 1%;
     display: none;
     flex-direction: column;
     align-items: center;
-    
+
 }
 
-#enviar{
+#enviar {
     margin-top: 4%;
     width: 35%;
     height: 30px;
@@ -73,34 +73,34 @@ header{
     font-weight: bold;
 }
 
-#enviar:hover{
+#enviar:hover {
     cursor: pointer;
     background-color: #fbd52a;
     color: rgb(45, 45, 45);
     transition: ease-in-out .15s;
 }
 
-#guessbox{
-    width: 70%;
+#guessbox {
+    width: 200px;
     height: 25px;
-    font-size:medium;
+    font-size: medium;
     border: 1px solid black;
     border-radius: 5px;
 }
 
-#guessbox:hover{
+#guessbox:hover {
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.251);
     transition: ease-in-out .15s;
 }
 
-#guessit{
+#guessit {
     font-family: cursive;
     font-weight: bold;
     font-size: 20px;
     margin-top: 2px;
 }
 
-#points{
+#points {
     height: auto;
     padding-left: 10px;
     padding-right: 10px;
@@ -114,19 +114,19 @@ header{
     align-items: center;
 }
 
-#correction{
+#correction {
     font-family: Andale Mono, monospace;
     font-size: medium;
     font-weight: bold;
 }
 
-#loading{
+#loading {
     display: none;
     width: 45px;
     margin-top: 15px;
 }
 
-#cronometro{
+#cronometro {
     color: white;
     font-family: Comic Sans MS, Comic Sans, cursive;
     font-size: large;
@@ -135,13 +135,13 @@ header{
     padding: 5px;
 }
 
-#bar{
+#bar {
     margin-bottom: 10px;
     display: none;
     flex-direction: row;
 }
 
-#time-feedback{
+#time-feedback {
     margin-top: 15px;
     font-family: Comic Sans MS, Comic Sans, cursive;
     font-size: medium;
@@ -149,7 +149,8 @@ header{
     text-shadow: 1px 1px 1px black;
 }
 
-#filter,#HTP{
+#filter,
+#HTP {
     width: 8%;
     height: 25px;
     font-family: sans-serif;
@@ -160,24 +161,31 @@ header{
     margin: 3px;
 }
 
-#filter:hover{
-    color: red;
-    transition: ease-in-out .2s;
-    cursor: pointer;
-}
-#HTP:hover{
+#filter:hover {
     color: red;
     transition: ease-in-out .2s;
     cursor: pointer;
 }
 
-#actions{
+#HTP:hover {
+    color: red;
+    transition: ease-in-out .2s;
+    cursor: pointer;
+}
+
+#level:hover {
+    color: red;
+    transition: ease-in-out .2s;
+    cursor: pointer;
+}
+
+#actions {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-#genfilter{
+#genfilter {
     width: 15%;
     height: 35px;
     background-color: #facb04;
@@ -188,32 +196,33 @@ header{
     margin: 8px;
 }
 
-#genfilter:hover{
+#genfilter:hover {
     background-color: #ffda34;
     color: rgb(55, 55, 55);
     cursor: pointer;
 }
 
-#filterbar{
+#filterbar {
     width: 100%;
     display: none;
     flex-direction: column;
 }
 
-#lay1,#lay2{
+#lay1,
+#lay2 {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-#filtertitle{
+#filtertitle {
     align-self: center;
     font-family: cursive;
     font-size: large;
     color: white;
 }
 
-#pop-up{
+#pop-up {
     display: none;
     position: fixed;
     z-index: 2;
@@ -225,7 +234,7 @@ header{
     border-radius: 5px;
 }
 
-#close{
+#close {
     border: double red;
     border-radius: 5px;
     padding-top: 0;
@@ -239,7 +248,7 @@ header{
     margin-top: 10px;
 }
 
-#close:hover{
+#close:hover {
     cursor: pointer;
     color: black;
 }
@@ -255,7 +264,7 @@ header{
     z-index: 1;
 }
 
-#htptitle{
+#htptitle {
     font-size: 25px;
     font-family: cursive;
     margin-right: 10px;
@@ -267,7 +276,7 @@ header{
 }
 
 
-#htpcontent{
+#htpcontent {
     font-family: cursive;
     text-align: justify;
     font-size: large;
@@ -276,7 +285,7 @@ header{
     margin-top: 10px;
 }
 
-#backfilter{
+#backfilter {
     width: 10%;
     height: 30px;
     font-family: cursive;
@@ -289,6 +298,101 @@ header{
     align-self: center;
 }
 
-#backfilter:hover{
+#backfilter:hover {
     cursor: pointer;
+}
+
+.level-container {
+    position: relative;
+    display: inline-block;
+}
+
+#level {
+    width: 150px;
+    /* Largura ajustável */
+    height: 25px;
+    /* Altura ajustável */
+    padding: 5px;
+    font-family: sans-serif;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 0;
+    border: 1px solid black;
+}
+
+#level:hover {
+    color: red;
+    /* Cor do texto no hover */
+    transition: ease-in-out 0.2s;
+    /* Transição suave */
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    min-width: 144.5px;
+    /* Largura ajustável */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 2px;
+}
+
+.dropdown li {
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border-top: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+}
+
+.dropdown li:first-child {
+    border-top: none;
+}
+
+.dropdown li:hover {
+    background-color: #f0f0f0;
+}
+
+.selected-option {
+    font-weight: bold;
+    background-color: #ddd;
+    /* Cor de fundo diferente para indicar seleção */
+}
+
+#resultados {
+    width: 15%;
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    max-height: 80px;
+    display: none;
+    z-index: 1;
+}
+
+.resultado-botao {
+    cursor: pointer;
+    padding: 5px;
+    width: 192px;
+    background-color: lightgrey;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.resultado-botao:hover {
+    background-color: rgb(227, 227, 227);
+}
+
+.resultado-selecionado {
+    background-color: rgb(232, 232, 232);
 }

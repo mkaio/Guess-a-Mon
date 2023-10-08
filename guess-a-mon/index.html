@@ -29,6 +29,15 @@
             <button id="filter" onclick="filters()">Filtros</button>
             <button id="HTP" onclick="howtoplay()">Como jogar</button>
         </div>
+        <div class="level-container">
+            <button id="level" style="margin-top: 10px;" onclick="toggleDropdown()">Dificuldade</button>
+            <ul id="dropdown" class="dropdown">
+                <li onclick="selectDifficulty('Fácil')">Fácil</li>
+                <li onclick="selectDifficulty('Médio')" class="selected-option">Médio</li>
+                <li onclick="selectDifficulty('Difícil')">Difícil</li>
+            </ul>
+        </div>
+
         <div id="overlay"></div>
         <div id="pop-up">
             <div id="close" onclick="closepopup()">&times;</div>
@@ -36,8 +45,8 @@
                 Como jogar o Guess-a-mon?
             </div>
             <div id="htpcontent">
-                Desafie-se a adivinhar o nome dos Pokémons enquanto acumula 20 pontos o mais rápido 
-                possível. Ganhe 3 pontos por acerto e perca 1 por erro. Use filtros para escolher 
+                Desafie-se a adivinhar o nome dos Pokémons enquanto acumula 20 pontos o mais rápido
+                possível. Ganhe 3 pontos por acerto e perca 1 por erro. Use filtros para escolher
                 sua geração preferida. Chame seus amigos e descubra quem é o melhor treinador Pokémon!
             </div>
         </div>
@@ -45,7 +54,10 @@
             <p id="guessit">
                 Qual é o nome desse Pokémon?
             </p>
-            <input type="text" id="guessbox">
+            <div id="search-container">
+                <input type="text" id="guessbox">
+                <div id="resultados"></div>
+            </div>
             <button id="enviar" onclick="check()">Verificar</button>
         </div>
 
