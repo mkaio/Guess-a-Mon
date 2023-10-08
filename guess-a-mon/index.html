@@ -55,7 +55,12 @@
                 Qual é o nome desse Pokémon?
             </p>
             <div id="search-container">
-                <input type="text" id="guessbox">
+                <div id="gamebar">
+                    <input type="text" id="guessbox" autocomplete="off">
+                    <div id="tip-bar" onclick="soon()">
+                        <img id="tip-icon" src="../images/tip-icon.png">
+                    </div>
+                </div>
                 <div id="resultados"></div>
             </div>
             <button id="enviar" onclick="check()">Verificar</button>

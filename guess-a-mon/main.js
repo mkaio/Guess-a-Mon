@@ -439,3 +439,6 @@ document.addEventListener('click', function (event) {
     }
 });
 
+function soon(){
+    alert("Dicas: em breve!")
+}

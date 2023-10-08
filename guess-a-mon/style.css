@@ -85,7 +85,10 @@ header {
     height: 25px;
     font-size: medium;
     border: 1px solid black;
+    border-right: none;
     border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 #guessbox:hover {
@@ -395,4 +398,30 @@ header {
 
 .resultado-selecionado {
     background-color: rgb(232, 232, 232);
+}
+
+#gamebar{
+    display: flex;
+    flex-direction: row;
+}
+#tip-bar{
+    background-color: white;
+    width: 30px;
+    height: 25px;
+    border: 1px solid black;
+    border-left-style: dashed;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 1px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+#tip-icon{
+    width: 100%;
+}
+#tip-bar:hover{
+    cursor: pointer;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.362);
+    transition: ease-in-out .2s;
 }
