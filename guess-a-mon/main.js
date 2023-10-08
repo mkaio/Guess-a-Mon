@@ -423,7 +423,9 @@ function handleKeyDown(event) {
                     document.querySelector('#guessbox').focus(); // Focar na caixa de entrada após a seleção
                 }
             } else {
-                check(); // Chamar a função de verificação quando a caixa de recomendações não estiver visível
+                if (!feedbackactive) {
+                    check();
+                }
             }
             break;
     }
