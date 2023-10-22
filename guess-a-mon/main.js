@@ -378,19 +378,22 @@ async function buscar() {
 
 function selecionarResultado(index) {
     if (resultadoSelecionadoIndex >= 0) {
-        document
-            .querySelectorAll('.resultado-botao')
-        [resultadoSelecionadoIndex].classList.remove('resultado-selecionado');
+        const resultadoAnterior = document.querySelectorAll('.resultado-botao')[resultadoSelecionadoIndex];
+        if (resultadoAnterior) {
+            resultadoAnterior.classList.remove('resultado-selecionado');
+        }
     }
 
     resultadoSelecionadoIndex = index;
 
     if (resultadoSelecionadoIndex >= 0) {
-        document
-            .querySelectorAll('.resultado-botao')
-        [resultadoSelecionadoIndex].classList.add('resultado-selecionado');
+        const resultadoSelecionado = document.querySelectorAll('.resultado-botao')[resultadoSelecionadoIndex];
+        if (resultadoSelecionado) {
+            resultadoSelecionado.classList.add('resultado-selecionado');
+        }
     }
 }
+
 
 function handleKeyDown(event) {
     if (resultadosFiltrados.length === 0) {
@@ -417,7 +420,7 @@ function handleKeyDown(event) {
         case 'Enter':
             event.preventDefault();
             if (document.querySelector('#resultados').style.display === 'block') {
-                if (resultadoSelecionadoIndex >= 0) {
+                if (resultadosFiltrados.length > 0 && resultadoSelecionadoIndex >= 0) {
                     document.querySelector('#guessbox').value = resultadosFiltrados[resultadoSelecionadoIndex].name;
                     document.querySelector('#resultados').style.display = 'none';
                     document.querySelector('#guessbox').focus(); // Focar na caixa de entrada após a seleção
@@ -436,9 +439,10 @@ document.addEventListener('click', function (event) {
     const searchContainer = document.querySelector('#search-container');
     if (!searchContainer.contains(event.target)) {
         document.querySelector('#resultados').innerHTML = '';
+        document.querySelector('#resultados').style.display = 'none';
     }
 });
 
-function soon(){
+function soon() {
     alert("Dicas: em breve!")
 }
