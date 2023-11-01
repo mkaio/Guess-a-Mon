@@ -57,13 +57,21 @@
             <div id="search-container">
                 <div id="gamebar">
                     <input type="text" id="guessbox" autocomplete="off">
-                    <div id="tip-bar" onclick="soon()">
+                    <div id="tip-bar">
                         <img id="tip-icon" src="../images/tip-icon.png">
                     </div>
                 </div>
                 <div id="resultados"></div>
             </div>
             <button id="enviar" onclick="check()">Verificar</button>
+        </div>
+
+        <div id="popup-tip">
+            <div id="tip-content">
+                <div id="close-tip">>></div>
+                <div id="dica1">Dicas em breve!</div>
+                <div id="dica2"></div>
+            </div>
         </div>
 
         <div id="filterbar">

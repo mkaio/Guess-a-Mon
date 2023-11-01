@@ -144,6 +144,10 @@ let pontos = 0
 function getRandomPokemon() {
     if (selectedDifficulty === "Fácil") {
         document.getElementById("guessbox").oninput = buscar;
+        document.getElementById("tip-bar").onclick = tip;
+    }
+    if (selectedDifficulty === "Médio") {
+        document.getElementById("tip-bar").onclick = tip;
     }
     fetch('https://pokeapi.co/api/v2/pokemon?limit=1')
         .then(function (response) {
@@ -247,6 +251,8 @@ function check() {
         pause();
         feedbackactive = true
         document.getElementById('enviar').disabled = true
+        document.getElementById("tip-bar").onclick = '';
+        document.getElementById('popup-tip').style.right = '-400px';
         pontos = pontos + 3
     } else {
         if (pontos > 0) {
@@ -257,6 +263,8 @@ function check() {
             pause();
             feedbackactive = true
             document.getElementById('enviar').disabled = true
+            document.getElementById("tip-bar").onclick = '';
+            document.getElementById('popup-tip').style.right = '-400px';
             pontos = pontos - 1
         } else {
             document.getElementById('poke-picture').src = "../images/GAM-endgame.png"
@@ -264,6 +272,8 @@ function check() {
             pause();
             feedbackactive = true
             document.getElementById('enviar').disabled = true
+            document.getElementById("tip-bar").onclick = '';
+            document.getElementById('popup-tip').style.right = '-400px';
             guessBox.value = '';
             setTimeout(function () {
                 location.reload();
@@ -280,6 +290,8 @@ function check() {
         pause();
         feedbackactive = true
         document.getElementById('enviar').disabled = true
+        document.getElementById("tip-bar").onclick = '';
+        document.getElementById('popup-tip').style.right = '-400px';
         document.getElementById('time-feedback').innerHTML = "Seu tempo foi de " + tempofinal
         document.getElementById('pokebox').style.paddingBottom = "20px"
         setTimeout(function () {
@@ -292,10 +304,15 @@ function check() {
         document.getElementById('loading').style.display = "none"
         document.getElementById('pokebox').style.paddingBottom = "3%"
         document.getElementById('enviar').disabled = false
+        if (selectedDifficulty === "Médio" || selectedDifficulty === "Fácil") {
+            document.getElementById("tip-bar").onclick = tip;
+        }
         keep();
         start();
         feedbackactive = false
     }, 4000);
+
+    tipActive = false;
 }
 
 guessBox.addEventListener('keypress', function (event) {
@@ -443,6 +460,26 @@ document.addEventListener('click', function (event) {
     }
 });
 
-function soon() {
-    alert("Dicas: em breve!")
+let tipActive = false;
+function tip() {
+    const closeButton = document.getElementById('close-tip');
+    const popupTip = document.getElementById('popup-tip');
+    const dica1 = document.getElementById('dica1');
+    const dica2 = document.getElementById('dica2');
+
+    if (tipActive) {
+        popupTip.style.right = '-400px';
+        setTimeout(function () {
+            dica2.innerHTML = "Já falei, dicas em breve, caramba!"
+            popupTip.style.right = '20px';
+        }, 800);
+    } else {
+        popupTip.style.right = '20px';
+        tipActive = true;
+        dica2.innerHTML = ''
+    }
+
+    closeButton.addEventListener('click', function () {
+        popupTip.style.right = '-400px';
+    });
 }
