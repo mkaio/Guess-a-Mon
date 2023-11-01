@@ -460,8 +460,16 @@ document.addEventListener('click', function (event) {
     }
 });
 
+let tipMax = false
 let tipActive = false;
 function tip() {
+    let underscores = '';
+    for (let i = 0; i < currentPokemonName.length - 1; i++) {
+        underscores += ' _';
+    }
+
+    let tipName = currentPokemonName.charAt(0).toUpperCase() + underscores
+
     const closeButton = document.getElementById('close-tip');
     const popupTip = document.getElementById('popup-tip');
     const dica1 = document.getElementById('dica1');
@@ -470,10 +478,12 @@ function tip() {
     if (tipActive) {
         popupTip.style.right = '-400px';
         setTimeout(function () {
-            dica2.innerHTML = "Já falei, dicas em breve, caramba!"
+            dica2.innerHTML = "Segunda dica em breve!"
             popupTip.style.right = '20px';
         }, 800);
+        tipMax = true
     } else {
+        dica1.innerHTML = "Nome: "+tipName
         popupTip.style.right = '20px';
         tipActive = true;
         dica2.innerHTML = ''
