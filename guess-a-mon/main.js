@@ -470,6 +470,16 @@ document.addEventListener('click', function (event) {
     }
 });
 
+function getAllIndexes(arr, val) {
+    const indexes = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === val) {
+            indexes.push(i);
+        }
+    }
+    return indexes;
+}
+
 let tipMax = false;
 let tipActive = false;
 function tip() {
@@ -485,32 +495,43 @@ function tip() {
 
     let tipName = currentPokemonName.charAt(0).toUpperCase() + underscores
 
+    if (currentPokemonName.includes("-")) {
+        const indexHifen = getAllIndexes(currentPokemonName, "-");
 
+        indexHifen.forEach(index => {
+            const underscoreIndex = 2 * index;
+
+            if (underscoreIndex < tipName.length) {
+                tipName = tipName.substring(0, underscoreIndex) + "-" + tipName.substring(underscoreIndex + 1);
+            }
+        })
+    }
+    
     let genTip = ''
     if (padrao) {
-        if(randomPokemonId>=1 && randomPokemonId<=151){
+        if (randomPokemonId >= 1 && randomPokemonId <= 151) {
             genTip = "O Pokémon é da 1ª geração..."
-        } else if(randomPokemonId>=152 && randomPokemonId<=251){
+        } else if (randomPokemonId >= 152 && randomPokemonId <= 251) {
             genTip = "O Pokémon é da 2ª geração..."
-        } else if(randomPokemonId>=252 && randomPokemonId<=386){
+        } else if (randomPokemonId >= 252 && randomPokemonId <= 386) {
             genTip = "O Pokémon é da 3ª geração..."
-        } else if(randomPokemonId>=387 && randomPokemonId<=493){
+        } else if (randomPokemonId >= 387 && randomPokemonId <= 493) {
             genTip = "O Pokémon é da 4ª geração..."
-        } else if(randomPokemonId>=494 && randomPokemonId<=649){
+        } else if (randomPokemonId >= 494 && randomPokemonId <= 649) {
             genTip = "O Pokémon é da 5ª geração..."
-        } else if(randomPokemonId>=650 && randomPokemonId<=721){
+        } else if (randomPokemonId >= 650 && randomPokemonId <= 721) {
             genTip = "O Pokémon é da 6ª geração..."
-        } else if(randomPokemonId>=722 && randomPokemonId<=809){
+        } else if (randomPokemonId >= 722 && randomPokemonId <= 809) {
             genTip = "O Pokémon é da 7ª geração..."
-        } else if(randomPokemonId>=810 && randomPokemonId<=905){
+        } else if (randomPokemonId >= 810 && randomPokemonId <= 905) {
             genTip = "O Pokémon é da 8ª geração..."
-        } else{
+        } else {
             genTip = "O Pokémon é da 9ª geração..."
         }
 
         dica1.innerHTML = genTip;
         dica2.innerHTML = "Nome: " + tipName
-    } else{
+    } else {
         dica1.innerHTML = "Nome: " + tipName
         dica2.innerHTML = "Segunda dica em breve!"
     }
@@ -541,4 +562,3 @@ function tip() {
         }
     }
 }
-
