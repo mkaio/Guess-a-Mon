@@ -480,6 +480,7 @@ function getAllIndexes(arr, val) {
     return indexes;
 }
 
+let tipName2 = '';
 let tipMax = false;
 let tipActive = false;
 function tip() {
@@ -506,9 +507,64 @@ function tip() {
             }
         })
     }
-    
+
+    if (tipMax) {
+        if (popupTip1.style.right === '20px') {
+            popupTip1.style.transition = 'right 0.8s';
+            popupTip1.style.right = '-400px';
+            popupTip2.style.right = '-400px';
+        } else {
+            popupTip1.style.right = '20px';
+            popupTip2.style.right = '20px';
+        }
+    } else {
+        if (tipActive) {
+            popupTip1.style.transition = 'bottom 1s';
+            popupTip1.style.bottom = '150px';
+
+            let randomN = () => {
+                let respostaN = 2 * (Math.floor(Math.random() * (currentPokemonName.length - 1)) + 1);
+                return respostaN;
+            };
+            let m = randomN()
+
+            let extraLetter = currentPokemonName[m / 2]
+            if (!currentPokemonName.includes("-")) {
+                tipName2 = tipName.substring(0, m) + extraLetter + tipName.substring(m + 1)
+            } else {
+                indexHifen = getAllIndexes(currentPokemonName, "-")
+                if (indexHifen.length === 1) {
+                    if (m === indexHifen[0] * 2) {
+                        extraLetter = currentPokemonName[m / 2 + 1];
+                        tipName2 = tipName.substring(0, m + 2) + extraLetter + tipName.substring(m + 3);
+                    } else {
+                        tipName2 = tipName.substring(0, m) + extraLetter + tipName.substring(m + 1)
+                    }
+                }
+                else if (indexHifen.length === 2) {
+                    if (m === indexHifen[0] * 2 || m === indexHifen[1] * 2) {
+                        extraLetter = currentPokemonName[m / 2 + 1];
+                        tipName2 = tipName.substring(0, m + 2) + extraLetter + tipName.substring(m + 3);
+                    } else {
+                        tipName2 = tipName.substring(0, m) + extraLetter + tipName.substring(m + 1)
+                    }
+                }
+            }
+
+            setTimeout(function () {
+                popupTip2.style.right = '20px';
+            }, 800);
+            tipMax = true;
+        } else {
+            popupTip1.style.bottom = '20px';
+            popupTip1.style.right = '20px';
+            tipActive = true;
+            dica2.innerHTML = ''
+        }
+    }
+
     let genTip = ''
-    if (padrao) {
+    if (padrao) { //sem filtro de geração
         if (randomPokemonId >= 1 && randomPokemonId <= 151) {
             genTip = "O Pokémon é da 1ª geração..."
         } else if (randomPokemonId >= 152 && randomPokemonId <= 251) {
@@ -531,34 +587,8 @@ function tip() {
 
         dica1.innerHTML = genTip;
         dica2.innerHTML = "Nome: " + tipName
-    } else {
+    } else { //com filtro de geração
         dica1.innerHTML = "Nome: " + tipName
-        dica2.innerHTML = "Segunda dica em breve!"
-    }
-
-
-    if (tipMax) {
-        if (popupTip1.style.right === '20px') {
-            popupTip1.style.transition = 'right 0.8s';
-            popupTip1.style.right = '-400px';
-            popupTip2.style.right = '-400px';
-        } else {
-            popupTip1.style.right = '20px';
-            popupTip2.style.right = '20px';
-        }
-    } else {
-        if (tipActive) {
-            popupTip1.style.transition = 'bottom 1s';
-            popupTip1.style.bottom = '150px';
-            setTimeout(function () {
-                popupTip2.style.right = '20px';
-            }, 800);
-            tipMax = true;
-        } else {
-            popupTip1.style.bottom = '20px';
-            popupTip1.style.right = '20px';
-            tipActive = true;
-            dica2.innerHTML = ''
-        }
+        dica2.innerHTML = "Nome: " + tipName2
     }
 }
