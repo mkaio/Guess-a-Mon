@@ -232,28 +232,29 @@ header {
     margin-top: 1%;
     background-color: white;
     width: 30%;
-    height: 300px;
+    height: 370px;
     border: 1px solid black;
     border-radius: 5px;
 }
 
 #close {
-    border: double red;
+    border: none;
     border-radius: 5px;
     padding-top: 0;
     padding-left: 5px;
     padding-right: 5px;
-    color: red;
+    background-color: red;
+    color: white;
     font-size: 20px;
     font-weight: bold;
     float: right;
-    margin-right: 10px;
-    margin-top: 10px;
+    margin-right: 15px;
+    margin-top: 20px;
 }
 
 #close:hover {
     cursor: pointer;
-    color: black;
+    box-shadow: 0 0 7px rgba(40, 40, 40, 0.509);
 }
 
 #overlay {
@@ -485,4 +486,19 @@ header {
     color: #facb04;
     text-shadow: 1px 1px blue;
     margin-bottom: 15px;
+}
+
+#tipAlertBox{
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: fixed;
+    bottom: -100px;
+    right: 315px;
+    width: 250px;
+    background-color: #fff;
+    box-shadow: 0 0 7px rgba(255, 12, 12, 0.815);
+    border: 1px ridge rgba(0, 0, 0, 0.262);
+    border-radius: 5px;
+    padding: 15px;
+    transition: bottom 0.8s;
 }

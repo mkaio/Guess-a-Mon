@@ -150,6 +150,9 @@ function getRandomPokemon() {
     if (selectedDifficulty === "Médio") {
         document.getElementById("tip-bar").onclick = tip;
     }
+    if (selectedDifficulty === "Difícil") {
+        document.getElementById("tip-bar").onclick = tipAlert;
+    }
     fetch('https://pokeapi.co/api/v2/pokemon?limit=1')
         .then(function (response) {
             return response.json();
@@ -256,7 +259,15 @@ function check() {
         document.getElementById('popup-tip1').style.transition = 'right 0.8s';
         document.getElementById('popup-tip1').style.right = '-400px';
         document.getElementById('popup-tip2').style.right = '-400px';
-        pontos = pontos + 3
+        if (tipActive === true && tipMax === false) {
+            pontos = pontos + 2
+        }
+        else if (tipActive && tipMax) {
+            pontos = pontos + 1
+        }
+        else{
+            pontos = pontos + 3
+        }
     } else {
         if (pontos > 0) {
             document.getElementById('poke-picture').src = "../images/GAM-errado.png"
@@ -591,4 +602,13 @@ function tip() {
         dica1.innerHTML = "Nome: " + tipName
         dica2.innerHTML = "Nome: " + tipName2
     }
+}
+
+function tipAlert() {
+    let tipalerta = document.getElementById('tipAlertBox');
+
+    tipalerta.style.bottom = '110px';
+    setTimeout(function () {
+        tipalerta.style.bottom = '-100px';
+    }, 2000);
 }
