@@ -178,11 +178,11 @@ function getRandomPokemon() {
                     } else if (randomPokemonId === 1014) {
                         document.getElementById('poke-picture').src = "../images/1014-Okidogi.webp"
                     } else if (randomPokemonId === 1015) {
-                        document.getElementById('poke-picture').src = "../images/1015-munkidori.jpg"
+                        document.getElementById('poke-picture').src = "../images/1015-munkidori.png"
                     } else if (randomPokemonId === 1016) {
                         document.getElementById('poke-picture').src = "../images/1016-Fezandipiti.png"
                     } else if (randomPokemonId === 1017) {
-                        document.getElementById('poke-picture').src = "../images/1017-ogerpon.jpg"
+                        document.getElementById('poke-picture').src = "../images/1017-ogerpon.png"
                     } else {
                         document.getElementById('poke-picture').src = response.sprites.front_default;
                     }
@@ -223,11 +223,11 @@ function keep() {
             } else if (randomPokemonId === 1014) {
                 document.getElementById('poke-picture').src = "../images/1014-Okidogi.webp"
             } else if (randomPokemonId === 1015) {
-                document.getElementById('poke-picture').src = "../images/1015-munkidori.jpg"
+                document.getElementById('poke-picture').src = "../images/1015-munkidori.png"
             } else if (randomPokemonId === 1016) {
                 document.getElementById('poke-picture').src = "../images/1016-Fezandipiti.png"
             } else if (randomPokemonId === 1017) {
-                document.getElementById('poke-picture').src = "../images/1017-ogerpon.jpg"
+                document.getElementById('poke-picture').src = "../images/1017-ogerpon.png"
             } else {
                 document.getElementById('poke-picture').src = response.sprites.front_default;
             }
@@ -607,8 +607,12 @@ function tip() {
 function tipAlert() {
     let tipalerta = document.getElementById('tipAlertBox');
 
-    tipalerta.style.bottom = '110px';
+    tipalerta.classList.remove('disappear');
+    tipalerta.style.display = 'block';
+    tipalerta.classList.add('appear');
+
     setTimeout(function () {
-        tipalerta.style.bottom = '-100px';
-    }, 2000);
+        tipalerta.classList.remove('appear');
+        tipalerta.classList.add('disappear');
+    }, 2500);
 }

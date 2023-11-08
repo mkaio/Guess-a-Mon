@@ -25,6 +25,16 @@ header {
     display: none;
     flex-direction: column;
     align-items: center;
+    animation: boxshow 1s;
+}
+
+@keyframes boxshow{
+    from{
+        width: 0%;
+    }
+    to{
+        width: 20%
+    }
 }
 
 #game {
@@ -36,6 +46,16 @@ header {
 
 #poke-picture {
     width: 80%;
+    animation: pokeshow 2s;
+}
+
+@keyframes pokeshow{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
 
 #startbutton {
@@ -232,7 +252,7 @@ header {
     margin-top: 1%;
     background-color: white;
     width: 30%;
-    height: 370px;
+    height: 380px;
     border: 1px solid black;
     border-radius: 5px;
 }
@@ -489,16 +509,44 @@ header {
 }
 
 #tipAlertBox{
+    display: none;
     text-align: center;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    position: fixed;
-    bottom: -100px;
-    right: 315px;
+    position: absolute;
+    bottom: 90px;
+    right: 310px;
     width: 250px;
     background-color: #fff;
-    box-shadow: 0 0 7px rgba(255, 12, 12, 0.815);
-    border: 1px ridge rgba(0, 0, 0, 0.262);
+    box-shadow: 0 0 4px rgba(45, 45, 45, 0.815);
+    border: 1px ridge rgba(0, 0, 0, 0.176);
     border-radius: 5px;
-    padding: 15px;
-    transition: bottom 0.8s;
+    padding: 12px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+@keyframes appear{
+    from {
+        opacity: 0;
+        display: block;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes disappear{
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+#tipAlertBox.appear {
+    animation: appear 0.8s forwards;
+}
+
+#tipAlertBox.disappear {
+    animation: disappear 0.8s forwards;
 }
