@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Luckiest+Guy&family=Merriweather&family=Skranji:wght@400;700&display=swap');
+
 body {
     background: rgb(217, 15, 15);
     background: linear-gradient(180deg, rgba(217, 15, 15, 1) 43%, rgba(0, 0, 0, 1) 50%, rgba(255, 255, 255, 1) 57%);
@@ -333,9 +335,7 @@ header {
 
 #level {
     width: 150px;
-    /* Largura ajustável */
     height: 25px;
-    /* Altura ajustável */
     padding: 5px;
     font-family: sans-serif;
     background-color: #fff;
@@ -350,9 +350,7 @@ header {
 
 #level:hover {
     color: red;
-    /* Cor do texto no hover */
     transition: ease-in-out 0.2s;
-    /* Transição suave */
 }
 
 .dropdown {
@@ -362,7 +360,6 @@ header {
     border: 1px solid #ccc;
     border-top: none;
     min-width: 144.5px;
-    /* Largura ajustável */
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     list-style-type: none;
@@ -391,7 +388,6 @@ header {
 .selected-option {
     font-weight: bold;
     background-color: #ddd;
-    /* Cor de fundo diferente para indicar seleção */
 }
 
 #resultados {
@@ -549,4 +545,26 @@ header {
 
 #tipAlertBox.disappear {
     animation: disappear 0.8s forwards;
+}
+
+#point-back{
+    display: none;
+    position: absolute;
+    top: 110px;
+    right: 660px;
+    font-family: caveat;
+    font-weight: bold;
+    font-size: 40px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.712);
+    animation: ponto 2.5s;
+}
+@keyframes ponto{
+    from{
+        top: 110px;
+    }
+    to{
+        top: 30px;
+        opacity: 0;
+        display: none;
+    }
 }

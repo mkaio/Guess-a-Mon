@@ -248,6 +248,8 @@ function check() {
     let crono = document.getElementById('cronometro').innerText;
     let tempofinal = crono.replace('Tempo: ', '');
 
+    let feedbackPontos = document.getElementById('point-back')
+
     if (userGuess === currentPokemonName) {
         document.getElementById('poke-picture').src = "../images/GAM-correto.png"
         document.getElementById('loading').style.display = "block"
@@ -261,13 +263,24 @@ function check() {
         document.getElementById('popup-tip2').style.right = '-400px';
         if (tipActive === true && tipMax === false) {
             pontos = pontos + 2
+            feedbackPontos.innerHTML = "+2"
+            feedbackPontos.style.color = "yellow"
         }
         else if (tipActive && tipMax) {
             pontos = pontos + 1
+            feedbackPontos.innerHTML = "+1"
+            feedbackPontos.style.color = "yellow"
         }
-        else{
+        else {
             pontos = pontos + 3
+            feedbackPontos.innerHTML = "+3"
+            feedbackPontos.style.color = "green"
         }
+
+        feedbackPontos.style.display = 'block'
+        setTimeout(function () {
+            feedbackPontos.style.display = 'none'
+        }, 2300);
     } else {
         if (pontos > 0) {
             document.getElementById('poke-picture').src = "../images/GAM-errado.png"
@@ -282,6 +295,13 @@ function check() {
             document.getElementById('popup-tip1').style.right = '-400px';
             document.getElementById('popup-tip2').style.right = '-400px';
             pontos = pontos - 1
+
+            feedbackPontos.innerHTML = "-1"
+            feedbackPontos.style.color = "red"
+            feedbackPontos.style.display = 'block'
+            setTimeout(function () {
+                feedbackPontos.style.display = 'none'
+            }, 2300);
         } else {
             document.getElementById('poke-picture').src = "../images/GAM-endgame.png"
             document.getElementById('correction').innerHTML = "O Pokémon era: " + nome
@@ -293,6 +313,14 @@ function check() {
             document.getElementById('popup-tip1').style.right = '-400px';
             document.getElementById('popup-tip2').style.right = '-400px';
             guessBox.value = '';
+
+            feedbackPontos.innerHTML = "-1"
+            feedbackPontos.style.color = "red"
+            feedbackPontos.style.display = 'block'
+            setTimeout(function () {
+                feedbackPontos.style.display = 'none'
+            }, 2300);
+            
             setTimeout(function () {
                 location.reload();
             }, 3000);
