@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Luckiest+Guy&family=Merriweather&family=Skranji:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
 body {
   background: rgb(217, 15, 15);
@@ -70,8 +71,8 @@ header {
   background-color: #facb04;
   width: 200px;
   height: 50px;
-  font-family: Comic Sans MS, Comic Sans, cursive;
-  font-size: large;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 30px;
   font-weight: bold;
   border: 1px solid blue;
   border-radius: 5px;
@@ -123,9 +124,9 @@ header {
 }
 
 #guessit {
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: 'Patrick Hand', cursive;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 30px;
   margin-top: 2px;
 }
 
@@ -218,7 +219,8 @@ header {
   width: 15%;
   height: 35px;
   background-color: #facb04;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 15px;
   font-weight: bold;
   border: 1px solid blue;
   border-radius: 5px;
@@ -246,8 +248,8 @@ header {
 
 #filtertitle {
   align-self: center;
-  font-family: Comic Sans MS, Comic Sans, cursive;
-  font-size: large;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 25px;
   color: white;
 }
 
@@ -296,7 +298,7 @@ header {
 
 #htptitle {
   font-size: 25px;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: 'Patrick Hand', cursive;
   margin-right: 10px;
   text-align: center;
   margin-top: 20px;
@@ -306,7 +308,7 @@ header {
 }
 
 #htpcontent {
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: 'Patrick Hand', cursive;
   text-align: justify;
   font-size: large;
   margin-left: 20px;
@@ -318,7 +320,7 @@ header {
 #backfilter {
   width: 10%;
   height: 30px;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: 'Patrick Hand', cursive;
   font-weight: bold;
   background-color: white;
   border: 1px solid black;
@@ -503,7 +505,7 @@ header {
 }
 
 #tip-title {
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family: 'Patrick Hand', cursive;
   font-size: 25px;
   color: #facb04;
   text-shadow: 1px 1px blue;
@@ -562,7 +564,7 @@ header {
   position: absolute;
   top: 110px;
   right: 42%;
-  font-family: caveat;
+  font-family: 'Patrick Hand', cursive;
   font-weight: bold;
   font-size: 40px;
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.712);
@@ -624,9 +626,8 @@ header {
     background-color: #facb04;
     width: 40%;
     height: 50px;
-    font-family: 'Itim', cursive;
-    font-family: 'PT Mono', monospace;
-    font-size: large;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 25px;
     font-weight: bold;
     border: 1px solid blue;
     border-radius: 5px;
@@ -646,8 +647,7 @@ header {
 
   #htptitle {
     font-size: 20px;
-    font-family: 'Itim', cursive;
-    font-family: 'PT Mono', monospace;
+    font-family: 'Patrick Hand', cursive;
     margin-right: 10px;
     text-align: center;
     margin-top: 20px;
@@ -657,8 +657,7 @@ header {
   }
 
   #htpcontent {
-    font-family: 'Itim', cursive;
-    font-family: 'PT Mono', monospace;
+    font-family: 'Patrick Hand', cursive;
     text-align: justify;
     font-size: 12px;
     margin-left: 15px;
@@ -677,9 +676,8 @@ header {
 
   #filtertitle {
     align-self: center;
-    font-family: 'Itim', cursive;
-    font-family: 'PT Mono', monospace;
-    font-size: large;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 20px;
     color: white;
   }
 
@@ -687,8 +685,8 @@ header {
     width: 30%;
     height: 35px;
     background-color: #facb04;
-    font-family: 'Itim', cursive;
-    font-family: 'PT Mono', monospace;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 15px;
     font-weight: bold;
     border: 1px solid blue;
     border-radius: 5px;
@@ -698,8 +696,7 @@ header {
   #backfilter {
     width: 20%;
     height: 30px;
-    font-family: 'Itim', cursive;
-    font-family: 'PT Mono', monospace;
+    font-family: 'Patrick Hand', cursive;
     font-weight: bold;
     background-color: white;
     border: 1px solid black;
@@ -739,14 +736,13 @@ header {
   }
 
   #guessit {
-    font-family: 'Itim', cursive;
-    font-family: 'PT Mono', monospace;
+    font-family: 'Patrick Hand', cursive;
     font-weight: bold;
     background-color: white;
     padding: 5px;
     border: none;
     border-radius: 15px;
-    font-size: 20px;
+    font-size: 25px;
     margin-top: 2px;
   }
 
