@@ -70,7 +70,7 @@ header {
   background-color: #facb04;
   width: 200px;
   height: 50px;
-  font-family: Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+  font-family: Comic Sans MS, Comic Sans, cursive;
   font-size: large;
   font-weight: bold;
   border: 1px solid blue;
@@ -123,7 +123,7 @@ header {
 }
 
 #guessit {
-  font-family: Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+  font-family: Comic Sans MS, Comic Sans, cursive;
   font-weight: bold;
   font-size: 20px;
   margin-top: 2px;
@@ -138,7 +138,7 @@ header {
   border: double black;
   border-radius: 5px;
   font-size: large;
-  font-family: Comic Sans MS, Comic Sans, Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+  font-family: Comic Sans MS, Comic Sans, cursive;
   display: flex;
   align-items: center;
 }
@@ -157,7 +157,7 @@ header {
 
 #cronometro {
   color: white;
-  font-family: Comic Sans MS, Comic Sans, Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+  font-family: Comic Sans MS, Comic Sans, cursive;
   font-size: large;
   border: double black;
   border-radius: 5px;
@@ -172,7 +172,7 @@ header {
 
 #time-feedback {
   margin-top: 15px;
-  font-family: Comic Sans MS, Comic Sans, Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+  font-family: Comic Sans MS, Comic Sans, cursive;
   font-size: medium;
   color: red;
   text-shadow: 1px 1px 1px black;
@@ -218,7 +218,7 @@ header {
   width: 15%;
   height: 35px;
   background-color: #facb04;
-  font-family: Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+  font-family: Comic Sans MS, Comic Sans, cursive;
   font-weight: bold;
   border: 1px solid blue;
   border-radius: 5px;
@@ -246,7 +246,7 @@ header {
 
 #filtertitle {
   align-self: center;
-  font-family: Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+  font-family: Comic Sans MS, Comic Sans, cursive;
   font-size: large;
   color: white;
 }
@@ -296,7 +296,7 @@ header {
 
 #htptitle {
   font-size: 25px;
-  font-family: Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+  font-family: Comic Sans MS, Comic Sans, cursive;
   margin-right: 10px;
   text-align: center;
   margin-top: 20px;
@@ -306,7 +306,7 @@ header {
 }
 
 #htpcontent {
-  font-family: Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+  font-family: Comic Sans MS, Comic Sans, cursive;
   text-align: justify;
   font-size: large;
   margin-left: 20px;
@@ -318,7 +318,7 @@ header {
 #backfilter {
   width: 10%;
   height: 30px;
-  font-family: Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+  font-family: Comic Sans MS, Comic Sans, cursive;
   font-weight: bold;
   background-color: white;
   border: 1px solid black;
@@ -503,7 +503,7 @@ header {
 }
 
 #tip-title {
-  font-family: Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+  font-family: Comic Sans MS, Comic Sans, cursive;
   font-size: 25px;
   color: #facb04;
   text-shadow: 1px 1px blue;
@@ -624,7 +624,8 @@ header {
     background-color: #facb04;
     width: 40%;
     height: 50px;
-    font-family: Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+    font-family: 'Itim', cursive;
+    font-family: 'PT Mono', monospace;
     font-size: large;
     font-weight: bold;
     border: 1px solid blue;
@@ -645,7 +646,8 @@ header {
 
   #htptitle {
     font-size: 20px;
-    font-family: Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+    font-family: 'Itim', cursive;
+    font-family: 'PT Mono', monospace;
     margin-right: 10px;
     text-align: center;
     margin-top: 20px;
@@ -655,7 +657,8 @@ header {
   }
 
   #htpcontent {
-    font-family: Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+    font-family: 'Itim', cursive;
+    font-family: 'PT Mono', monospace;
     text-align: justify;
     font-size: 12px;
     margin-left: 15px;
@@ -674,7 +677,8 @@ header {
 
   #filtertitle {
     align-self: center;
-    font-family: Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+    font-family: 'Itim', cursive;
+    font-family: 'PT Mono', monospace;
     font-size: large;
     color: white;
   }
@@ -683,7 +687,8 @@ header {
     width: 30%;
     height: 35px;
     background-color: #facb04;
-    font-family: Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+    font-family: 'Itim', cursive;
+    font-family: 'PT Mono', monospace;
     font-weight: bold;
     border: 1px solid blue;
     border-radius: 5px;
@@ -693,7 +698,8 @@ header {
   #backfilter {
     width: 20%;
     height: 30px;
-    font-family: Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+    font-family: 'Itim', cursive;
+    font-family: 'PT Mono', monospace;
     font-weight: bold;
     background-color: white;
     border: 1px solid black;
@@ -733,7 +739,8 @@ header {
   }
 
   #guessit {
-    font-family: Comic Sans MS, Comic Sans, 'PT Mono', monospace;
+    font-family: 'Itim', cursive;
+    font-family: 'PT Mono', monospace;
     font-weight: bold;
     background-color: white;
     padding: 5px;
