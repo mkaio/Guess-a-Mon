@@ -2,12 +2,10 @@
 
 body {
   background: rgb(217, 15, 15);
-  background: linear-gradient(
-    180deg,
-    rgba(217, 15, 15, 1) 43%,
-    rgba(0, 0, 0, 1) 50%,
-    rgba(255, 255, 255, 1) 57%
-  );
+  background: linear-gradient(180deg,
+      rgba(217, 15, 15, 1) 43%,
+      rgba(0, 0, 0, 1) 50%,
+      rgba(255, 255, 255, 1) 57%);
   background-attachment: fixed;
 }
 
@@ -39,6 +37,7 @@ header {
   from {
     width: 0%;
   }
+
   to {
     width: 20%;
   }
@@ -60,6 +59,7 @@ header {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -180,7 +180,7 @@ header {
 
 #filter,
 #HTP {
-  width: 8%;
+  width: 9rem;
   height: 25px;
   font-family: sans-serif;
   background-color: white;
@@ -257,8 +257,8 @@ header {
   z-index: 2;
   margin-top: 1%;
   background-color: white;
-  width: 30%;
-  height: 380px;
+  width: 450px;
+  height: auto;
   border: 1px solid black;
   border-radius: 5px;
 }
@@ -312,6 +312,7 @@ header {
   margin-left: 20px;
   margin-right: 20px;
   margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 #backfilter {
@@ -410,6 +411,8 @@ header {
   background-color: lightgrey;
   margin-left: 2px;
   margin-right: 2px;
+  text-align: center;
+  text-transform: capitalize;
 }
 
 .resultado-botao:hover {
@@ -529,19 +532,23 @@ header {
     opacity: 0;
     display: block;
   }
+
   to {
     opacity: 1;
   }
 }
+
 @keyframes disappear {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
     display: none;
   }
 }
+
 #tipAlertBox.appear {
   animation: appear 0.8s forwards;
 }
@@ -561,10 +568,12 @@ header {
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.712);
   animation: ponto 2.5s;
 }
+
 @keyframes ponto {
   from {
     top: 110px;
   }
+
   to {
     top: 30px;
     opacity: 0;
@@ -576,10 +585,11 @@ header {
 /* CELULAR (ABAIXO) */
 
 @media (max-width: 600px) {
+
   #filter,
   #HTP {
-    width: 50%;
-    height: 25px;
+    width: 60%;
+    height: 35px;
     font-family: sans-serif;
     background-color: white;
     border: 1px solid black;
@@ -587,21 +597,238 @@ header {
     font-weight: bold;
     margin: 3px;
   }
+
+  #level {
+    width: 150px;
+    height: 35px;
+    padding: 5px;
+    font-family: sans-serif;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 0;
+    border: 1px solid black;
+  }
+
+  #gam-logo {
+    width: 300px;
+    margin-top: 7%;
+    margin-bottom: 1%;
+  }
+
+  #startbutton {
+    margin: 2%;
+    background-color: #facb04;
+    width: 40%;
+    height: 50px;
+    font-family: cursive;
+    font-size: large;
+    font-weight: bold;
+    border: 1px solid blue;
+    border-radius: 5px;
+  }
+
+  #pop-up {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    margin-top: 1%;
+    background-color: white;
+    width: 80%;
+    height: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+
+  #htptitle {
+    font-size: 20px;
+    font-family: cursive;
+    margin-right: 10px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: red;
+    text-shadow: 1px 1px black;
+  }
+
+  #htpcontent {
+    font-family: cursive;
+    text-align: justify;
+    font-size: 12px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+  }
+
+  #lay1,
+  #lay2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #filtertitle {
+    align-self: center;
+    font-family: cursive;
+    font-size: large;
+    color: white;
+  }
+
+  #genfilter {
+    width: 30%;
+    height: 35px;
+    background-color: #facb04;
+    font-family: cursive;
+    font-weight: bold;
+    border: 1px solid blue;
+    border-radius: 5px;
+    margin: 8px;
+  }
+
+  #backfilter {
+    width: 20%;
+    height: 30px;
+    font-family: cursive;
+    font-weight: bold;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 15px;
+    font-size: medium;
+    align-self: center;
+  }
+
+  #pokebox {
+    background-color: white;
+    width: 70%;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 3%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    animation: boxshow 1s;
+  }
+
+  @keyframes boxshow {
+    from {
+      width: 0%;
+    }
+
+    to {
+      width: 70%;
+    }
+  }
+
+  #guessform {
+    margin-top: 5%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #guessit {
+    font-family: cursive;
+    font-weight: bold;
+    background-color: white;
+    padding: 5px;
+    border: none;
+    border-radius: 15px;
+    font-size: 20px;
+    margin-top: 2px;
+  }
+
+  #guessbox {
+    width: 250px;
+    height: 30px;
+    font-size: medium;
+    border: 1px solid black;
+    border-right: none;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  #tip-bar {
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-left-style: dashed;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 1px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+
+  #enviar {
+    margin-top: 4%;
+    width: 50%;
+    height: 35px;
+    background-color: #facb04;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: medium;
+    font-weight: bold;
+  }
+
+  #resultados {
+    width: 258px;
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    max-height: 80px;
+    display: none;
+    z-index: 1;
+  }
+
+  .resultado-botao {
+    cursor: pointer;
+    padding: 5px;
+    width: auto;
+    background-color: lightgrey;
+    margin-left: 2px;
+    margin-right: 2px;
+    text-align: center;
+    text-transform: capitalize;
+  }
 }
 
 /* TABLET (ABAIXO) */
 
-@media (max-width: 800px) {
-    #filter,
-    #HTP {
-      width: 30%;
-      height: 25px;
-      font-family: sans-serif;
-      background-color: white;
-      border: 1px solid black;
-      border-radius: 5px;
-      font-weight: bold;
-      margin: 3px;
-    }
+@media (max-width: 1024px) {
+
+  #filter,
+  #HTP {
+    width: 30%;
+    height: 35px;
+    font-family: sans-serif;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 3px;
   }
-  
+
+  #level {
+    width: 150px;
+    height: 35px;
+    padding: 5px;
+    font-family: sans-serif;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 0;
+    border: 1px solid black;
+  }
+}
