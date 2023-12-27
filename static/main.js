@@ -170,19 +170,19 @@ function getRandomPokemon() {
                     pokebox.style.display = 'flex';
 
                     if (randomPokemonId === 1011) {
-                        document.getElementById('poke-picture').src = "../images/1011-Dipplin.png"
+                        document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/1011-Dipplin.png"
                     } else if (randomPokemonId === 1012) {
-                        document.getElementById('poke-picture').src = "../images/1012-poltchageist.jpg"
+                        document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/1012-poltchageist.jpg"
                     } else if (randomPokemonId === 1013) {
-                        document.getElementById('poke-picture').src = "../images/1013-sinistcha.png"
+                        document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/1013-sinistcha.png"
                     } else if (randomPokemonId === 1014) {
-                        document.getElementById('poke-picture').src = "../images/1014-Okidogi.webp"
+                        document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/1014-Okidogi.webp"
                     } else if (randomPokemonId === 1015) {
-                        document.getElementById('poke-picture').src = "../images/1015-munkidori.png"
+                        document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/1015-munkidori.png"
                     } else if (randomPokemonId === 1016) {
-                        document.getElementById('poke-picture').src = "../images/1016-Fezandipiti.png"
+                        document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/1016-Fezandipiti.png"
                     } else if (randomPokemonId === 1017) {
-                        document.getElementById('poke-picture').src = "../images/1017-ogerpon.png"
+                        document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/1017-ogerpon.png"
                     } else {
                         document.getElementById('poke-picture').src = response.sprites.front_default;
                     }
@@ -215,19 +215,19 @@ function keep() {
             console.log(response);
 
             if (randomPokemonId === 1011) {
-                document.getElementById('poke-picture').src = "../images/1011-Dipplin.png"
+                document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/1011-Dipplin.png"
             } else if (randomPokemonId === 1012) {
-                document.getElementById('poke-picture').src = "../images/1012-poltchageist.jpg"
+                document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/1012-poltchageist.jpg"
             } else if (randomPokemonId === 1013) {
-                document.getElementById('poke-picture').src = "../images/1013-sinistcha.png"
+                document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/1013-sinistcha.png"
             } else if (randomPokemonId === 1014) {
-                document.getElementById('poke-picture').src = "../images/1014-Okidogi.webp"
+                document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/1014-Okidogi.webp"
             } else if (randomPokemonId === 1015) {
-                document.getElementById('poke-picture').src = "../images/1015-munkidori.png"
+                document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/1015-munkidori.png"
             } else if (randomPokemonId === 1016) {
-                document.getElementById('poke-picture').src = "../images/1016-Fezandipiti.png"
+                document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/1016-Fezandipiti.png"
             } else if (randomPokemonId === 1017) {
-                document.getElementById('poke-picture').src = "../images/1017-ogerpon.png"
+                document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/1017-ogerpon.png"
             } else {
                 document.getElementById('poke-picture').src = response.sprites.front_default;
             }
@@ -251,7 +251,7 @@ function check() {
     let feedbackPontos = document.getElementById('point-back')
 
     if (userGuess === currentPokemonName) {
-        document.getElementById('poke-picture').src = "../images/GAM-correto.png"
+        document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-correto.png"
         document.getElementById('loading').style.display = "block"
         document.getElementById('pokebox').style.paddingBottom = "1%";
         pause();
@@ -283,7 +283,7 @@ function check() {
         }, 2300);
     } else {
         if (pontos > 0) {
-            document.getElementById('poke-picture').src = "../images/GAM-errado.png"
+            document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-errado.png"
             document.getElementById('correction').innerHTML = "O Pokémon era: " + nome
             document.getElementById('loading').style.display = "block"
             document.getElementById('pokebox').style.paddingBottom = "20px"
@@ -303,7 +303,7 @@ function check() {
                 feedbackPontos.style.display = 'none'
             }, 2300);
         } else {
-            document.getElementById('poke-picture').src = "../images/GAM-endgame.png"
+            document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-endgame.png"
             document.getElementById('correction').innerHTML = "O Pokémon era: " + nome
             pause();
             feedbackactive = true
@@ -331,7 +331,7 @@ function check() {
     document.getElementById('points').innerHTML = "Pontuação: " + pontos + " / 20"
 
     if (pontos >= 20) {
-        document.getElementById('poke-picture').src = "../images/win-GAM.png"
+        document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/win-GAM.png"
         document.getElementById('loading').style.display = "none"
         pause();
         feedbackactive = true
