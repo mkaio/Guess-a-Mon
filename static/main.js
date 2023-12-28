@@ -547,7 +547,7 @@ function tip() {
         })
     }
 
-    if (window.matchMedia("(min-width:400px) and (max-width:600px)").matches) {
+    if (window.matchMedia("(max-width:600px)").matches) {
         if (tipMax) {
             if (popupTip1.style.right === '230px') {
                 popupTip1.style.right = '-400px';
