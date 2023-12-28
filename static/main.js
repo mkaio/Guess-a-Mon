@@ -709,3 +709,10 @@ function tipAlert() {
 function reconect() {
     location.reload();
 }
+
+function gotogit(){
+    window.open("https://github.com/mkaio/Guess-a-Mon.git", "_blank")
+}
+function emailme(){
+    window.open("mailto:marcosb1@outlook.com?subject=Sobre%Guess-a-Mon", "_blank")
+}

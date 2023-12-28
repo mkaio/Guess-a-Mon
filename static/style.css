@@ -631,6 +631,42 @@ header {
   cursor: pointer;
 }
 
+#info{
+  position: fixed;
+  bottom: 25px;
+  width: auto;
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+  font-weight: bold;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+#info-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#img-git{
+  width: 20px;
+  margin-right: 5px;
+}
+#img-email{
+  width: 20px;
+  margin-right: 5px;
+}
+#P1, #P2{
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+}
+#copy{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+
 /* CELULAR (ABAIXO) */
 
 @media (max-width: 600px) {
