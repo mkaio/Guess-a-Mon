@@ -385,6 +385,7 @@ function filters() {
     document.getElementById('actions').style.display = 'none'
     document.getElementById('filterbar').style.display = 'flex'
     document.getElementById('level').style.display = 'none'
+    document.getElementById('info').style.display = 'none'
 }
 
 function backfilter() {
@@ -392,6 +393,7 @@ function backfilter() {
     document.getElementById('actions').style.display = 'flex'
     document.getElementById('filterbar').style.display = 'none'
     document.getElementById('level').style.display = 'block'
+    document.getElementById('info').style.display = 'flex'
 }
 
 function howtoplay() {
