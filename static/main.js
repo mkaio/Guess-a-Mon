@@ -204,6 +204,7 @@ function getRandomPokemon() {
     document.getElementById('actions').style.display = 'none'
     document.getElementById('filterbar').style.display = 'none'
     document.getElementById('level').style.display = 'none'
+    document.getElementById('info').style.display = 'none'
 
     start()
 }
