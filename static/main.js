@@ -190,7 +190,7 @@ function getRandomPokemon() {
                 })
                 .catch(function (error) {
                     console.error('Ocorreu um erro:', error);
-                    document.getElementById('overlay').style.display = 'block';
+                    document.getElementById('overlay2').style.display = 'block';
                     document.getElementById('network').style.display = 'flex';
                     document.getElementById('netbutton').style.display = 'block';
                 });
@@ -239,7 +239,7 @@ function keep() {
         })
         .catch(function (error) {
             console.error('Ocorreu um erro:', error);
-            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('overlay2').style.display = 'block';
             document.getElementById('network').style.display = 'flex';
             document.getElementById('netbutton').style.display = 'block';
         });
@@ -555,16 +555,16 @@ function tip() {
 
     if (window.matchMedia("(max-width:600px)").matches) {
         if (tipMax) {
-            if (popupTip1.style.right === '200px') {
+            if (popupTip1.style.right === '190px') {
                 popupTip1.style.right = '-400px';
                 popupTip2.style.right = '-400px';
             } else {
-                popupTip1.style.right = '200px';
+                popupTip1.style.right = '190px';
                 popupTip2.style.right = '5px';
             }
         } else {
             if (tipActive) {
-                popupTip1.style.right = '200px';
+                popupTip1.style.right = '190px';
 
                 let randomN = () => {
                     let respostaN = 2 * (Math.floor(Math.random() * (currentPokemonName.length - 1)) + 1);
