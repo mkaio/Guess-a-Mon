@@ -549,16 +549,16 @@ function tip() {
 
     if (window.matchMedia("(max-width:600px)").matches) {
         if (tipMax) {
-            if (popupTip1.style.right === '230px') {
+            if (popupTip1.style.right === '200px') {
                 popupTip1.style.right = '-400px';
                 popupTip2.style.right = '-400px';
             } else {
-                popupTip1.style.right = '230px';
-                popupTip2.style.right = '20px';
+                popupTip1.style.right = '200px';
+                popupTip2.style.right = '5px';
             }
         } else {
             if (tipActive) {
-                popupTip1.style.right = '230px';
+                popupTip1.style.right = '200px';
 
                 let randomN = () => {
                     let respostaN = 2 * (Math.floor(Math.random() * (currentPokemonName.length - 1)) + 1);
@@ -590,12 +590,12 @@ function tip() {
                 }
 
                 setTimeout(function () {
-                    popupTip2.style.right = '20px';
+                    popupTip2.style.right = '5px';
                 }, 800);
                 tipMax = true;
             } else {
                 popupTip1.style.bottom = '20px';
-                popupTip1.style.right = '20px';
+                popupTip1.style.right = '5px';
                 tipActive = true;
                 dica2.innerHTML = ''
             }
