@@ -298,6 +298,7 @@ function check() {
             document.getElementById('popup-tip2').style.right = '-400px';
             document.getElementById('time-feedback').innerHTML = "Seu tempo foi de " + tempofinal
             document.getElementById('pokebox').style.paddingBottom = "20px"
+            document.getElementById('leave-button').onclick = ''
             guessBox.value = '';
             setTimeout(function () {
                 location.reload();
@@ -339,6 +340,7 @@ function check() {
             document.getElementById('popup-tip1').style.transition = 'right 0.8s';
             document.getElementById('popup-tip1').style.right = '-400px';
             document.getElementById('popup-tip2').style.right = '-400px';
+            document.getElementById('leave-button').onclick = ''
             guessBox.value = '';
 
             feedbackPontos.innerHTML = "-1"
