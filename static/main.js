@@ -205,6 +205,7 @@ function getRandomPokemon() {
     document.getElementById('filterbar').style.display = 'none'
     document.getElementById('level').style.display = 'none'
     document.getElementById('info').style.display = 'none'
+    document.getElementById('leave-button').style.display = 'block';
 
     start()
 }
@@ -258,7 +259,6 @@ function check() {
     let feedbackPontos = document.getElementById('point-back')
 
     if (userGuess === currentPokemonName) {
-        document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-correto.png"
         document.getElementById('loading').style.display = "block"
         document.getElementById('pokebox').style.paddingBottom = "1%";
         pause();
@@ -285,6 +285,26 @@ function check() {
         }
 
         feedbackPontos.style.display = 'block'
+
+        if (pontos >= 20) {
+            document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/win-GAM.png"
+            document.getElementById('loading').style.display = "none"
+            pause();
+            feedbackactive = true
+            document.getElementById('enviar').disabled = true
+            document.getElementById("tip-bar").onclick = '';
+            document.getElementById('popup-tip1').style.transition = 'right 0.8s';
+            document.getElementById('popup-tip1').style.right = '-400px';
+            document.getElementById('popup-tip2').style.right = '-400px';
+            document.getElementById('time-feedback').innerHTML = "Seu tempo foi de " + tempofinal
+            document.getElementById('pokebox').style.paddingBottom = "20px"
+            guessBox.value = '';
+            setTimeout(function () {
+                location.reload();
+            }, 6000);
+            return;
+        }
+        document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-correto.png"
         setTimeout(function () {
             feedbackPontos.style.display = 'none'
         }, 2300);
@@ -336,24 +356,6 @@ function check() {
     }
     guessBox.value = '';
     document.getElementById('points').innerHTML = "Pontuação: " + pontos + " / 20"
-
-    if (pontos >= 20) {
-        document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/win-GAM.png"
-        document.getElementById('loading').style.display = "none"
-        pause();
-        feedbackactive = true
-        document.getElementById('enviar').disabled = true
-        document.getElementById("tip-bar").onclick = '';
-        document.getElementById('popup-tip1').style.transition = 'right 0.8s';
-        document.getElementById('popup-tip1').style.right = '-400px';
-        document.getElementById('popup-tip2').style.right = '-400px';
-        document.getElementById('time-feedback').innerHTML = "Seu tempo foi de " + tempofinal
-        document.getElementById('pokebox').style.paddingBottom = "20px"
-        setTimeout(function () {
-            location.reload();
-        }, 6000);
-        return;
-    }
 
     setTimeout(function () {
         document.getElementById('loading').style.display = "none"
@@ -713,9 +715,20 @@ function reconect() {
     location.reload();
 }
 
-function gotogit(){
+function gotogit() {
     window.open("https://github.com/mkaio/Guess-a-Mon.git", "_blank")
 }
-function emailme(){
+function emailme() {
     window.open("mailto:marcosb1@outlook.com", "_blank")
+}
+
+function leave() {
+    document.getElementById('overlay2').style.animation = 'overlay-opacity .9s';
+    document.getElementById('confirmBox').style.left = '30px';
+    document.getElementById('overlay2').style.display = 'block';
+}
+function closeLC() {
+    document.getElementById('confirmBox').style.left = '-300px';
+    document.getElementById('overlay2').style.display = 'none';
+    document.getElementById('overlay2').style.animation = '';
 }

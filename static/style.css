@@ -306,6 +306,14 @@ header {
   background-color: rgba(0, 0, 0, 0.55);
   z-index: 1;
 }
+@keyframes overlay-opacity{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
 
 #htptitle {
   font-size: 25px;
@@ -666,6 +674,78 @@ header {
   margin-bottom: 10px;
 }
 
+#leave-button{
+  display: none;
+  position: fixed;
+  left: 30px;
+  top: 30px;
+  width: 30px;
+  padding: 5px;
+  padding-left: 3px;
+  padding-top: 3px;
+  border: .5px solid rgba(255, 255, 255, 0.758);
+  border-radius: 5px;
+  animation: op 1s;
+  cursor: pointer;
+}
+@keyframes op{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+#confirmBox {
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: bold;
+  position: absolute;
+  top: 80px;
+  left: -300px;
+  width: 250px;
+  height: auto; 
+  background-color: #fff;
+  box-shadow: 0 0 4px rgba(45, 45, 45, 0.815);
+  border: 1px ridge rgba(0, 0, 0, 0.176);
+  border-radius: 5px;
+  padding: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  z-index: 2;
+  transition: left .8s;
+}
+#confirm-message{
+  margin-bottom: 15px;
+}
+#button1{
+  width: 35%;
+  background-color: rgb(166, 255, 166);
+  border: 1px solid green;
+  border-radius: 5px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+#button1:hover{
+  background-color: rgb(202, 249, 202);
+  color: rgb(46, 46, 46);
+}
+#button2{
+  width: 35%;
+  background-color: rgb(255, 166, 166);
+  border: 1px solid red;
+  border-radius: 5px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+#button2:hover{
+  background-color: rgb(255, 189, 189);
+  color: rgb(46, 46, 46);
+}
 
 /* CELULAR (ABAIXO) */
 
@@ -955,6 +1035,20 @@ header {
     font-size: 40px;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.712);
     animation: ponto 2.5s;
+  }
+
+  #leave-button{
+    display: none;
+    position: fixed;
+    left: 6px;
+    top: 8px;
+    width: 28px;
+    padding: 5px;
+    padding-left: 3px;
+    padding-top: 3px;
+    border: .5px solid rgba(255, 255, 255, 0.758);
+    border-radius: 5px;
+    animation: op 1s;
   }
 }
 
