@@ -747,6 +747,19 @@ header {
   color: rgb(46, 46, 46);
 }
 
+#volume{
+  display: none;
+  position: fixed;
+  right: 30px;
+  top: 35px;
+  width: 20px;
+  padding: 5px;
+  padding-left: 3px;
+  padding-top: 3px;
+  animation: op 1s;
+  cursor: pointer;
+}
+
 /* CELULAR (ABAIXO) */
 
 @media (max-width: 600px) {
@@ -1042,13 +1055,26 @@ header {
     position: fixed;
     left: 6px;
     top: 8px;
-    width: 28px;
+    width: 25px;
     padding: 5px;
     padding-left: 3px;
     padding-top: 3px;
     border: .5px solid rgba(255, 255, 255, 0.758);
     border-radius: 5px;
     animation: op 1s;
+  }
+
+  #volume{
+    display: none;
+    position: fixed;
+    right: 6px;
+    top: 13px;
+    width: 18px;
+    padding: 5px;
+    padding-left: 3px;
+    padding-top: 3px;
+    animation: op 1s;
+    cursor: pointer;
   }
 }
 

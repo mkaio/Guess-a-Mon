@@ -143,6 +143,8 @@ function gen(number) {
 let pontos = 0
 let randomPokemonId;
 function getRandomPokemon() {
+    backgroundMusic.play();
+
     if (selectedDifficulty === "Fácil") {
         document.getElementById("guessbox").oninput = buscar;
         document.getElementById("tip-bar").onclick = tip;
@@ -206,6 +208,7 @@ function getRandomPokemon() {
     document.getElementById('level').style.display = 'none'
     document.getElementById('info').style.display = 'none'
     document.getElementById('leave-button').style.display = 'block';
+    document.getElementById('volume').style.display = 'block';
 
     start()
 }
@@ -733,4 +736,15 @@ function closeLC() {
     document.getElementById('confirmBox').style.left = '-300px';
     document.getElementById('overlay2').style.display = 'none';
     document.getElementById('overlay2').style.animation = '';
+}
+
+const backgroundMusic = document.getElementById('backgroundMusic');
+function toggle() {
+    if (backgroundMusic.paused) {
+        document.getElementById('volume').src = "../Guess-a-Mon/static/images/volume.png"
+        backgroundMusic.play();
+    } else {
+        document.getElementById('volume').src = "../Guess-a-Mon/static/images/volume-mute.png"
+        backgroundMusic.pause();
+    }
 }
