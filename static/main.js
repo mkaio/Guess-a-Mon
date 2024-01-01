@@ -220,7 +220,7 @@ function getRandomPokemon() {
     document.getElementById('leave-button').style.display = 'block';
     document.getElementById('volume').style.display = 'block';
     document.getElementById('config').style.display = 'none';
-    document.getElementById('configBox').style.left = '-180px';
+    document.getElementById('configBox').style.left = '-210px';
 
     start()
 }
@@ -764,10 +764,21 @@ function toggle() {
 }
 
 function settings() {
-    if (document.getElementById('configBox').style.left === '25px') {
-        document.getElementById('configBox').style.left = '-180px';
+    if (window.matchMedia("(max-width:600px)").matches) {
+        if (document.getElementById('configBox').style.left === '20px') {
+            document.getElementById('configBox').style.left = '-210px';
+            document.getElementById('overlay2').style.display = 'none';
+        } else {
+            document.getElementById('configBox').style.left = '20px';
+            document.getElementById('overlay2').style.animation = 'overlay-opacity .9s';
+            document.getElementById('overlay2').style.display = 'block';
+        }
     } else {
-        document.getElementById('configBox').style.left = '25px';
+        if (document.getElementById('configBox').style.left === '25px') {
+            document.getElementById('configBox').style.left = '-210px';
+        } else {
+            document.getElementById('configBox').style.left = '25px';
+        }
     }
 }
 
