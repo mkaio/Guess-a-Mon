@@ -21,7 +21,12 @@ function timer() {
         ss = 0;
         mm++;
         if (mm == 60) {
-            pause()
+            pause();
+            document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-endgame.png"
+            document.getElementById('correction').innerHTML = "Você ultrapassou o limite de tempo"
+            setTimeout(function () {
+                location.reload();
+            }, 6000);
         }
 
     }
@@ -142,7 +147,12 @@ function gen(number) {
 
 let pontos = 0
 let randomPokemonId;
+var musicPreference = localStorage.getItem('musicPreference');
 function getRandomPokemon() {
+    if (localStorage.musicPreference === "On" || localStorage.length === 0) {
+        backgroundMusic.play();
+    }
+
     if (selectedDifficulty === "Fácil") {
         document.getElementById("guessbox").oninput = buscar;
         document.getElementById("tip-bar").onclick = tip;
@@ -193,6 +203,8 @@ function getRandomPokemon() {
                     document.getElementById('overlay2').style.display = 'block';
                     document.getElementById('network').style.display = 'flex';
                     document.getElementById('netbutton').style.display = 'block';
+                    backgroundMusic.pause();
+                    document.getElementById('volume').src = "../Guess-a-Mon/static/images/volume-mute.png"
                 });
         });
 
@@ -206,6 +218,9 @@ function getRandomPokemon() {
     document.getElementById('level').style.display = 'none'
     document.getElementById('info').style.display = 'none'
     document.getElementById('leave-button').style.display = 'block';
+    document.getElementById('volume').style.display = 'block';
+    document.getElementById('config').style.display = 'none';
+    document.getElementById('configBox').style.left = '-210px';
 
     start()
 }
@@ -390,14 +405,16 @@ function filters() {
     document.getElementById('filterbar').style.display = 'flex'
     document.getElementById('level').style.display = 'none'
     document.getElementById('info').style.display = 'none'
+    document.getElementById('config').style.display = 'none';
 }
 
 function backfilter() {
-    document.getElementById('startbutton').style.display = 'block'
-    document.getElementById('actions').style.display = 'flex'
-    document.getElementById('filterbar').style.display = 'none'
-    document.getElementById('level').style.display = 'block'
-    document.getElementById('info').style.display = 'flex'
+    document.getElementById('startbutton').style.display = 'block';
+    document.getElementById('actions').style.display = 'flex';
+    document.getElementById('filterbar').style.display = 'none';
+    document.getElementById('level').style.display = 'block';
+    document.getElementById('info').style.display = 'flex';
+    document.getElementById('config').style.display = 'block';
 }
 
 function howtoplay() {
@@ -733,4 +750,59 @@ function closeLC() {
     document.getElementById('confirmBox').style.left = '-300px';
     document.getElementById('overlay2').style.display = 'none';
     document.getElementById('overlay2').style.animation = '';
+}
+
+const backgroundMusic = document.getElementById('backgroundMusic');
+function toggle() {
+    backgroundMusic.muted = !backgroundMusic.muted
+    if (!backgroundMusic.muted) {
+        document.getElementById('volume').src = "../Guess-a-Mon/static/images/volume.png"
+        backgroundMusic.play();
+    } else {
+        document.getElementById('volume').src = "../Guess-a-Mon/static/images/volume-mute.png"
+    }
+}
+
+function settings() {
+    if (window.matchMedia("(max-width:600px)").matches) {
+        if (document.getElementById('configBox').style.left === '20px') {
+            document.getElementById('configBox').style.left = '-210px';
+            document.getElementById('overlay2').style.display = 'none';
+        } else {
+            document.getElementById('configBox').style.left = '20px';
+            document.getElementById('overlay2').style.animation = 'overlay-opacity .9s';
+            document.getElementById('overlay2').style.display = 'block';
+        }
+    } else {
+        if (document.getElementById('configBox').style.left === '25px') {
+            document.getElementById('configBox').style.left = '-210px';
+        } else {
+            document.getElementById('configBox').style.left = '25px';
+        }
+    }
+}
+
+if (localStorage.musicPreference === "Off") {
+    document.getElementById('on-off').innerHTML = '&nbsp; Off';
+    document.getElementById('on-off').style.color = 'red';
+    document.getElementById('volume').src = "../Guess-a-Mon/static/images/volume-mute.png";
+    document.getElementById('volume').onclick = '';
+    document.getElementById('volume').style.cursor = 'not-allowed'
+}
+function musichange() {
+    if (document.getElementById('on-off').innerHTML === '&nbsp; On') {
+        document.getElementById('on-off').innerHTML = '&nbsp; Off';
+        document.getElementById('on-off').style.color = 'red';
+        localStorage.setItem('musicPreference', "Off");
+        document.getElementById('volume').src = "../Guess-a-Mon/static/images/volume-mute.png";
+        document.getElementById('volume').onclick = '';
+        document.getElementById('volume').style.cursor = 'not-allowed'
+    } else {
+        document.getElementById('on-off').innerHTML = '&nbsp; On';
+        document.getElementById('on-off').style.color = 'green';
+        localStorage.setItem('musicPreference', "On");
+        document.getElementById('volume').src = "../Guess-a-Mon/static/images/volume.png";
+        document.getElementById('volume').onclick = toggle;
+        document.getElementById('volume').style.cursor = 'pointer';
+    }
 }
