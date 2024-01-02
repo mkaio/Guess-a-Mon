@@ -507,9 +507,21 @@ header {
 }
 
 #tip-content {
+  width: 80%;
+  padding-bottom: 70%;
   text-align: center;
-  margin-bottom: 3px;
-  display: flex;
+  margin-top: 10%;
+  animation: op .5s;
+  display: none;
+  flex-direction: column;
+}
+#tip-content2 {
+  width: 70%;
+  padding-bottom: 80%;
+  text-align: center;
+  margin-top: 10%;
+  animation: op .5s;
+  display: none;
   flex-direction: column;
 }
 
@@ -517,6 +529,7 @@ header {
 #dica2 {
   margin: 5px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: large;
 }
 
 #containerT {
@@ -528,10 +541,10 @@ header {
 
 #tip-title {
   font-family: 'Patrick Hand', cursive;
-  font-size: 25px;
+  font-size: 35px;
   color: #facb04;
   text-shadow: 1px 1px blue;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 #tipAlertBox {
