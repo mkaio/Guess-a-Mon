@@ -280,9 +280,6 @@ function check() {
         feedbackactive = true
         document.getElementById('enviar').disabled = true
         document.getElementById("tip-bar").onclick = '';
-        document.getElementById('popup-tip1').style.transition = 'right 0.8s';
-        document.getElementById('popup-tip1').style.right = '-400px';
-        document.getElementById('popup-tip2').style.right = '-400px';
         if (tipActive === true && tipMax === false) {
             pontos = pontos + 2
             feedbackPontos.innerHTML = "+2"
@@ -308,12 +305,11 @@ function check() {
             feedbackactive = true
             document.getElementById('enviar').disabled = true
             document.getElementById("tip-bar").onclick = '';
-            document.getElementById('popup-tip1').style.transition = 'right 0.8s';
-            document.getElementById('popup-tip1').style.right = '-400px';
-            document.getElementById('popup-tip2').style.right = '-400px';
             document.getElementById('time-feedback').innerHTML = "Seu tempo foi de " + tempofinal
             document.getElementById('pokebox').style.paddingBottom = "20px"
             document.getElementById('leave-button').onclick = ''
+            document.getElementById('tip-button1').style.display = "none";
+            document.getElementById('tip-button2').style.display = "none";
             guessBox.value = '';
             setTimeout(function () {
                 location.reload();
@@ -321,6 +317,8 @@ function check() {
             return;
         }
         document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-correto.png"
+        document.getElementById('tip-button1').style.display = "none";
+        document.getElementById('tip-button2').style.display = "none";
         setTimeout(function () {
             feedbackPontos.style.display = 'none'
         }, 2300);
@@ -334,9 +332,8 @@ function check() {
             feedbackactive = true
             document.getElementById('enviar').disabled = true
             document.getElementById("tip-bar").onclick = '';
-            document.getElementById('popup-tip1').style.transition = 'right 0.8s';
-            document.getElementById('popup-tip1').style.right = '-400px';
-            document.getElementById('popup-tip2').style.right = '-400px';
+            document.getElementById('tip-button1').style.display = "none";
+            document.getElementById('tip-button2').style.display = "none";
             pontos = pontos - 1
 
             feedbackPontos.innerHTML = "-1"
@@ -352,10 +349,9 @@ function check() {
             feedbackactive = true
             document.getElementById('enviar').disabled = true
             document.getElementById("tip-bar").onclick = '';
-            document.getElementById('popup-tip1').style.transition = 'right 0.8s';
-            document.getElementById('popup-tip1').style.right = '-400px';
-            document.getElementById('popup-tip2').style.right = '-400px';
             document.getElementById('leave-button').onclick = ''
+            document.getElementById('tip-button1').style.display = "none";
+            document.getElementById('tip-button2').style.display = "none";
             guessBox.value = '';
 
             feedbackPontos.innerHTML = "-1"
@@ -552,7 +548,6 @@ function getAllIndexes(arr, val) {
 let tipName2 = '';
 let tipMax = false;
 let tipActive = false;
-
 function tip() {
     const dica1 = document.getElementById('dica1');
     const dica2 = document.getElementById('dica2');
@@ -576,22 +571,70 @@ function tip() {
         })
     }
 
-    if (tipActive) { //2ª DICA
-        
-    } else { //1ª DICA
-        document.getElementById('poke-picture').style.display = 'none';
-        document.getElementById('tip-content').style.display = 'flex';
-        document.getElementById('pokebox').style.height = "200px";
+    if (tipMax) { // 2 dicas já ativas
         document.getElementById("tip-bar").onclick = '';
-        setTimeout(function () {
-            document.getElementById('tip-content').style.animation = 'disappear .5s';
-            document.getElementById('tip-content').style.display = 'none';
-            document.getElementById('poke-picture').style.display = 'block';
-            document.getElementById("tip-bar").onclick = tip;
-        }, 3000);
-        tipActive = true;
+    } else {
+        if (tipActive) { //2ª DICA
+            let randomN = () => {
+                let respostaN = 2 * (Math.floor(Math.random() * (currentPokemonName.length - 1)) + 1);
+                return respostaN;
+            };
+            let m = randomN()
+
+            let extraLetter = currentPokemonName[m / 2]
+            if (!currentPokemonName.includes("-")) {
+                tipName2 = tipName.substring(0, m) + extraLetter + tipName.substring(m + 1)
+            } else {
+                indexHifen = getAllIndexes(currentPokemonName, "-")
+                if (indexHifen.length === 1) {
+                    if (m === indexHifen[0] * 2) {
+                        extraLetter = currentPokemonName[m / 2 + 1];
+                        tipName2 = tipName.substring(0, m + 2) + extraLetter + tipName.substring(m + 3);
+                    } else {
+                        tipName2 = tipName.substring(0, m) + extraLetter + tipName.substring(m + 1)
+                    }
+                }
+                else if (indexHifen.length === 2) {
+                    if (m === indexHifen[0] * 2 || m === indexHifen[1] * 2) {
+                        extraLetter = currentPokemonName[m / 2 + 1];
+                        tipName2 = tipName.substring(0, m + 2) + extraLetter + tipName.substring(m + 3);
+                    } else {
+                        tipName2 = tipName.substring(0, m) + extraLetter + tipName.substring(m + 1)
+                    }
+                }
+            }
+
+            document.getElementById('poke-picture').style.display = 'none';
+            document.getElementById('tip-content2').style.display = 'flex';
+            document.getElementById('pokebox').style.height = "200px";
+            document.getElementById("tip-bar").onclick = '';
+            document.getElementById('tip-button1').style.display = "none";
+            setTimeout(function () {
+                document.getElementById('tip-content2').style.animation = 'op .5s';
+                document.getElementById('tip-content2').style.display = 'none';
+                document.getElementById('poke-picture').style.display = 'block';
+                document.getElementById("tip-bar").onclick = tip;
+                document.getElementById('pokebox').style.height = "";
+                document.getElementById('tip-button1').style.display = "block";
+                document.getElementById('tip-button2').style.display = "block";
+            }, 3000);
+            tipMax = true;
+        } else { //1ª DICA
+            document.getElementById('poke-picture').style.display = 'none';
+            document.getElementById('tip-content').style.display = 'flex';
+            document.getElementById('pokebox').style.height = "200px";
+            document.getElementById("tip-bar").onclick = '';
+            setTimeout(function () {
+                document.getElementById('tip-content').style.animation = 'op .5s';
+                document.getElementById('tip-content').style.display = 'none';
+                document.getElementById('poke-picture').style.display = 'block';
+                document.getElementById("tip-bar").onclick = tip;
+                document.getElementById('pokebox').style.height = "";
+                document.getElementById('tip-button1').style.display = "block";
+            }, 3000);
+            tipActive = true;
+        }
     }
-    
 
     let genTip = ''
     if (padrao) { //sem filtro de geração
@@ -622,172 +665,44 @@ function tip() {
         dica2.innerHTML = "Nome: " + tipName2
     }
 }
-
-/*
-function tip() {
-    const popupTip1 = document.getElementById('popup-tip1');
-    const popupTip2 = document.getElementById('popup-tip2');
-    const dica1 = document.getElementById('dica1');
-    const dica2 = document.getElementById('dica2');
- 
-    let underscores = '';
-    for (let i = 0; i < currentPokemonName.length - 1; i++) {
-        underscores += ' _';
-    }
- 
-    let tipName = currentPokemonName.charAt(0).toUpperCase() + underscores
- 
-    if (currentPokemonName.includes("-")) {
-        const indexHifen = getAllIndexes(currentPokemonName, "-");
- 
-        indexHifen.forEach(index => {
-            const underscoreIndex = 2 * index;
- 
-            if (underscoreIndex < tipName.length) {
-                tipName = tipName.substring(0, underscoreIndex) + "-" + tipName.substring(underscoreIndex + 1);
-            }
-        })
-    }
- 
-    if (window.matchMedia("(max-width:600px)").matches) {
+function reqTip1() {
+    document.getElementById('poke-picture').style.display = 'none';
+    document.getElementById('tip-content').style.display = 'flex';
+    document.getElementById('pokebox').style.height = "200px";
+    document.getElementById("tip-bar").onclick = '';
+    document.getElementById('tip-button1').style.display = "none";
+    document.getElementById('tip-button2').style.display = "none";
+    setTimeout(function () {
+        document.getElementById('tip-content').style.animation = 'op .5s';
+        document.getElementById('tip-content').style.display = 'none';
+        document.getElementById('poke-picture').style.display = 'block';
+        document.getElementById("tip-bar").onclick = tip;
+        document.getElementById('pokebox').style.height = "";
+        document.getElementById('tip-button1').style.display = "";
+        document.getElementById('tip-button1').style.display = "block";
         if (tipMax) {
-            if (popupTip1.style.right === '190px') {
-                popupTip1.style.right = '-400px';
-                popupTip2.style.right = '-400px';
-            } else {
-                popupTip1.style.right = '190px';
-                popupTip2.style.right = '5px';
-            }
-        } else {
-            if (tipActive) {
-                popupTip1.style.right = '190px';
- 
-                let randomN = () => {
-                    let respostaN = 2 * (Math.floor(Math.random() * (currentPokemonName.length - 1)) + 1);
-                    return respostaN;
-                };
-                let m = randomN()
- 
-                let extraLetter = currentPokemonName[m / 2]
-                if (!currentPokemonName.includes("-")) {
-                    tipName2 = tipName.substring(0, m) + extraLetter + tipName.substring(m + 1)
-                } else {
-                    indexHifen = getAllIndexes(currentPokemonName, "-")
-                    if (indexHifen.length === 1) {
-                        if (m === indexHifen[0] * 2) {
-                            extraLetter = currentPokemonName[m / 2 + 1];
-                            tipName2 = tipName.substring(0, m + 2) + extraLetter + tipName.substring(m + 3);
-                        } else {
-                            tipName2 = tipName.substring(0, m) + extraLetter + tipName.substring(m + 1)
-                        }
-                    }
-                    else if (indexHifen.length === 2) {
-                        if (m === indexHifen[0] * 2 || m === indexHifen[1] * 2) {
-                            extraLetter = currentPokemonName[m / 2 + 1];
-                            tipName2 = tipName.substring(0, m + 2) + extraLetter + tipName.substring(m + 3);
-                        } else {
-                            tipName2 = tipName.substring(0, m) + extraLetter + tipName.substring(m + 1)
-                        }
-                    }
-                }
- 
-                setTimeout(function () {
-                    popupTip2.style.right = '5px';
-                }, 800);
-                tipMax = true;
-            } else {
-                popupTip1.style.bottom = '20px';
-                popupTip1.style.right = '5px';
-                tipActive = true;
-                dica2.innerHTML = ''
-            }
+            document.getElementById('tip-button2').style.display = "block";
         }
-    } else {
-        if (tipMax) {
-            if (popupTip1.style.right === '20px') {
-                popupTip1.style.transition = 'right 0.8s';
-                popupTip1.style.right = '-400px';
-                popupTip2.style.right = '-400px';
-            } else {
-                popupTip1.style.right = '20px';
-                popupTip2.style.right = '20px';
-            }
-        } else {
-            if (tipActive) {
-                popupTip1.style.transition = 'bottom 1s';
-                popupTip1.style.bottom = '150px';
- 
-                let randomN = () => {
-                    let respostaN = 2 * (Math.floor(Math.random() * (currentPokemonName.length - 1)) + 1);
-                    return respostaN;
-                };
-                let m = randomN()
- 
-                let extraLetter = currentPokemonName[m / 2]
-                if (!currentPokemonName.includes("-")) {
-                    tipName2 = tipName.substring(0, m) + extraLetter + tipName.substring(m + 1)
-                } else {
-                    indexHifen = getAllIndexes(currentPokemonName, "-")
-                    if (indexHifen.length === 1) {
-                        if (m === indexHifen[0] * 2) {
-                            extraLetter = currentPokemonName[m / 2 + 1];
-                            tipName2 = tipName.substring(0, m + 2) + extraLetter + tipName.substring(m + 3);
-                        } else {
-                            tipName2 = tipName.substring(0, m) + extraLetter + tipName.substring(m + 1)
-                        }
-                    }
-                    else if (indexHifen.length === 2) {
-                        if (m === indexHifen[0] * 2 || m === indexHifen[1] * 2) {
-                            extraLetter = currentPokemonName[m / 2 + 1];
-                            tipName2 = tipName.substring(0, m + 2) + extraLetter + tipName.substring(m + 3);
-                        } else {
-                            tipName2 = tipName.substring(0, m) + extraLetter + tipName.substring(m + 1)
-                        }
-                    }
-                }
- 
-                setTimeout(function () {
-                    popupTip2.style.right = '20px';
-                }, 800);
-                tipMax = true;
-            } else {
-                popupTip1.style.bottom = '20px';
-                popupTip1.style.right = '20px';
-                tipActive = true;
-                dica2.innerHTML = ''
-            }
-        }
-    }
- 
-    let genTip = ''
-    if (padrao) { //sem filtro de geração
-        if (randomPokemonId >= 1 && randomPokemonId <= 151) {
-            genTip = "O Pokémon é da 1ª geração..."
-        } else if (randomPokemonId >= 152 && randomPokemonId <= 251) {
-            genTip = "O Pokémon é da 2ª geração..."
-        } else if (randomPokemonId >= 252 && randomPokemonId <= 386) {
-            genTip = "O Pokémon é da 3ª geração..."
-        } else if (randomPokemonId >= 387 && randomPokemonId <= 493) {
-            genTip = "O Pokémon é da 4ª geração..."
-        } else if (randomPokemonId >= 494 && randomPokemonId <= 649) {
-            genTip = "O Pokémon é da 5ª geração..."
-        } else if (randomPokemonId >= 650 && randomPokemonId <= 721) {
-            genTip = "O Pokémon é da 6ª geração..."
-        } else if (randomPokemonId >= 722 && randomPokemonId <= 809) {
-            genTip = "O Pokémon é da 7ª geração..."
-        } else if (randomPokemonId >= 810 && randomPokemonId <= 905) {
-            genTip = "O Pokémon é da 8ª geração..."
-        } else {
-            genTip = "O Pokémon é da 9ª geração..."
-        }
- 
-        dica1.innerHTML = genTip;
-        dica2.innerHTML = "Nome: " + tipName
-    } else { //com filtro de geração
-        dica1.innerHTML = "Nome: " + tipName
-        dica2.innerHTML = "Nome: " + tipName2
-    }
-} */
+    }, 3000);
+}
+function reqTip2() {
+    document.getElementById('poke-picture').style.display = 'none';
+    document.getElementById('tip-content2').style.display = 'flex';
+    document.getElementById('pokebox').style.height = "200px";
+    document.getElementById("tip-bar").onclick = '';
+    document.getElementById('tip-button1').style.display = "none";
+    document.getElementById('tip-button2').style.display = "none";
+    setTimeout(function () {
+        document.getElementById('tip-content2').style.animation = 'op .5s';
+        document.getElementById('tip-content2').style.display = 'none';
+        document.getElementById('poke-picture').style.display = 'block';
+        document.getElementById("tip-bar").onclick = tip;
+        document.getElementById('pokebox').style.height = "";
+        document.getElementById('tip-button2').style.display = "";
+        document.getElementById('tip-button1').style.display = "block";
+        document.getElementById('tip-button2').style.display = "block";
+    }, 3000);
+}
 
 function tipAlert() {
     let tipalerta = document.getElementById('tipAlertBox');

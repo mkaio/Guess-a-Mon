@@ -476,39 +476,8 @@ header {
   transition: ease-in-out 0.2s;
 }
 
-#popup-tip1 {
-  position: fixed;
-  bottom: 20px;
-  right: -400px;
-  width: 300px;
-  background-color: #fff;
-  box-shadow: 0 0 7px rgba(253, 0, 0, 0.246);
-  border: 1px ridge rgba(0, 0, 0, 0.262);
-  border-radius: 5px;
-  padding: 20px;
-  padding-top: 10px;
-  padding-right: 10px;
-  transition: right 0.8s;
-}
-
-#popup-tip2 {
-  position: fixed;
-  bottom: 20px;
-  right: -400px;
-  width: 300px;
-  background-color: #fff;
-  box-shadow: 0 0 7px rgba(253, 0, 0, 0.246);
-  border: 1px ridge rgba(0, 0, 0, 0.262);
-  border-radius: 5px;
-  padding: 20px;
-  padding-top: 10px;
-  padding-right: 10px;
-  transition: right 0.8s;
-}
-
 #tip-content {
   width: 80%;
-  padding-bottom: 70%;
   text-align: center;
   margin-top: 10%;
   animation: op .5s;
@@ -592,6 +561,16 @@ header {
 
 #tipAlertBox.disappear {
   animation: disappear 0.8s forwards;
+}
+
+#container-tip{
+  display: flex;
+  flex-direction: row;
+}
+#tip-button1, #tip-button2{
+  display: none;
+  cursor: pointer;
+  animation: op .6s;
 }
 
 #point-back {
