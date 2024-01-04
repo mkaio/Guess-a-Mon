@@ -298,7 +298,7 @@ function check() {
 
         feedbackPontos.style.display = 'block'
 
-        if (pontos >= 20) {
+        if (pontos >= 20) { // VITÓRIA (ultrapassou os 20 pontos)
             document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/win-GAM.png"
             document.getElementById('loading').style.display = "none"
             pause();
@@ -311,6 +311,9 @@ function check() {
             document.getElementById('tip-button1').style.display = "none";
             document.getElementById('tip-button2').style.display = "none";
             guessBox.value = '';
+            setTimeout(function () {
+                feedbackPontos.style.display = 'none'
+            }, 2500);
             setTimeout(function () {
                 location.reload();
             }, 6000);
@@ -609,6 +612,7 @@ function tip() {
             document.getElementById('pokebox').style.height = "200px";
             document.getElementById("tip-bar").onclick = '';
             document.getElementById('tip-button1').style.display = "none";
+            document.getElementById('enviar').disabled = true;
             if (window.matchMedia("(max-width:600px)").matches) {
                 document.getElementById('pokebox').style.paddingBottom = "10%";
                 document.getElementById('pokebox').style.height = "230px";
@@ -625,6 +629,7 @@ function tip() {
                 document.getElementById('tip-button2').style.display = "block";
                 document.getElementById('pokebox').style.paddingBottom = "0px";
                 document.getElementById('pokebox').style.height = "";
+                document.getElementById('enviar').disabled = false;
             }, 3000);
             tipMax = true;
         } else { //1ª DICA
@@ -632,6 +637,7 @@ function tip() {
             document.getElementById('tip-content').style.display = 'flex';
             document.getElementById('pokebox').style.height = "200px";
             document.getElementById("tip-bar").onclick = '';
+            document.getElementById('enviar').disabled = true;
             if (window.matchMedia("(max-width:600px)").matches) {
                 document.getElementById('pokebox').style.paddingBottom = "10%";
                 document.getElementById('pokebox').style.height = "230px";
@@ -647,6 +653,7 @@ function tip() {
                 document.getElementById('tip-button1').style.display = "block";
                 document.getElementById('pokebox').style.paddingBottom = "0px";
                 document.getElementById('pokebox').style.height = "";
+                document.getElementById('enviar').disabled = false;
             }, 3000);
             tipActive = true;
         }
@@ -688,6 +695,7 @@ function reqTip1() {
     document.getElementById("tip-bar").onclick = '';
     document.getElementById('tip-button1').style.display = "none";
     document.getElementById('tip-button2').style.display = "none";
+    document.getElementById('enviar').disabled = true;
     if (window.matchMedia("(max-width:600px)").matches) {
         document.getElementById('pokebox').style.paddingBottom = "10%";
         document.getElementById('pokebox').style.height = "230px";
@@ -704,6 +712,7 @@ function reqTip1() {
         document.getElementById('tip-button1').style.display = "block";
         document.getElementById('pokebox').style.paddingBottom = "0px";
         document.getElementById('pokebox').style.height = "";
+        document.getElementById('enviar').disabled = false;
         if (tipMax) {
             document.getElementById('tip-button2').style.display = "block";
         }
@@ -716,6 +725,7 @@ function reqTip2() {
     document.getElementById("tip-bar").onclick = '';
     document.getElementById('tip-button1').style.display = "none";
     document.getElementById('tip-button2').style.display = "none";
+    document.getElementById('enviar').disabled = true;
     if (window.matchMedia("(max-width:600px)").matches) {
         document.getElementById('pokebox').style.paddingBottom = "10%";
         document.getElementById('pokebox').style.height = "230px";
@@ -733,6 +743,7 @@ function reqTip2() {
         document.getElementById('tip-button2').style.display = "block";
         document.getElementById('pokebox').style.paddingBottom = "0px";
         document.getElementById('pokebox').style.height = "";
+        document.getElementById('enviar').disabled = false;
     }, 3000);
 }
 

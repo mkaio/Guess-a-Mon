@@ -584,13 +584,17 @@ header {
   width: 40px;
   margin-top: 10px;
   border: 1px solid rgba(63, 63, 63, 0.683);
-  border-radius: 50%;
+  border-radius: 15px;
   background-color: white;
   cursor: pointer;
   animation: op .6s;
 }
 #tip-button1{
-  margin-right: 10px !important;
+  margin-right: 15px !important;
+}
+#tip-button1:hover, #tip-button2:hover{
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: ease-in-out .3s;
 }
 
 #point-back {
@@ -1250,7 +1254,7 @@ header {
     width: 45px;
     margin-top: 5px;
     border: 1px solid rgba(63, 63, 63, 0.683);
-    border-radius: 50%;
+    border-radius: 15px;
     background-color: white;
     cursor: pointer;
     animation: op .6s;
