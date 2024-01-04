@@ -609,6 +609,12 @@ function tip() {
             document.getElementById('pokebox').style.height = "200px";
             document.getElementById("tip-bar").onclick = '';
             document.getElementById('tip-button1').style.display = "none";
+            if (window.matchMedia("(max-width:600px)").matches) {
+                document.getElementById('pokebox').style.paddingBottom = "10%";
+                document.getElementById('pokebox').style.height = "230px";
+            } else {
+                document.getElementById('pokebox').style.paddingBottom = "6%";
+            }
             setTimeout(function () {
                 document.getElementById('tip-content2').style.animation = 'op .5s';
                 document.getElementById('tip-content2').style.display = 'none';
@@ -617,6 +623,8 @@ function tip() {
                 document.getElementById('pokebox').style.height = "";
                 document.getElementById('tip-button1').style.display = "block";
                 document.getElementById('tip-button2').style.display = "block";
+                document.getElementById('pokebox').style.paddingBottom = "0px";
+                document.getElementById('pokebox').style.height = "";
             }, 3000);
             tipMax = true;
         } else { //1ª DICA
@@ -624,6 +632,12 @@ function tip() {
             document.getElementById('tip-content').style.display = 'flex';
             document.getElementById('pokebox').style.height = "200px";
             document.getElementById("tip-bar").onclick = '';
+            if (window.matchMedia("(max-width:600px)").matches) {
+                document.getElementById('pokebox').style.paddingBottom = "10%";
+                document.getElementById('pokebox').style.height = "230px";
+            } else {
+                document.getElementById('pokebox').style.paddingBottom = "6%";
+            }
             setTimeout(function () {
                 document.getElementById('tip-content').style.animation = 'op .5s';
                 document.getElementById('tip-content').style.display = 'none';
@@ -631,6 +645,8 @@ function tip() {
                 document.getElementById("tip-bar").onclick = tip;
                 document.getElementById('pokebox').style.height = "";
                 document.getElementById('tip-button1').style.display = "block";
+                document.getElementById('pokebox').style.paddingBottom = "0px";
+                document.getElementById('pokebox').style.height = "";
             }, 3000);
             tipActive = true;
         }
@@ -672,6 +688,12 @@ function reqTip1() {
     document.getElementById("tip-bar").onclick = '';
     document.getElementById('tip-button1').style.display = "none";
     document.getElementById('tip-button2').style.display = "none";
+    if (window.matchMedia("(max-width:600px)").matches) {
+        document.getElementById('pokebox').style.paddingBottom = "10%";
+        document.getElementById('pokebox').style.height = "230px";
+    } else {
+        document.getElementById('pokebox').style.paddingBottom = "6%";
+    }
     setTimeout(function () {
         document.getElementById('tip-content').style.animation = 'op .5s';
         document.getElementById('tip-content').style.display = 'none';
@@ -680,6 +702,8 @@ function reqTip1() {
         document.getElementById('pokebox').style.height = "";
         document.getElementById('tip-button1').style.display = "";
         document.getElementById('tip-button1').style.display = "block";
+        document.getElementById('pokebox').style.paddingBottom = "0px";
+        document.getElementById('pokebox').style.height = "";
         if (tipMax) {
             document.getElementById('tip-button2').style.display = "block";
         }
@@ -692,6 +716,12 @@ function reqTip2() {
     document.getElementById("tip-bar").onclick = '';
     document.getElementById('tip-button1').style.display = "none";
     document.getElementById('tip-button2').style.display = "none";
+    if (window.matchMedia("(max-width:600px)").matches) {
+        document.getElementById('pokebox').style.paddingBottom = "10%";
+        document.getElementById('pokebox').style.height = "230px";
+    } else {
+        document.getElementById('pokebox').style.paddingBottom = "6%";
+    }
     setTimeout(function () {
         document.getElementById('tip-content2').style.animation = 'op .5s';
         document.getElementById('tip-content2').style.display = 'none';
@@ -701,6 +731,8 @@ function reqTip2() {
         document.getElementById('tip-button2').style.display = "";
         document.getElementById('tip-button1').style.display = "block";
         document.getElementById('tip-button2').style.display = "block";
+        document.getElementById('pokebox').style.paddingBottom = "0px";
+        document.getElementById('pokebox').style.height = "";
     }, 3000);
 }
 
