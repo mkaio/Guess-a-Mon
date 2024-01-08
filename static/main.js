@@ -148,8 +148,11 @@ function gen(number) {
 let pontos = 0
 let randomPokemonId;
 var musicPreference = localStorage.getItem('musicPreference');
+var soundPreference = localStorage.getItem('soundPreference');
 function getRandomPokemon() {
-    if (localStorage.musicPreference === "On" || localStorage.length === 0) {
+    if (localStorage.musicPreference === "Off") {
+        backgroundMusic.pause();
+    }else{
         backgroundMusic.play();
     }
 
@@ -263,6 +266,10 @@ function keep() {
     document.getElementById('correction').innerHTML = ''
 }
 
+const rightSound = document.getElementById('right_sound');
+const wrongSound = document.getElementById('wrong_sound');
+const victorySong = document.getElementById('victory_song');
+const endgameSound = document.getElementById('endgame_sound');
 const guessBox = document.getElementById('guessbox');
 function check() {
     const userGuess = guessBox.value.toLowerCase();
@@ -299,8 +306,21 @@ function check() {
         feedbackPontos.style.display = 'block'
 
         if (pontos >= 20) { // VITÓRIA (ultrapassou os 20 pontos)
+            document.body.style.cursor = 'wait';
             document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/win-GAM.png"
-            document.getElementById('loading').style.display = "none"
+            document.getElementById('loading').style.display = "none";
+            document.getElementById('points').innerHTML = "Pontuação: " + pontos + " / 20"
+            if (localStorage.soundPreference === "Off"){
+                rightSound.pause()
+            } else{
+                rightSound.play()
+            }
+            if (localStorage.musicPreference === "Off") {
+                
+            } else{
+                backgroundMusic.pause();
+                victorySong.play();
+            }
             pause();
             feedbackactive = true
             document.getElementById('enviar').disabled = true
@@ -314,19 +334,35 @@ function check() {
             setTimeout(function () {
                 feedbackPontos.style.display = 'none'
             }, 2500);
-            setTimeout(function () {
-                location.reload();
-            }, 6000);
+            if (localStorage.musicPreference === "Off"){
+                setTimeout(function () {
+                    location.reload();
+                }, 5000);
+            } else{
+                setTimeout(function () {
+                    location.reload();
+                }, 13000);
+            }
             return;
         }
         document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-correto.png"
+        if (localStorage.soundPreference === "Off"){
+            rightSound.pause()
+        } else{
+            rightSound.play()
+        }
         document.getElementById('tip-button1').style.display = "none";
         document.getElementById('tip-button2').style.display = "none";
         setTimeout(function () {
             feedbackPontos.style.display = 'none'
         }, 2300);
-    } else {
+    } else { //CORRETO (O JOGO CONTINUA)
         if (pontos > 0) {
+            if (localStorage.soundPreference === "Off"){
+                wrongSound.pause();
+            } else{
+                wrongSound.play();
+            }
             document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-errado.png"
             document.getElementById('correction').innerHTML = "O Pokémon era: " + nome
             document.getElementById('loading').style.display = "block"
@@ -345,9 +381,14 @@ function check() {
             setTimeout(function () {
                 feedbackPontos.style.display = 'none'
             }, 2300);
-        } else {
+        } else { // FIM DE JOGO (DERROTA)
             document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-endgame.png"
             document.getElementById('correction').innerHTML = "O Pokémon era: " + nome
+            if (localStorage.soundPreference === "Off"){
+                wrongSound.pause();
+            } else{
+                wrongSound.play();
+            }
             pause();
             feedbackactive = true
             document.getElementById('enviar').disabled = true
@@ -405,6 +446,7 @@ function filters() {
     document.getElementById('level').style.display = 'none'
     document.getElementById('info').style.display = 'none'
     document.getElementById('config').style.display = 'none';
+    document.getElementById('configBox').style.left = '-210px';
 }
 
 function backfilter() {
@@ -826,7 +868,7 @@ function musichange() {
         localStorage.setItem('musicPreference', "Off");
         document.getElementById('volume').src = "../Guess-a-Mon/static/images/volume-mute.png";
         document.getElementById('volume').onclick = '';
-        document.getElementById('volume').style.cursor = 'not-allowed'
+        document.getElementById('volume').style.cursor = 'not-allowed';
     } else {
         document.getElementById('on-off').innerHTML = '&nbsp; On';
         document.getElementById('on-off').style.color = 'green';
@@ -834,5 +876,21 @@ function musichange() {
         document.getElementById('volume').src = "../Guess-a-Mon/static/images/volume.png";
         document.getElementById('volume').onclick = toggle;
         document.getElementById('volume').style.cursor = 'pointer';
+    }
+}
+
+if (localStorage.soundPreference === "Off") {
+    document.getElementById('sound_on-off').innerHTML = '&nbsp; Off';
+    document.getElementById('sound_on-off').style.color = 'red';
+}
+function soundChange() {
+    if (document.getElementById('sound_on-off').innerHTML === '&nbsp; On') {
+        document.getElementById('sound_on-off').innerHTML = '&nbsp; Off';
+        document.getElementById('sound_on-off').style.color = 'red';
+        localStorage.setItem('soundPreference', "Off");
+    } else {
+        document.getElementById('sound_on-off').innerHTML = '&nbsp; On';
+        document.getElementById('sound_on-off').style.color = 'green';
+        localStorage.setItem('soundPreference', "On");
     }
 }

@@ -14,11 +14,12 @@
         <img src="../Guess-a-Mon/static/images/GAM-curved.png" id="gam-logo">
     </header>
     <section id="game">
+        <!-- Barra de tempo e pontos -->
         <div id="bar">
             <div id="cronometro">Tempo: 00:00</div>
             <div id="points">Pontuação: 0 / 20</div>
         </div>
-        <div id="pokebox">
+        <div id="pokebox"> <!-- Caixa de pokemon e dicas -->
             <img id="poke-picture">
             <div id="tip-content">
                 <div id="tip-title">Dica 1</div>
@@ -36,6 +37,8 @@
             <div id="time-feedback"></div>
             <img id="loading" src="../Guess-a-Mon/static/images/runningpikachu.gif"></img>
         </div>
+
+        <!-- Botões tela inicial -->
         <button id="startbutton" onclick="gen()">Começar</button>
         <div id="actions">
             <button id="filter" onclick="filters()">Filtros</button>
@@ -52,11 +55,12 @@
 
         <div id="overlay" onclick="closepopup()"></div>
         <div id="overlay2"></div>
-        <div id="network">
+
+        <div id="network"> <!-- Problema de internet -->
             <img src="../Guess-a-Mon/static/images/network-error.png" alt="" id="netimg">
             <button id="netbutton" onclick="reconect()">Reconectar</button>
         </div>
-        <div id="pop-up">
+        <div id="pop-up"> <!-- Pop-up de como jogar -->
             <div id="close" onclick="closepopup()">&times;</div>
             <div id="htptitle">
                 Como jogar o Guess-a-mon?
@@ -69,7 +73,7 @@
                 1 ponto se acertar. Chame seus amigos e descubra quem é o melhor treinador Pokémon!
             </div>
         </div>
-        <div id="guessform">
+        <div id="guessform"> <!-- Barra de envio e interação -->
             <p id="guessit">
                 Qual é o nome desse Pokémon?
             </p>
@@ -85,9 +89,9 @@
             <button id="enviar" onclick="check()">Verificar</button>
         </div>
 
-
         <div id="tipAlertBox">Dicas apenas nas dificuldades 'Fácil' ou 'Médio'!</div>
 
+        <!-- Página de filtros por geração -->
         <div id="filterbar">
             <p id="filtertitle">Escolha a geração para jogar:</p>
             <div id="lay1">
@@ -106,8 +110,9 @@
             <button id="backfilter" onclick="backfilter()">Voltar</button>
         </div>
 
-        <div id="point-back">+3</div>
+        <div id="point-back">+3</div> <!-- Animação de pontos ao acertar ou errar -->
 
+        <!-- Barra de informações do dev -->
         <div id="info">
             <div id="copy">&copy; Marcos Kaiô, 2023</div>
             <div id="info-container">
@@ -122,6 +127,7 @@
             </div>
         </div>
 
+        <!-- Botão e mensagem para finalizar rodada -->
         <img src="../Guess-a-Mon/static/images/leave.png" id="leave-button" onclick="leave()">
         <div id="confirmBox">
             <div id="confirm-message">Tem certeza que deseja finalizar a rodada?</div>
@@ -131,22 +137,45 @@
             </div>
         </div>
 
+        <!-- Músicas e sons: -->
         <audio id="backgroundMusic" loop>
             <source src="../Guess-a-Mon/static/images/GAM_music.mp3" type="audio/mp3">
             Seu navegador não suporta a tag de áudio.
         </audio>
         <img src="../Guess-a-Mon/static/images/volume.png" id="volume" onclick="toggle()">
+        <audio id="right_sound">
+            <source src="../Guess-a-Mon/static/images/GAM_right.mp3" type="audio/mp3">
+        </audio>
+        <audio id="wrong_sound">
+            <source src="../Guess-a-Mon/static/images/GAM_wrong.mp3" type="audio/mp3">
+        </audio>
+        <audio id="victory_song">
+            <source src="../Guess-a-Mon/static/images/victory.mp3" type="audio/mp3">
+        </audio>
 
-
+        <!-- Configurações: -->
         <img src="../Guess-a-Mon/static/images/settings.png" id="config" onclick="settings()">
         <div id="configBox">
             <div id="config-title">Configurações</div>
             <hr>
             <div class="config-container" onclick="musichange()">
                 <img src="../Guess-a-Mon/static/images/music-icon.png" id="music-icon">
-                <div id="music-title">
+                <div class="config-box">
                     <div>Música: </div>
                     <div id="on-off">&nbsp; On</div>
+                </div>
+            </div>
+            <div class="config-container" onclick="soundChange()" style="margin-top: 8px;">
+                <img src="../Guess-a-Mon/static/images/sound-icon.png" id="sound-icon">
+                <div class="config-box">
+                    <div style="margin-right: 10px;">Sons: </div>
+                    <div id="sound_on-off">&nbsp; On</div>
+                </div>
+            </div>
+            <div class="config-container" onclick="emailme()" style="margin-top: 8px;">
+                <img src="../Guess-a-Mon/static/images/report-icon.png" id="report-icon">
+                <div class="config-box">
+                    <div>Reporte bugs</div>
                 </div>
             </div>
         </div>
