@@ -1055,6 +1055,7 @@ function soundChange() {
 
 const recordBox = document.getElementById('recordBox')
 function recordPage() {
+    document.getElementById('overlay2').style.display = 'none';
     document.getElementById('startbutton').style.display = 'none';
     document.getElementById('actions').style.display = 'none';
     document.getElementById('level').style.display = 'none';
