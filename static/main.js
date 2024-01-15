@@ -82,6 +82,15 @@ window.onload = function () {
 };
 
 let padrao = false;
+let g1 = false;
+let g2 = false;
+let g3 = false;
+let g4 = false;
+let g5 = false;
+let g6 = false;
+let g7 = false;
+let g8 = false;
+let g9 = false;
 
 let feedbackactive = false;
 
@@ -94,46 +103,55 @@ function gen(number) {
         case 1:
             min = 1;
             max = 151;
+            g1 = true
             getRandomPokemon();
             break;
         case 2:
             min = 152;
             max = 251;
+            g2 = true
             getRandomPokemon();
             break;
         case 3:
             min = 252;
             max = 386;
+            g3 = true
             getRandomPokemon();
             break;
         case 4:
             min = 387;
             max = 493;
+            g4 = true
             getRandomPokemon();
             break;
         case 5:
             min = 494;
             max = 649;
+            g5 = true
             getRandomPokemon();
             break;
         case 6:
             min = 650;
             max = 721;
+            g6 = true
             getRandomPokemon();
             break;
         case 7:
             min = 722;
             max = 809;
+            g7 = true
             getRandomPokemon();
             break;
         case 8:
             min = 810;
             max = 905;
+            g8 = true
             getRandomPokemon();
             break;
         case 9:
             min = 906;
             max = 1017;
+            g9 = true
             getRandomPokemon();
             break;
         default:
@@ -152,7 +170,7 @@ var soundPreference = localStorage.getItem('soundPreference');
 function getRandomPokemon() {
     if (localStorage.musicPreference === "Off") {
         backgroundMusic.pause();
-    }else{
+    } else {
         backgroundMusic.play();
     }
 
@@ -266,6 +284,18 @@ function keep() {
     document.getElementById('correction').innerHTML = ''
 }
 
+
+var besTime = localStorage.getItem('besTime');
+var besTime1 = localStorage.getItem('besTime1');
+var besTime2 = localStorage.getItem('besTime2');
+var besTime3 = localStorage.getItem('besTime3');
+var besTime4 = localStorage.getItem('besTime4');
+var besTime5 = localStorage.getItem('besTime5');
+var besTime6 = localStorage.getItem('besTime6');
+var besTime7 = localStorage.getItem('besTime7');
+var besTime8 = localStorage.getItem('besTime8');
+var besTime9 = localStorage.getItem('besTime9');
+
 const rightSound = document.getElementById('right_sound');
 const wrongSound = document.getElementById('wrong_sound');
 const victorySong = document.getElementById('victory_song');
@@ -310,14 +340,14 @@ function check() {
             document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/win-GAM.png"
             document.getElementById('loading').style.display = "none";
             document.getElementById('points').innerHTML = "Pontuação: " + pontos + " / 20"
-            if (localStorage.soundPreference === "Off"){
+            if (localStorage.soundPreference === "Off") {
                 rightSound.pause()
-            } else{
+            } else {
                 rightSound.play()
             }
             if (localStorage.musicPreference === "Off") {
-                
-            } else{
+
+            } else {
                 backgroundMusic.pause();
                 victorySong.play();
             }
@@ -331,14 +361,136 @@ function check() {
             document.getElementById('tip-button1').style.display = "none";
             document.getElementById('tip-button2').style.display = "none";
             guessBox.value = '';
+
+            // sistema de salvamento de pontuação:
+            function convertToSec(tempo) {
+                var partes = tempo.split(":");
+                return parseInt(partes[0]) * 60 + parseInt(partes[1]);
+            }
+
+            var finalTime = convertToSec(tempofinal)
+            console.log("Tempo final - " + finalTime)
+            if (padrao) { // sem filtro (geral)
+                if (localStorage.besTime == null) { //não há registro de tempo
+                    console.log("nada ainda")
+                    localStorage.setItem('besTime', tempofinal); // armazena o tempo
+                } else { // há registro
+                    var timeReg = convertToSec(localStorage.besTime)
+                    console.log("Tempo registrado - " + timeReg)
+                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
+                        localStorage.setItem('besTime', tempofinal); // armazena o tempo
+                    }
+                }
+            } else if (g1) {
+                if (localStorage.besTime1 == null) { //não há registro de tempo
+                    console.log("nada ainda")
+                    localStorage.setItem('besTime1', tempofinal); // armazena o tempo
+                } else { // há registro
+                    var timeReg = convertToSec(localStorage.besTime1)
+                    console.log("Tempo registrado - " + timeReg)
+                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
+                        localStorage.setItem('besTime1', tempofinal); // armazena o tempo
+                    }
+                }
+            } else if (g2) {
+                if (localStorage.besTime2 == null) { //não há registro de tempo
+                    console.log("nada ainda")
+                    localStorage.setItem('besTime2', tempofinal); // armazena o tempo
+                } else { // há registro
+                    var timeReg = convertToSec(localStorage.besTime2)
+                    console.log("Tempo registrado - " + timeReg)
+                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
+                        localStorage.setItem('besTime2', tempofinal); // armazena o tempo
+                    }
+                }
+            } else if (g3) {
+                if (localStorage.besTime3 == null) { //não há registro de tempo
+                    console.log("nada ainda")
+                    localStorage.setItem('besTime3', tempofinal); // armazena o tempo
+                } else { // há registro
+                    var timeReg = convertToSec(localStorage.besTime3)
+                    console.log("Tempo registrado - " + timeReg)
+                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
+                        localStorage.setItem('besTime3', tempofinal); // armazena o tempo
+                    }
+                }
+            } else if (g4) {
+                if (localStorage.besTime4 == null) { //não há registro de tempo
+                    console.log("nada ainda")
+                    localStorage.setItem('besTime4', tempofinal); // armazena o tempo
+                } else { // há registro
+                    var timeReg = convertToSec(localStorage.besTime4)
+                    console.log("Tempo registrado - " + timeReg)
+                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
+                        localStorage.setItem('besTime4', tempofinal); // armazena o tempo
+                    }
+                }
+            } else if (g5) {
+                if (localStorage.besTime5 == null) { //não há registro de tempo
+                    console.log("nada ainda")
+                    localStorage.setItem('besTime5', tempofinal); // armazena o tempo
+                } else { // há registro
+                    var timeReg = convertToSec(localStorage.besTime5)
+                    console.log("Tempo registrado - " + timeReg)
+                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
+                        localStorage.setItem('besTime5', tempofinal); // armazena o tempo
+                    }
+                }
+            } else if (g6) {
+                if (localStorage.besTime6 == null) { //não há registro de tempo
+                    console.log("nada ainda")
+                    localStorage.setItem('besTime6', tempofinal); // armazena o tempo
+                } else { // há registro
+                    var timeReg = convertToSec(localStorage.besTime6)
+                    console.log("Tempo registrado - " + timeReg)
+                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
+                        localStorage.setItem('besTime6', tempofinal); // armazena o tempo
+                    }
+                }
+            } else if (g7) {
+                if (localStorage.besTime7 == null) { //não há registro de tempo
+                    console.log("nada ainda")
+                    localStorage.setItem('besTime7', tempofinal); // armazena o tempo
+                } else { // há registro
+                    var timeReg = convertToSec(localStorage.besTime7)
+                    console.log("Tempo registrado - " + timeReg)
+                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
+                        localStorage.setItem('besTime7', tempofinal); // armazena o tempo
+                    }
+                }
+            } else if (g8) {
+                if (localStorage.besTime8 == null) { //não há registro de tempo
+                    console.log("nada ainda")
+                    localStorage.setItem('besTime8', tempofinal); // armazena o tempo
+                } else { // há registro
+                    var timeReg = convertToSec(localStorage.besTime8)
+                    console.log("Tempo registrado - " + timeReg)
+                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
+                        localStorage.setItem('besTime8', tempofinal); // armazena o tempo
+                    }
+                }
+            } else if (g9) {
+                if (localStorage.besTime9 == null) { //não há registro de tempo
+                    console.log("nada ainda")
+                    localStorage.setItem('besTime9', tempofinal); // armazena o tempo
+                } else { // há registro
+                    var timeReg = convertToSec(localStorage.besTime9)
+                    console.log("Tempo registrado - " + timeReg)
+                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
+                        localStorage.setItem('besTime9', tempofinal); // armazena o tempo
+                    }
+                }
+            }
+
+
             setTimeout(function () {
                 feedbackPontos.style.display = 'none'
             }, 2500);
-            if (localStorage.musicPreference === "Off"){
+            if (localStorage.musicPreference === "Off") {
                 setTimeout(function () {
                     location.reload();
                 }, 5000);
-            } else{
+            } else {
                 setTimeout(function () {
                     location.reload();
                 }, 13000);
@@ -346,9 +498,9 @@ function check() {
             return;
         }
         document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-correto.png"
-        if (localStorage.soundPreference === "Off"){
+        if (localStorage.soundPreference === "Off") {
             rightSound.pause()
-        } else{
+        } else {
             rightSound.play()
         }
         document.getElementById('tip-button1').style.display = "none";
@@ -358,9 +510,9 @@ function check() {
         }, 2300);
     } else { //CORRETO (O JOGO CONTINUA)
         if (pontos > 0) {
-            if (localStorage.soundPreference === "Off"){
+            if (localStorage.soundPreference === "Off") {
                 wrongSound.pause();
-            } else{
+            } else {
                 wrongSound.play();
             }
             document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-errado.png"
@@ -384,9 +536,9 @@ function check() {
         } else { // FIM DE JOGO (DERROTA)
             document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-endgame.png"
             document.getElementById('correction').innerHTML = "O Pokémon era: " + nome
-            if (localStorage.soundPreference === "Off"){
+            if (localStorage.soundPreference === "Off") {
                 wrongSound.pause();
-            } else{
+            } else {
                 wrongSound.play();
             }
             pause();
@@ -459,6 +611,9 @@ function backfilter() {
 }
 
 function howtoplay() {
+    if (window.matchMedia("(max-width:600px)").matches) {
+        document.getElementById("config").style.zIndex = '0'
+    }
     document.getElementById('overlay').style.display = 'block';
     document.getElementById('pop-up').style.display = 'block';
 }
@@ -466,6 +621,9 @@ function howtoplay() {
 function closepopup() {
     document.getElementById('overlay').style.display = 'none';
     document.getElementById('pop-up').style.display = 'none';
+    if (window.matchMedia("(max-width:600px)").matches) {
+        document.getElementById("config").style.zIndex = '2'
+    }
 }
 
 let resultadosFiltrados = [];
@@ -892,5 +1050,89 @@ function soundChange() {
         document.getElementById('sound_on-off').innerHTML = '&nbsp; On';
         document.getElementById('sound_on-off').style.color = 'green';
         localStorage.setItem('soundPreference', "On");
+    }
+}
+
+const recordBox = document.getElementById('recordBox')
+function recordPage() {
+    document.getElementById('startbutton').style.display = 'none';
+    document.getElementById('actions').style.display = 'none';
+    document.getElementById('level').style.display = 'none';
+    document.getElementById('configBox').style.left = '-210px';
+    recordBox.style.display = 'block';
+    selection()
+}
+
+const recordSelect = document.getElementById('gen-select');
+function backRecord() {
+    document.getElementById('startbutton').style.display = 'block';
+    document.getElementById('actions').style.display = 'flex';
+    document.getElementById('level').style.display = 'block';
+    recordBox.style.display = 'none';
+    recordSelect.value = '0';
+}
+function selection() {
+    const recordInfo = document.getElementById('numbers');
+
+    if (recordSelect.value === "0") {
+        if (localStorage.besTime == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime
+        }
+    } else if (recordSelect.value === "1") {
+        if (localStorage.besTime1 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime1
+        }
+    } else if (recordSelect.value === "2") {
+        if (localStorage.besTime2 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime2
+        }
+    } else if (recordSelect.value === "3") {
+        if (localStorage.besTime3 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime3
+        }
+    } else if (recordSelect.value === "4") {
+        if (localStorage.besTime4 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime4
+        }
+    } else if (recordSelect.value === "5") {
+        if (localStorage.besTime5 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime5
+        }
+    } else if (recordSelect.value === "6") {
+        if (localStorage.besTime6 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime6
+        }
+    } else if (recordSelect.value === "7") {
+        if (localStorage.besTime7 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime7
+        }
+    } else if (recordSelect.value === "8") {
+        if (localStorage.besTime8 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime8
+        }
+    } else if (recordSelect.value === "9") {
+        if (localStorage.besTime9 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime9
+        }
     }
 }

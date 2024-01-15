@@ -172,11 +172,40 @@
                     <div id="sound_on-off">&nbsp; On</div>
                 </div>
             </div>
+            <div class="config-container" onclick="recordPage()" style="margin-top: 8px;">
+                <img src="../Guess-a-Mon/static/images/badge-icon.png" id="record-icon">
+                <div class="config-box">
+                    <div style="margin-right: 20px;">Recordes</div>
+                </div>
+            </div>
             <div class="config-container" onclick="emailme()" style="margin-top: 8px;">
                 <img src="../Guess-a-Mon/static/images/report-icon.png" id="report-icon">
                 <div class="config-box">
                     <div>Reporte bugs</div>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Página de recordes: -->
+        <div id="recordBox">
+            <div id="record-container">
+                <div id="numbers"></div>
+                <div id="record-filters">
+                    <div>Selecione o modo de jogo:</div>
+                    <select name="gen-select" id="gen-select" onchange="selection()">
+                        <option value="0" selected >Geral</option>
+                        <option value="1">1ª geração</option>
+                        <option value="2">2ª geração</option>
+                        <option value="3">3ª geração</option>
+                        <option value="4">4ª geração</option>
+                        <option value="5">5ª geração</option>
+                        <option value="6">6ª geração</option>
+                        <option value="7">7ª geração</option>
+                        <option value="8">8ª geração</option>
+                        <option value="9">9ª geração</option>
+                    </select>
+                </div>
+                <button id="record-button" onclick="backRecord()">Voltar à página inicial</button>
             </div>
         </div>
     </section>

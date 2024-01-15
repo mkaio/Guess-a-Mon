@@ -808,7 +808,7 @@ header {
 
 #configBox {
   width: 200px;
-  height: 140px;
+  height: 180px;
   padding-top: 10px;
   padding-bottom: 20px;
   background-color: white;
@@ -874,10 +874,73 @@ header {
   width: auto;
   margin-left: 5px;
 }
+#record-icon {
+  width: 20px;
+  margin-left: 0;
+}
 
 #on-off, #sound_on-off {
   color: green;
 }
+
+#recordBox{
+  display: none;
+  width: 400px;
+  height: auto;
+  padding-bottom: 20px;
+  margin-top: 30px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  animation: op .8s;
+  font-family: sans-serif;
+}
+#numbers{
+  font-weight: bold;
+  margin-top: 25px;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
+}
+#record-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#record-filters{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#record-filters div{
+  margin-right: 10px;
+}
+#gen-select{
+  width: 120px;
+  height: 25px;
+  background-color: #facb04;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-weight: bold;
+}
+#gen-select option{
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: bold;
+  background-color: white;
+  padding: 5px;
+  border: 1px solid black;
+}
+#record-button{
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 25px;
+  height: 30px;
+  width: auto;
+  cursor: pointer;
+}
+
 
 /* CELULAR (ABAIXO) */
 
@@ -1209,7 +1272,7 @@ header {
   }
   #configBox {
     width: 200px;
-    height: 150px;
+    height: 180px;
     padding-top: 10px;
     padding-bottom: 20px;
     background-color: white;
