@@ -296,12 +296,17 @@ var besTime7 = localStorage.getItem('besTime7');
 var besTime8 = localStorage.getItem('besTime8');
 var besTime9 = localStorage.getItem('besTime9');
 
+var correctRate = parseInt(localStorage.getItem('cRate'));
+var wrongRate = parseInt(localStorage.getItem('wRate'));
 const rightSound = document.getElementById('right_sound');
 const wrongSound = document.getElementById('wrong_sound');
 const victorySong = document.getElementById('victory_song');
 const endgameSound = document.getElementById('endgame_sound');
 const guessBox = document.getElementById('guessbox');
 function check() {
+    var correctRate = parseInt(localStorage.getItem('cRate'));
+    var wrongRate = parseInt(localStorage.getItem('wRate'));
+
     const userGuess = guessBox.value.toLowerCase();
     let nome = currentPokemonName.charAt(0).toUpperCase() + currentPokemonName.slice(1);
 
@@ -311,6 +316,14 @@ function check() {
     let feedbackPontos = document.getElementById('point-back')
 
     if (userGuess === currentPokemonName) {
+        if (padrao) {
+            if (correctRate >= 1) {
+                localStorage.setItem('cRate', (correctRate + 1));
+            } else {
+                localStorage.setItem('cRate', 1);
+            }
+        }
+
         document.getElementById('loading').style.display = "block"
         document.getElementById('pokebox').style.paddingBottom = "1%";
         pause();
@@ -371,113 +384,113 @@ function check() {
             var finalTime = convertToSec(tempofinal)
             console.log("Tempo final - " + finalTime)
             if (padrao) { // sem filtro (geral)
-                if (localStorage.besTime == null) { //não há registro de tempo
+                if (localStorage.besTime == null) {
                     console.log("nada ainda")
-                    localStorage.setItem('besTime', tempofinal); // armazena o tempo
-                } else { // há registro
+                    localStorage.setItem('besTime', tempofinal);
+                } else {
                     var timeReg = convertToSec(localStorage.besTime)
                     console.log("Tempo registrado - " + timeReg)
-                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
-                        localStorage.setItem('besTime', tempofinal); // armazena o tempo
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime', tempofinal);
                     }
                 }
             } else if (g1) {
-                if (localStorage.besTime1 == null) { //não há registro de tempo
+                if (localStorage.besTime1 == null) {
                     console.log("nada ainda")
-                    localStorage.setItem('besTime1', tempofinal); // armazena o tempo
-                } else { // há registro
+                    localStorage.setItem('besTime1', tempofinal);
+                } else {
                     var timeReg = convertToSec(localStorage.besTime1)
                     console.log("Tempo registrado - " + timeReg)
-                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
-                        localStorage.setItem('besTime1', tempofinal); // armazena o tempo
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime1', tempofinal);
                     }
                 }
             } else if (g2) {
-                if (localStorage.besTime2 == null) { //não há registro de tempo
+                if (localStorage.besTime2 == null) {
                     console.log("nada ainda")
-                    localStorage.setItem('besTime2', tempofinal); // armazena o tempo
-                } else { // há registro
+                    localStorage.setItem('besTime2', tempofinal);
+                } else {
                     var timeReg = convertToSec(localStorage.besTime2)
                     console.log("Tempo registrado - " + timeReg)
-                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
-                        localStorage.setItem('besTime2', tempofinal); // armazena o tempo
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime2', tempofinal);
                     }
                 }
             } else if (g3) {
-                if (localStorage.besTime3 == null) { //não há registro de tempo
+                if (localStorage.besTime3 == null) {
                     console.log("nada ainda")
-                    localStorage.setItem('besTime3', tempofinal); // armazena o tempo
-                } else { // há registro
+                    localStorage.setItem('besTime3', tempofinal);
+                } else {
                     var timeReg = convertToSec(localStorage.besTime3)
                     console.log("Tempo registrado - " + timeReg)
-                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
-                        localStorage.setItem('besTime3', tempofinal); // armazena o tempo
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime3', tempofinal);
                     }
                 }
             } else if (g4) {
-                if (localStorage.besTime4 == null) { //não há registro de tempo
+                if (localStorage.besTime4 == null) {
                     console.log("nada ainda")
-                    localStorage.setItem('besTime4', tempofinal); // armazena o tempo
-                } else { // há registro
+                    localStorage.setItem('besTime4', tempofinal);
+                } else {
                     var timeReg = convertToSec(localStorage.besTime4)
                     console.log("Tempo registrado - " + timeReg)
-                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
-                        localStorage.setItem('besTime4', tempofinal); // armazena o tempo
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime4', tempofinal);
                     }
                 }
             } else if (g5) {
-                if (localStorage.besTime5 == null) { //não há registro de tempo
+                if (localStorage.besTime5 == null) {
                     console.log("nada ainda")
-                    localStorage.setItem('besTime5', tempofinal); // armazena o tempo
-                } else { // há registro
+                    localStorage.setItem('besTime5', tempofinal);
+                } else {
                     var timeReg = convertToSec(localStorage.besTime5)
                     console.log("Tempo registrado - " + timeReg)
-                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
-                        localStorage.setItem('besTime5', tempofinal); // armazena o tempo
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime5', tempofinal);
                     }
                 }
             } else if (g6) {
-                if (localStorage.besTime6 == null) { //não há registro de tempo
+                if (localStorage.besTime6 == null) {
                     console.log("nada ainda")
-                    localStorage.setItem('besTime6', tempofinal); // armazena o tempo
-                } else { // há registro
+                    localStorage.setItem('besTime6', tempofinal);
+                } else {
                     var timeReg = convertToSec(localStorage.besTime6)
                     console.log("Tempo registrado - " + timeReg)
-                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
-                        localStorage.setItem('besTime6', tempofinal); // armazena o tempo
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime6', tempofinal);
                     }
                 }
             } else if (g7) {
-                if (localStorage.besTime7 == null) { //não há registro de tempo
+                if (localStorage.besTime7 == null) {
                     console.log("nada ainda")
-                    localStorage.setItem('besTime7', tempofinal); // armazena o tempo
-                } else { // há registro
+                    localStorage.setItem('besTime7', tempofinal);
+                } else {
                     var timeReg = convertToSec(localStorage.besTime7)
                     console.log("Tempo registrado - " + timeReg)
-                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
-                        localStorage.setItem('besTime7', tempofinal); // armazena o tempo
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime7', tempofinal);
                     }
                 }
             } else if (g8) {
-                if (localStorage.besTime8 == null) { //não há registro de tempo
+                if (localStorage.besTime8 == null) {
                     console.log("nada ainda")
-                    localStorage.setItem('besTime8', tempofinal); // armazena o tempo
-                } else { // há registro
+                    localStorage.setItem('besTime8', tempofinal);
+                } else {
                     var timeReg = convertToSec(localStorage.besTime8)
                     console.log("Tempo registrado - " + timeReg)
-                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
-                        localStorage.setItem('besTime8', tempofinal); // armazena o tempo
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime8', tempofinal);
                     }
                 }
             } else if (g9) {
-                if (localStorage.besTime9 == null) { //não há registro de tempo
+                if (localStorage.besTime9 == null) {
                     console.log("nada ainda")
-                    localStorage.setItem('besTime9', tempofinal); // armazena o tempo
-                } else { // há registro
+                    localStorage.setItem('besTime9', tempofinal);
+                } else {
                     var timeReg = convertToSec(localStorage.besTime9)
                     console.log("Tempo registrado - " + timeReg)
-                    if (finalTime < timeReg) { // compara se o novo tempo é menor que o registrado
-                        localStorage.setItem('besTime9', tempofinal); // armazena o tempo
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime9', tempofinal);
                     }
                 }
             }
@@ -497,6 +510,7 @@ function check() {
             }
             return;
         }
+        // CORRETO
         document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-correto.png"
         if (localStorage.soundPreference === "Off") {
             rightSound.pause()
@@ -508,7 +522,15 @@ function check() {
         setTimeout(function () {
             feedbackPontos.style.display = 'none'
         }, 2300);
-    } else { //CORRETO (O JOGO CONTINUA)
+    } else { //ERRADO (O JOGO CONTINUA)
+        if (padrao) {
+            if (wrongRate >= 1) {
+                localStorage.setItem('wRate', (wrongRate + 1));
+            } else {
+                localStorage.setItem('wRate', 1);
+            }
+        }
+
         if (pontos > 0) {
             if (localStorage.soundPreference === "Off") {
                 wrongSound.pause();
@@ -1053,7 +1075,17 @@ function soundChange() {
     }
 }
 
-const userInfoBox = document.getElementById('user-container')
+var rate = Math.floor((correctRate / (correctRate + wrongRate)) * 100);
+const pcRate = document.getElementById('pcRate');
+if (rate <= 35) {
+    pcRate.style.color = 'red';
+} else if (rate > 35 && rate <= 65) {
+    pcRate.style.color = 'yellow'
+} else if (rate > 65) {
+    pcRate.style.color = 'rgb(82, 255, 82)'
+}
+pcRate.innerHTML = rate + "%";
+const userInfoBox = document.getElementById('user-container');
 function recordPage() {
     document.getElementById('overlay2').style.display = 'none';
     document.getElementById('startbutton').style.display = 'none';
@@ -1140,7 +1172,7 @@ function selection() {
     }
 }
 
-function testchange(){
+function testchange() {
     document.getElementById('character').src = "../Guess-a-Mon/static/images/character_leaf.png"
     document.getElementById('cDesc').innerHTML = 'Treinadora Fulana'
 }
