@@ -884,16 +884,22 @@ header {
 }
 
 #recordBox{
-  display: none;
   width: 400px;
   height: auto;
   padding-bottom: 20px;
-  margin-top: 30px;
+  margin-top: 3px;
   background-color: white;
   border: 1px solid black;
   border-radius: 8px;
-  animation: op .8s;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
   font-family: sans-serif;
+}
+#user-container{
+  animation: op .8s;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
 }
 #numbers{
   font-weight: bold;
@@ -942,7 +948,51 @@ header {
   width: auto;
   cursor: pointer;
 }
-
+#record-title{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#record-title div{
+  font-family: 'Patrick Hand', cursive;
+  color: red;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+#character{
+  width: 22%;
+  margin-top: 10px;
+  margin-left: 35px;
+  margin-bottom: 8px;
+}
+#userBox{
+  width: 400px;
+  height: auto;
+  margin-top: 30px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  display: flex;
+  flex-direction: row;
+}
+#cDesc{
+  margin-right: 10%;
+  text-align: center;
+  margin-top: 18px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 25px;
+  font-weight: bold;
+}
+#desContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
 /* CELULAR (ABAIXO) */
 

@@ -1053,14 +1053,15 @@ function soundChange() {
     }
 }
 
-const recordBox = document.getElementById('recordBox')
+const userInfoBox = document.getElementById('user-container')
 function recordPage() {
     document.getElementById('overlay2').style.display = 'none';
     document.getElementById('startbutton').style.display = 'none';
     document.getElementById('actions').style.display = 'none';
     document.getElementById('level').style.display = 'none';
     document.getElementById('configBox').style.left = '-210px';
-    recordBox.style.display = 'block';
+    document.getElementById('info').style.display = 'none'
+    userInfoBox.style.display = 'flex';
     selection()
 }
 
@@ -1069,7 +1070,8 @@ function backRecord() {
     document.getElementById('startbutton').style.display = 'block';
     document.getElementById('actions').style.display = 'flex';
     document.getElementById('level').style.display = 'block';
-    recordBox.style.display = 'none';
+    userInfoBox.style.display = 'none';
+    document.getElementById('info').style.display = 'flex'
     recordSelect.value = '0';
 }
 function selection() {
@@ -1136,4 +1138,9 @@ function selection() {
             recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime9
         }
     }
+}
+
+function testchange(){
+    document.getElementById('character').src = "../Guess-a-Mon/static/images/character_leaf.png"
+    document.getElementById('cDesc').innerHTML = 'Treinadora Fulana'
 }
