@@ -773,6 +773,7 @@ function getAllIndexes(arr, val) {
 let tipName2 = '';
 let tipMax = false;
 let tipActive = false;
+var dicas = localStorage.getItem('tipRate');
 function tip() {
     const dica1 = document.getElementById('dica1');
     const dica2 = document.getElementById('dica2');
@@ -800,6 +801,13 @@ function tip() {
         document.getElementById("tip-bar").onclick = '';
     } else {
         if (tipActive) { //2ª DICA
+            var dicas = localStorage.getItem('tipRate');
+            if (parseInt(dicas) >= 1) {
+                localStorage.setItem('tipRate', (parseInt(dicas) + 1))
+            } else {
+                localStorage.setItem('tipRate', 1)
+            }
+
             let randomN = () => {
                 let respostaN = 2 * (Math.floor(Math.random() * (currentPokemonName.length - 1)) + 1);
                 return respostaN;
@@ -855,6 +863,13 @@ function tip() {
             }, 3000);
             tipMax = true;
         } else { //1ª DICA
+            var dicas = localStorage.getItem('tipRate');
+            if (parseInt(dicas) >= 1) {
+                localStorage.setItem('tipRate', (parseInt(dicas) + 1))
+            } else {
+                localStorage.setItem('tipRate', 1)
+            }
+            
             document.getElementById('poke-picture').style.display = 'none';
             document.getElementById('tip-content').style.display = 'flex';
             document.getElementById('pokebox').style.height = "200px";
@@ -1083,10 +1098,25 @@ if (rate <= 35) {
     pcRate.style.color = 'yellow'
 } else if (rate > 65) {
     pcRate.style.color = 'rgb(82, 255, 82)'
+} else{
+    pcRate.style.textShadow = 'none'
 }
-pcRate.innerHTML = rate + "%";
+
 const userInfoBox = document.getElementById('user-container');
 function recordPage() {
+    if(rate>=0){
+        pcRate.innerHTML = rate + "%";
+    } else{
+        pcRate.innerHTML = "-";
+    }
+
+    if (parseInt(dicas) >= 1) {
+        document.getElementById('tipNum').innerHTML = dicas;
+    } else {
+        document.getElementById('tipNum').innerHTML = '0';
+    }
+
+
     document.getElementById('overlay2').style.display = 'none';
     document.getElementById('startbutton').style.display = 'none';
     document.getElementById('actions').style.display = 'none';
@@ -1173,27 +1203,27 @@ function selection() {
 }
 
 var trainerName = localStorage.getItem('name');
-function updateName(){
+function updateName() {
     var nameInput = document.getElementById('name-input').value;
     localStorage.setItem('name', nameInput);
     nameInput = ''
 }
 
 var gender = localStorage.getItem('gender');
-if(gender==="F"){
+if (gender === "F") {
     document.getElementById('character').src = "../Guess-a-Mon/static/images/character_leaf.png";
     document.getElementById('trainer').style.backgroundColor = 'rgb(255, 183, 241)';
-    if(!trainerName){
+    if (!trainerName) {
         document.getElementById('cDesc').innerHTML = 'Treinadora Pokémon';
-    } else{
+    } else {
         document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
     }
-} else{
+} else {
     document.getElementById('character').src = "../Guess-a-Mon/static/images/character_red.png"
     document.getElementById('trainer').style.backgroundColor = 'rgb(133, 161, 255)';
-    if(!trainerName){
+    if (!trainerName) {
         document.getElementById('cDesc').innerHTML = 'Treinador Pokémon';
-    } else{
+    } else {
         document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
     }
 }
@@ -1204,18 +1234,18 @@ function changender() {
         document.getElementById('character').src = "../Guess-a-Mon/static/images/character_red.png"
         document.getElementById('trainer').style.backgroundColor = 'rgb(133, 161, 255)';
         localStorage.setItem('gender', "M");
-        if(!trainerName){
+        if (!trainerName) {
             document.getElementById('cDesc').innerHTML = 'Treinador Pokémon';
-        } else{
+        } else {
             document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
         }
     } else {
         document.getElementById('character').src = "../Guess-a-Mon/static/images/character_leaf.png"
         document.getElementById('trainer').style.backgroundColor = 'rgb(255, 183, 241)';
         localStorage.setItem('gender', "F");
-        if(!trainerName){
+        if (!trainerName) {
             document.getElementById('cDesc').innerHTML = 'Treinadora Pokémon';
-        } else{
+        } else {
             document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
         }
     }

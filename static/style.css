@@ -1005,6 +1005,7 @@ header {
 }
 #pcRate{
   margin-left: 8px;
+  align-self: center;
   text-shadow: 1px 1px 2px black;
 }
 .pfRate{
