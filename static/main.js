@@ -1172,7 +1172,51 @@ function selection() {
     }
 }
 
-function testchange() {
-    document.getElementById('character').src = "../Guess-a-Mon/static/images/character_leaf.png"
-    document.getElementById('cDesc').innerHTML = 'Treinadora Fulana'
+var trainerName = localStorage.getItem('name');
+function updateName(){
+    var nameInput = document.getElementById('name-input').value;
+    localStorage.setItem('name', nameInput);
+    nameInput = ''
+}
+
+var gender = localStorage.getItem('gender');
+if(gender==="F"){
+    document.getElementById('character').src = "../Guess-a-Mon/static/images/character_leaf.png";
+    document.getElementById('trainer').style.backgroundColor = 'rgb(255, 183, 241)';
+    if(!trainerName){
+        document.getElementById('cDesc').innerHTML = 'Treinadora Pokémon';
+    } else{
+        document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
+    }
+} else{
+    document.getElementById('character').src = "../Guess-a-Mon/static/images/character_red.png"
+    document.getElementById('trainer').style.backgroundColor = 'rgb(133, 161, 255)';
+    if(!trainerName){
+        document.getElementById('cDesc').innerHTML = 'Treinador Pokémon';
+    } else{
+        document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
+    }
+}
+function changender() {
+    var trainerName = localStorage.getItem('name');
+    var gender = localStorage.getItem('gender');
+    if (gender === 'F') {
+        document.getElementById('character').src = "../Guess-a-Mon/static/images/character_red.png"
+        document.getElementById('trainer').style.backgroundColor = 'rgb(133, 161, 255)';
+        localStorage.setItem('gender', "M");
+        if(!trainerName){
+            document.getElementById('cDesc').innerHTML = 'Treinador Pokémon';
+        } else{
+            document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
+        }
+    } else {
+        document.getElementById('character').src = "../Guess-a-Mon/static/images/character_leaf.png"
+        document.getElementById('trainer').style.backgroundColor = 'rgb(255, 183, 241)';
+        localStorage.setItem('gender', "F");
+        if(!trainerName){
+            document.getElementById('cDesc').innerHTML = 'Treinadora Pokémon';
+        } else{
+            document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
+        }
+    }
 }

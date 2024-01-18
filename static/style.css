@@ -964,6 +964,7 @@ header {
 }
 #character{
   width: 22%;
+  height: 220px;
   margin-top: 10px;
   margin-left: 35px;
   margin-bottom: 8px;
@@ -981,9 +982,9 @@ header {
   flex-direction: row;
 }
 #cDesc{
-  margin-right: 15%;
+  margin-right: 13%;
   text-align: center;
-  margin-top: 18px;
+  margin-top: 15px;
   font-family: 'Patrick Hand', cursive;
   font-size: 25px;
   font-weight: bold;
@@ -996,9 +997,9 @@ header {
 #taxa{
   font-family: sans-serif;
   font-weight: bold;
-  align-self: center;
-  margin-top: 10%;
-  margin-right: 15%;
+  font-size: 15px;
+  margin-top: 6%;
+  margin-left: 9%;
   display: flex;
   flex-direction: row;
 }
@@ -1006,9 +1007,59 @@ header {
   margin-left: 8px;
   text-shadow: 1px 1px 2px black;
 }
+.pfRate{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 15px;
+  margin-left: 9%;
+  display: flex;
+  flex-direction: row;
+}
+#tipNum{
+  margin-left: 8px;
+}
+#vicNum{
+  margin-left: 8px;
+}
 #info-icon{
-  width: 13px;
-  margin-left: 15px;
+  width: auto;
+  margin-left: 35px;
+  align-self: center;
+  cursor: pointer;
+}
+#pfConfig{
+  margin-top: 15px;
+  margin-left: 9%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+#name-input{
+  width: 45%;
+  height: 20px;
+  font-size: 13px;
+  border: 1px solid black;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+#send-name{
+  align-self: center;
+  background-color: rgb(46, 201, 46);
+  border: 1px solid black;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  width: auto;
+  height: 22px;
+  cursor: pointer;
+}
+#trainer{
+  width: 12px;
+  padding: 5px;
+  background-color: rgb(133, 161, 255);
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-right: 5px;
   align-self: center;
   cursor: pointer;
 }
@@ -1406,18 +1457,28 @@ header {
   }
 
   #recordBox{
-    display: none;
     width: auto;
     height: auto;
     padding-bottom: 20px;
-    margin-top: 30px;
-    margin-right: 10px;
-    margin-left: 10px;
+    margin-top: 3px;
     background-color: white;
     border: 1px solid black;
     border-radius: 8px;
-    animation: op .8s;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
     font-family: sans-serif;
+  }
+  #userBox{
+    width: auto;
+    height: auto;
+    margin-top: 30px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 8px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    display: flex;
+    flex-direction: row;
   }
   #numbers{
     font-weight: bold;

@@ -189,7 +189,7 @@
         <!-- Página de informações de usuário: -->
         <div id="user-container">
             <div id="userBox">
-                <img src="../Guess-a-Mon/static/images/character_red.png" id="character" onclick="testchange()">
+                <img src="../Guess-a-Mon/static/images/character_red.png" id="character">
                 <div id="desContainer">
                     <div id="cDesc">Treinador Fulano</div>
                     <div id="taxa">
@@ -197,9 +197,19 @@
                         <div id="pcRate"></div>
                         <img src="../Guess-a-Mon/static/images/info-icon.png" id="info-icon">
                     </div>
-                    <div id="tipRate"></div> <!-- qntd de dicas solicitadas -->
-                    <div id="vicRate"></div> <!-- qntd de vitórias -->
-                    <div id="pfConfig"></div> <!-- configuração de nome e gênero do trainer -->
+                    <div class="pfRate">
+                        Dicas solicitadas:
+                        <div id="tipNum">56</div>
+                    </div>
+                    <div class="pfRate">
+                        Vitórias: 
+                        <div id="vicNum">54</div>
+                    </div>
+                    <div id="pfConfig">
+                        <img src="../Guess-a-Mon/static/images/change-icon.png" onclick="changender()" id="trainer" alt="Gênero do trainer">
+                        <input type="text" maxlength="12" placeholder="  Insira seu nome" id="name-input">
+                        <img src="../Guess-a-Mon/static/images/arrow-icon.png" onclick="updateName()" id="send-name" alt="Nome">
+                    </div>
                 </div>
             </div>
             <div id="recordBox">
