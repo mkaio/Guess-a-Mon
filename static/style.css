@@ -982,23 +982,30 @@ header {
   flex-direction: row;
 }
 #cDesc{
-  margin-right: 13%;
   text-align: center;
-  margin-top: 15px;
   font-family: 'Patrick Hand', cursive;
   font-size: 25px;
+  justify-self: center;
   font-weight: bold;
+  margin-left: 8%;
 }
 #desContainer{
   width: 100%;
   display: flex;
   flex-direction: column;
 }
+.container{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
 #taxa{
   font-family: sans-serif;
   font-weight: bold;
   font-size: 15px;
-  margin-top: 6%;
+  margin-top: 7%;
   margin-left: 9%;
   display: flex;
   flex-direction: row;
@@ -1025,12 +1032,12 @@ header {
 }
 #info-icon{
   width: auto;
-  margin-left: 35px;
   align-self: center;
   cursor: pointer;
+  margin-right: 30px;
 }
 #pfConfig{
-  margin-top: 15px;
+  margin-top: 5px;
   margin-left: 9%;
   display: flex;
   flex-direction: row;
@@ -1063,6 +1070,26 @@ header {
   margin-right: 5px;
   align-self: center;
   cursor: pointer;
+}
+#desContainer hr{
+  margin: 0;
+  width: auto;
+  border: 1px solid;
+  border-radius: 2px;
+  margin-right: 14%;
+  margin-left: 7%;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+#info-pf{
+  display: none;
+  position: absolute;
+  top: 30%;
+  width: 200px;
+  height: 100px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 /* CELULAR (ABAIXO) */

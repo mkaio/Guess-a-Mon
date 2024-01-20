@@ -298,6 +298,7 @@ var besTime9 = localStorage.getItem('besTime9');
 
 var correctRate = parseInt(localStorage.getItem('cRate'));
 var wrongRate = parseInt(localStorage.getItem('wRate'));
+var vicRate = localStorage.getItem('vicRate');
 const rightSound = document.getElementById('right_sound');
 const wrongSound = document.getElementById('wrong_sound');
 const victorySong = document.getElementById('victory_song');
@@ -306,6 +307,7 @@ const guessBox = document.getElementById('guessbox');
 function check() {
     var correctRate = parseInt(localStorage.getItem('cRate'));
     var wrongRate = parseInt(localStorage.getItem('wRate'));
+    var vicRate = localStorage.getItem('vicRate');
 
     const userGuess = guessBox.value.toLowerCase();
     let nome = currentPokemonName.charAt(0).toUpperCase() + currentPokemonName.slice(1);
@@ -384,12 +386,16 @@ function check() {
             var finalTime = convertToSec(tempofinal)
             console.log("Tempo final - " + finalTime)
             if (padrao) { // sem filtro (geral)
+                if (parseInt(vicRate) >= 1) {
+                    localStorage.setItem('vicRate', (vicRate + 1));
+                } else {
+                    localStorage.setItem('vicRate', 1);
+                } c
+
                 if (localStorage.besTime == null) {
-                    console.log("nada ainda")
                     localStorage.setItem('besTime', tempofinal);
                 } else {
                     var timeReg = convertToSec(localStorage.besTime)
-                    console.log("Tempo registrado - " + timeReg)
                     if (finalTime < timeReg) {
                         localStorage.setItem('besTime', tempofinal);
                     }
@@ -801,11 +807,13 @@ function tip() {
         document.getElementById("tip-bar").onclick = '';
     } else {
         if (tipActive) { //2ª DICA
-            var dicas = localStorage.getItem('tipRate');
-            if (parseInt(dicas) >= 1) {
-                localStorage.setItem('tipRate', (parseInt(dicas) + 1))
-            } else {
-                localStorage.setItem('tipRate', 1)
+            if (padrao) {
+                var dicas = localStorage.getItem('tipRate');
+                if (parseInt(dicas) >= 1) {
+                    localStorage.setItem('tipRate', (parseInt(dicas) + 1))
+                } else {
+                    localStorage.setItem('tipRate', 1)
+                }
             }
 
             let randomN = () => {
@@ -863,13 +871,15 @@ function tip() {
             }, 3000);
             tipMax = true;
         } else { //1ª DICA
-            var dicas = localStorage.getItem('tipRate');
-            if (parseInt(dicas) >= 1) {
-                localStorage.setItem('tipRate', (parseInt(dicas) + 1))
-            } else {
-                localStorage.setItem('tipRate', 1)
+            if (padrao) {
+                var dicas = localStorage.getItem('tipRate');
+                if (parseInt(dicas) >= 1) {
+                    localStorage.setItem('tipRate', (parseInt(dicas) + 1))
+                } else {
+                    localStorage.setItem('tipRate', 1)
+                }
             }
-            
+
             document.getElementById('poke-picture').style.display = 'none';
             document.getElementById('tip-content').style.display = 'flex';
             document.getElementById('pokebox').style.height = "200px";
@@ -1095,18 +1105,18 @@ const pcRate = document.getElementById('pcRate');
 if (rate <= 35) {
     pcRate.style.color = 'red';
 } else if (rate > 35 && rate <= 65) {
-    pcRate.style.color = 'yellow'
+    pcRate.style.color = 'yellow';
 } else if (rate > 65) {
-    pcRate.style.color = 'rgb(82, 255, 82)'
-} else{
-    pcRate.style.textShadow = 'none'
+    pcRate.style.color = 'rgb(82, 255, 82)';
+} else {
+    pcRate.style.textShadow = 'none';
 }
 
 const userInfoBox = document.getElementById('user-container');
 function recordPage() {
-    if(rate>=0){
+    if (rate >= 0) {
         pcRate.innerHTML = rate + "%";
-    } else{
+    } else {
         pcRate.innerHTML = "-";
     }
 
@@ -1116,6 +1126,11 @@ function recordPage() {
         document.getElementById('tipNum').innerHTML = '0';
     }
 
+    if (parseInt(vicRate) >= 1) {
+        document.getElementById('vicNum').innerHTML = vicRate;
+    } else {
+        document.getElementById('vicNum').innerHTML = '0';
+    }
 
     document.getElementById('overlay2').style.display = 'none';
     document.getElementById('startbutton').style.display = 'none';
@@ -1203,13 +1218,39 @@ function selection() {
 }
 
 var trainerName = localStorage.getItem('name');
+var gender = localStorage.getItem('gender');
 function updateName() {
+    var gender = localStorage.getItem('gender');
     var nameInput = document.getElementById('name-input').value;
     localStorage.setItem('name', nameInput);
-    nameInput = ''
+    var trainerName = localStorage.getItem('name');
+    if (gender === "F") {
+        document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
+    } else {
+        document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
+    }
+    document.getElementById('name-input').value = '';
+    if (trainerName.length <= 5) {
+        document.getElementById('cDesc').style.marginLeft = '12%';
+    } else if(trainerName.length > 10){
+        document.getElementById('cDesc').style.marginLeft = '3%';
+    } else{
+        document.getElementById('cDesc').style.marginLeft = '8%';
+    }
 }
+if (trainerName.length <= 5) {
+    document.getElementById('cDesc').style.marginLeft = '12%';
+} else if(trainerName.length > 10){
+    document.getElementById('cDesc').style.marginLeft = '3%';
+} else{
+    document.getElementById('cDesc').style.marginLeft = '8%';
+}
+document.getElementById('name-input').addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        updateName();
+    }
+})
 
-var gender = localStorage.getItem('gender');
 if (gender === "F") {
     document.getElementById('character').src = "../Guess-a-Mon/static/images/character_leaf.png";
     document.getElementById('trainer').style.backgroundColor = 'rgb(255, 183, 241)';
@@ -1249,4 +1290,8 @@ function changender() {
             document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
         }
     }
+}
+
+function pfInfo(){
+    
 }
