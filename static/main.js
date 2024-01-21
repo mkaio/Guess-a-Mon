@@ -1139,6 +1139,9 @@ function recordPage() {
     document.getElementById('configBox').style.left = '-210px';
     document.getElementById('info').style.display = 'none'
     userInfoBox.style.display = 'flex';
+    document.getElementById('pf-button').style.display = 'block';
+    document.getElementById('pfConfig').style.display = 'none';
+    document.getElementById('pf-title').style.display = 'none';
     selection()
 }
 
@@ -1148,7 +1151,8 @@ function backRecord() {
     document.getElementById('actions').style.display = 'flex';
     document.getElementById('level').style.display = 'block';
     userInfoBox.style.display = 'none';
-    document.getElementById('info').style.display = 'flex'
+    document.getElementById('info').style.display = 'flex';
+    document.getElementById('name-input').value = '';
     recordSelect.value = '0';
 }
 function selection() {
@@ -1217,81 +1221,228 @@ function selection() {
     }
 }
 
-var trainerName = localStorage.getItem('name');
-var gender = localStorage.getItem('gender');
+function openConfig() {
+    document.getElementById('pf-button').style.display = 'none';
+    document.getElementById('pfConfig').style.display = 'flex';
+    document.getElementById('pf-title').style.display = 'flex';
+}
+function backConfig() {
+    document.getElementById('pf-button').style.display = 'block';
+    document.getElementById('pfConfig').style.display = 'none';
+    document.getElementById('pf-title').style.display = 'none';
+    document.getElementById('name-input').value = '';
+}
+
+var trainerName = localStorage.getItem('name') || '';
+var trainer = localStorage.getItem('trainer');
 function updateName() {
-    var gender = localStorage.getItem('gender');
     var nameInput = document.getElementById('name-input').value;
     localStorage.setItem('name', nameInput);
-    var trainerName = localStorage.getItem('name');
-    if (gender === "F") {
-        document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
+    var trainerName = localStorage.getItem('name') || '';
+    var trainerPn = localStorage.getItem('pn') || '';
+
+    if (trainerPn.length === 1) {
+        if (trainerPn === "m") {
+            document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
+            if (trainerName === '') {
+                document.getElementById('cDesc').innerHTML = 'Treinador ' + 'Pokémon';
+            }
+        } else if (trainerPn === "f") {
+            document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
+            if (trainerName === '') {
+                document.getElementById('cDesc').innerHTML = 'Treinadora ' + 'Pokémon';
+            }
+        } else if (trainerPn === "x") {
+            document.getElementById('cDesc').innerHTML = 'Trainer ' + trainerName;
+            if (trainerName === '') {
+                document.getElementById('cDesc').innerHTML = 'Trainer ' + 'Pokémon';
+            }
+        }
     } else {
         document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
+        if (trainerName === '') {
+            document.getElementById('cDesc').innerHTML = 'Treinador ' + 'Pokémon';
+        }
     }
+
     document.getElementById('name-input').value = '';
+
+    if (trainerPn === 'm' || trainerPn === '') {
+        if (trainerName.length <= 5) {
+            document.getElementById('cDesc').style.marginLeft = '14%';
+        } else if (trainerName.length > 10) {
+            document.getElementById('cDesc').style.marginLeft = '0';
+        } else {
+            document.getElementById('cDesc').style.marginLeft = '8%';
+        }
+    } else if (trainerPn === 'f') {
+        if (trainerName.length <= 5) {
+            document.getElementById('cDesc').style.marginLeft = '14%';
+        } else if (trainerName.length > 10) {
+            document.getElementById('cDesc').style.marginLeft = '0';
+        } else {
+            document.getElementById('cDesc').style.marginLeft = '6%';
+        }
+    } else if (trainerPn === 'x') {
+        if (trainerName.length <= 5) {
+            document.getElementById('cDesc').style.marginLeft = '14%';
+        } else if (trainerName.length > 10) {
+            document.getElementById('cDesc').style.marginLeft = '0';
+        } else {
+            document.getElementById('cDesc').style.marginLeft = '8%';
+        }
+    }
+
+}
+
+if (trainerPn === 'm' || trainerPn === '') {
     if (trainerName.length <= 5) {
-        document.getElementById('cDesc').style.marginLeft = '12%';
-    } else if(trainerName.length > 10){
-        document.getElementById('cDesc').style.marginLeft = '3%';
-    } else{
+        document.getElementById('cDesc').style.marginLeft = '14%';
+    } else if (trainerName.length > 10) {
+        document.getElementById('cDesc').style.marginLeft = '0';
+    } else {
+        document.getElementById('cDesc').style.marginLeft = '8%';
+    }
+} else if (trainerPn === 'f') {
+    if (trainerName.length <= 5) {
+        document.getElementById('cDesc').style.marginLeft = '14%';
+    } else if (trainerName.length > 10) {
+        document.getElementById('cDesc').style.marginLeft = '0';
+    } else {
+        document.getElementById('cDesc').style.marginLeft = '8%';
+    }
+} else if (trainerPn === 'x') {
+    if (trainerName.length <= 5) {
+        document.getElementById('cDesc').style.marginLeft = '14%';
+    } else if (trainerName.length > 10) {
+        document.getElementById('cDesc').style.marginLeft = '0';
+    } else {
         document.getElementById('cDesc').style.marginLeft = '8%';
     }
 }
-if (trainerName.length <= 5) {
-    document.getElementById('cDesc').style.marginLeft = '12%';
-} else if(trainerName.length > 10){
-    document.getElementById('cDesc').style.marginLeft = '3%';
-} else{
-    document.getElementById('cDesc').style.marginLeft = '8%';
-}
+
 document.getElementById('name-input').addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         updateName();
     }
 })
 
-if (gender === "F") {
+if (trainer === "L") {
     document.getElementById('character').src = "../Guess-a-Mon/static/images/character_leaf.png";
-    document.getElementById('trainer').style.backgroundColor = 'rgb(255, 183, 241)';
-    if (!trainerName) {
-        document.getElementById('cDesc').innerHTML = 'Treinadora Pokémon';
-    } else {
-        document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
-    }
 } else {
     document.getElementById('character').src = "../Guess-a-Mon/static/images/character_red.png"
-    document.getElementById('trainer').style.backgroundColor = 'rgb(133, 161, 255)';
-    if (!trainerName) {
-        document.getElementById('cDesc').innerHTML = 'Treinador Pokémon';
-    } else {
-        document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
-    }
 }
-function changender() {
-    var trainerName = localStorage.getItem('name');
-    var gender = localStorage.getItem('gender');
-    if (gender === 'F') {
+
+if (!trainerName) {
+    document.getElementById('cDesc').innerHTML = 'Trainer Pokémon';
+} else {
+    document.getElementById('cDesc').innerHTML = 'Trainer ' + trainerName;
+}
+
+function changeTrainer() {
+    var trainerName = localStorage.getItem('name') || '';
+    var trainer = localStorage.getItem('trainer');
+    if (trainer === 'L') {
         document.getElementById('character').src = "../Guess-a-Mon/static/images/character_red.png"
-        document.getElementById('trainer').style.backgroundColor = 'rgb(133, 161, 255)';
-        localStorage.setItem('gender', "M");
-        if (!trainerName) {
-            document.getElementById('cDesc').innerHTML = 'Treinador Pokémon';
-        } else {
-            document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
-        }
+        localStorage.setItem('trainer', "R");
     } else {
         document.getElementById('character').src = "../Guess-a-Mon/static/images/character_leaf.png"
-        document.getElementById('trainer').style.backgroundColor = 'rgb(255, 183, 241)';
-        localStorage.setItem('gender', "F");
-        if (!trainerName) {
-            document.getElementById('cDesc').innerHTML = 'Treinadora Pokémon';
-        } else {
+        localStorage.setItem('trainer', "L");
+    }
+}
+
+var trainerPn = localStorage.getItem('pn') || '';
+if (trainerPn.length === 1) {
+    if (trainerName.length >= 1) {
+        if (trainerPn === "m") {
+            document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
+        } else if (trainerPn === "f") {
             document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
+        } else if (trainerPn === "x") {
+            document.getElementById('cDesc').innerHTML = 'Trainer ' + trainerName;
+        }
+    } else {
+        if (trainerPn === "m") {
+            document.getElementById('cDesc').innerHTML = 'Treinador ' + 'Pokémon';
+        } else if (trainerPn === "f") {
+            document.getElementById('cDesc').innerHTML = 'Treinadora ' + 'Pokémon';
+        } else if (trainerPn === "x") {
+            document.getElementById('cDesc').innerHTML = 'Trainer ' + 'Pokémon';
+        }
+    }
+} else {
+    if (trainerName.length >= 1) {
+        document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
+    } else {
+        document.getElementById('cDesc').innerHTML = 'Treinador Pokémon';
+    }
+}
+
+function changePn() {
+    var trainerName = localStorage.getItem('name') || '';
+    var trainerPn = localStorage.getItem('pn') || '';
+    if (trainerPn.length === 1) {
+        if (trainerName.length >= 1) {
+            if (trainerPn === "m") {
+                document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
+                localStorage.setItem('pn', 'f');
+            } else if (trainerPn === "f") {
+                document.getElementById('cDesc').innerHTML = 'Trainer ' + trainerName;
+                localStorage.setItem('pn', 'x');
+            } else if (trainerPn === "x") {
+                document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
+                localStorage.setItem('pn', 'm');
+            }
+        } else {
+            if (trainerPn === "m") {
+                document.getElementById('cDesc').innerHTML = 'Treinadora ' + 'Pokémon';
+                localStorage.setItem('pn', 'f');
+            } else if (trainerPn === "f") {
+                document.getElementById('cDesc').innerHTML = 'Trainer ' + 'Pokémon';
+                localStorage.setItem('pn', 'x');
+            } else if (trainerPn === "x") {
+                document.getElementById('cDesc').innerHTML = 'Treinador ' + 'Pokémon';
+                localStorage.setItem('pn', 'm');
+            }
+        }
+    } else {
+        if (trainerName.length >= 1) {
+            document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
+            document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
+            localStorage.setItem('pn', 'f');
+        } else {
+            document.getElementById('cDesc').innerHTML = 'Treinadora ' + 'Pokémon';
+            localStorage.setItem('pn', 'f');
+        }
+    }
+
+    if (trainerPn === 'm' || trainerPn === '') {
+        if (trainerName.length <= 5) {
+            document.getElementById('cDesc').style.marginLeft = '14%';
+        } else if (trainerName.length > 10) {
+            document.getElementById('cDesc').style.marginLeft = '0';
+        } else {
+            document.getElementById('cDesc').style.marginLeft = '8%';
+        }
+    } else if (trainerPn === 'f') {
+        if (trainerName.length <= 5) {
+            document.getElementById('cDesc').style.marginLeft = '14%';
+        } else if (trainerName.length > 10) {
+            document.getElementById('cDesc').style.marginLeft = '0';
+        } else {
+            document.getElementById('cDesc').style.marginLeft = '6%';
+        }
+    } else if (trainerPn === 'x') {
+        if (trainerName.length <= 5) {
+            document.getElementById('cDesc').style.marginLeft = '14%';
+        } else if (trainerName.length > 10) {
+            document.getElementById('cDesc').style.marginLeft = '0';
+        } else {
+            document.getElementById('cDesc').style.marginLeft = '8%';
         }
     }
 }
 
-function pfInfo(){
-    
+function pfInfo() {
+
 }

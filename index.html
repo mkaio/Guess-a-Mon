@@ -192,7 +192,7 @@
                 <img src="../Guess-a-Mon/static/images/character_red.png" id="character">
                 <div id="desContainer">
                     <div class="container">
-                        <div id="cDesc">Treinador Fulano</div>
+                        <div id="cDesc">Treinador Pokémon</div>
                         <img src="../Guess-a-Mon/static/images/info-icon.png" onclick="pfInfo()" id="info-icon">
                     </div>
                     <div id="taxa">
@@ -208,14 +208,24 @@
                         <div id="vicNum"></div>
                     </div>
                     <hr>
-                    <div class="pfRate" style="margin-top: 0;">Configurações do perfil</div>
+                    <div id="pf-title">
+                        Configurações de perfil
+                        <div style="margin-right: 18%; cursor: pointer;" onclick="backConfig()">&times;</div>
+                    </div>
+
                     <div id="pfConfig">
-                        <img src="../Guess-a-Mon/static/images/change-icon.png" onclick="changender()" id="trainer"
-                            alt="Gênero do trainer">
+                        <img src="../Guess-a-Mon/static/images/change-icon.png" onclick="changeTrainer()" id="trainer">
+                        <img src="../Guess-a-Mon/static/images/id-icon.png" onclick="changePn()" id="trainer-name">
                         <input type="text" maxlength="11" placeholder="  Insira seu nome" id="name-input">
                         <img src="../Guess-a-Mon/static/images/arrow-icon.png" onclick="updateName()" id="send-name"
                             alt="Nome">
                     </div>
+                    <button id="pf-button" onclick="openConfig()">
+                        <div id="container2">
+                            <img src="../Guess-a-Mon/static/images/pfconfig-icon.png">
+                            <div> Configurar perfil</div>
+                        </div>
+                    </button>
                 </div>
             </div>
             <div id="recordBox">
@@ -245,7 +255,7 @@
                 </div>
             </div>
             <div id="info-pf">
-                            
+
             </div>
         </div>
     </section>

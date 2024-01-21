@@ -999,7 +999,7 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 #taxa{
   font-family: sans-serif;
@@ -1034,14 +1034,25 @@ header {
   width: auto;
   align-self: center;
   cursor: pointer;
-  margin-right: 30px;
 }
 #pfConfig{
   margin-top: 5px;
   margin-left: 9%;
-  display: flex;
+  animation: op .7s;
+  display: none;
   flex-direction: row;
   align-content: center;
+}
+#pf-title{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 0;
+  margin-left: 9%;
+  animation: op .7s;
+  display: none;
+  flex-direction: row;
+  justify-content: space-between;
 }
 #name-input{
   width: 45%;
@@ -1064,10 +1075,20 @@ header {
 #trainer{
   width: 12px;
   padding: 5px;
-  background-color: rgb(133, 161, 255);
+  background-color: rgb(241, 241, 241);
   border: 1px solid black;
   border-radius: 5px;
-  margin-right: 5px;
+  margin-right: 3px;
+  align-self: center;
+  cursor: pointer;
+}
+#trainer-name{
+  width: auto;
+  padding: 3px;
+  background-color: rgb(239, 239, 239);
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-right: 3px;
   align-self: center;
   cursor: pointer;
 }
@@ -1081,6 +1102,12 @@ header {
   margin-top: 20px;
   margin-bottom: 5px;
 }
+#container2{
+  display: flex; 
+  flex-direction: row; 
+  align-items: center; 
+  justify-content: space-around;
+}
 #info-pf{
   display: none;
   position: absolute;
@@ -1090,6 +1117,21 @@ header {
   background-color: white;
   border: 1px solid black;
   border-radius: 5px;
+}
+#pf-button{
+  justify-self: center;
+  align-self: center;
+  margin-right: 14%;
+  margin-top: 15px;
+  width: 50%;
+  font-family: sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 5px;
+  background-color: #facb04;
+  animation: op .7s;
 }
 
 /* CELULAR (ABAIXO) */
