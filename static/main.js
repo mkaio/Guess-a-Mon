@@ -387,10 +387,10 @@ function check() {
             console.log("Tempo final - " + finalTime)
             if (padrao) { // sem filtro (geral)
                 if (parseInt(vicRate) >= 1) {
-                    localStorage.setItem('vicRate', (vicRate + 1));
+                    localStorage.setItem('vicRate', (parseInt(vicRate) + 1));
                 } else {
                     localStorage.setItem('vicRate', 1);
-                } c
+                }
 
                 if (localStorage.besTime == null) {
                     localStorage.setItem('besTime', tempofinal);
@@ -402,99 +402,81 @@ function check() {
                 }
             } else if (g1) {
                 if (localStorage.besTime1 == null) {
-                    console.log("nada ainda")
                     localStorage.setItem('besTime1', tempofinal);
                 } else {
                     var timeReg = convertToSec(localStorage.besTime1)
-                    console.log("Tempo registrado - " + timeReg)
                     if (finalTime < timeReg) {
                         localStorage.setItem('besTime1', tempofinal);
                     }
                 }
             } else if (g2) {
                 if (localStorage.besTime2 == null) {
-                    console.log("nada ainda")
                     localStorage.setItem('besTime2', tempofinal);
                 } else {
                     var timeReg = convertToSec(localStorage.besTime2)
-                    console.log("Tempo registrado - " + timeReg)
                     if (finalTime < timeReg) {
                         localStorage.setItem('besTime2', tempofinal);
                     }
                 }
             } else if (g3) {
                 if (localStorage.besTime3 == null) {
-                    console.log("nada ainda")
                     localStorage.setItem('besTime3', tempofinal);
                 } else {
                     var timeReg = convertToSec(localStorage.besTime3)
-                    console.log("Tempo registrado - " + timeReg)
                     if (finalTime < timeReg) {
                         localStorage.setItem('besTime3', tempofinal);
                     }
                 }
             } else if (g4) {
                 if (localStorage.besTime4 == null) {
-                    console.log("nada ainda")
                     localStorage.setItem('besTime4', tempofinal);
                 } else {
                     var timeReg = convertToSec(localStorage.besTime4)
-                    console.log("Tempo registrado - " + timeReg)
                     if (finalTime < timeReg) {
                         localStorage.setItem('besTime4', tempofinal);
                     }
                 }
             } else if (g5) {
                 if (localStorage.besTime5 == null) {
-                    console.log("nada ainda")
                     localStorage.setItem('besTime5', tempofinal);
                 } else {
                     var timeReg = convertToSec(localStorage.besTime5)
-                    console.log("Tempo registrado - " + timeReg)
                     if (finalTime < timeReg) {
                         localStorage.setItem('besTime5', tempofinal);
                     }
                 }
             } else if (g6) {
                 if (localStorage.besTime6 == null) {
-                    console.log("nada ainda")
                     localStorage.setItem('besTime6', tempofinal);
                 } else {
                     var timeReg = convertToSec(localStorage.besTime6)
-                    console.log("Tempo registrado - " + timeReg)
                     if (finalTime < timeReg) {
                         localStorage.setItem('besTime6', tempofinal);
                     }
                 }
             } else if (g7) {
                 if (localStorage.besTime7 == null) {
-                    console.log("nada ainda")
                     localStorage.setItem('besTime7', tempofinal);
                 } else {
                     var timeReg = convertToSec(localStorage.besTime7)
-                    console.log("Tempo registrado - " + timeReg)
                     if (finalTime < timeReg) {
                         localStorage.setItem('besTime7', tempofinal);
                     }
                 }
             } else if (g8) {
                 if (localStorage.besTime8 == null) {
-                    console.log("nada ainda")
                     localStorage.setItem('besTime8', tempofinal);
                 } else {
                     var timeReg = convertToSec(localStorage.besTime8)
-                    console.log("Tempo registrado - " + timeReg)
                     if (finalTime < timeReg) {
                         localStorage.setItem('besTime8', tempofinal);
                     }
                 }
             } else if (g9) {
                 if (localStorage.besTime9 == null) {
-                    console.log("nada ainda")
                     localStorage.setItem('besTime9', tempofinal);
                 } else {
                     var timeReg = convertToSec(localStorage.besTime9)
-                    console.log("Tempo registrado - " + timeReg)
                     if (finalTime < timeReg) {
                         localStorage.setItem('besTime9', tempofinal);
                     }
@@ -1443,6 +1425,16 @@ function changePn() {
     }
 }
 
-function pfInfo() {
+document.getElementById('info-icon').addEventListener('click', function () {
+    var configPopup = document.getElementById('config-popup');
+    configPopup.style.display = (configPopup.style.display === 'block' ? 'none' : 'block');
+});
 
-}
+document.addEventListener('click', function (event) {
+    var configPopup = document.getElementById('config-popup');
+    var infoIcon = document.getElementById('info-icon');
+
+    if (!infoIcon.contains(event.target) && !configPopup.contains(event.target)) {
+        configPopup.style.display = 'none';
+    }
+});
