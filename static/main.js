@@ -82,6 +82,15 @@ window.onload = function () {
 };
 
 let padrao = false;
+let g1 = false;
+let g2 = false;
+let g3 = false;
+let g4 = false;
+let g5 = false;
+let g6 = false;
+let g7 = false;
+let g8 = false;
+let g9 = false;
 
 let feedbackactive = false;
 
@@ -94,46 +103,55 @@ function gen(number) {
         case 1:
             min = 1;
             max = 151;
+            g1 = true
             getRandomPokemon();
             break;
         case 2:
             min = 152;
             max = 251;
+            g2 = true
             getRandomPokemon();
             break;
         case 3:
             min = 252;
             max = 386;
+            g3 = true
             getRandomPokemon();
             break;
         case 4:
             min = 387;
             max = 493;
+            g4 = true
             getRandomPokemon();
             break;
         case 5:
             min = 494;
             max = 649;
+            g5 = true
             getRandomPokemon();
             break;
         case 6:
             min = 650;
             max = 721;
+            g6 = true
             getRandomPokemon();
             break;
         case 7:
             min = 722;
             max = 809;
+            g7 = true
             getRandomPokemon();
             break;
         case 8:
             min = 810;
             max = 905;
+            g8 = true
             getRandomPokemon();
             break;
         case 9:
             min = 906;
             max = 1017;
+            g9 = true
             getRandomPokemon();
             break;
         default:
@@ -152,7 +170,7 @@ var soundPreference = localStorage.getItem('soundPreference');
 function getRandomPokemon() {
     if (localStorage.musicPreference === "Off") {
         backgroundMusic.pause();
-    }else{
+    } else {
         backgroundMusic.play();
     }
 
@@ -266,12 +284,31 @@ function keep() {
     document.getElementById('correction').innerHTML = ''
 }
 
+
+var besTime = localStorage.getItem('besTime');
+var besTime1 = localStorage.getItem('besTime1');
+var besTime2 = localStorage.getItem('besTime2');
+var besTime3 = localStorage.getItem('besTime3');
+var besTime4 = localStorage.getItem('besTime4');
+var besTime5 = localStorage.getItem('besTime5');
+var besTime6 = localStorage.getItem('besTime6');
+var besTime7 = localStorage.getItem('besTime7');
+var besTime8 = localStorage.getItem('besTime8');
+var besTime9 = localStorage.getItem('besTime9');
+
+var correctRate = parseInt(localStorage.getItem('cRate'));
+var wrongRate = parseInt(localStorage.getItem('wRate'));
+var vicRate = localStorage.getItem('vicRate');
 const rightSound = document.getElementById('right_sound');
 const wrongSound = document.getElementById('wrong_sound');
 const victorySong = document.getElementById('victory_song');
 const endgameSound = document.getElementById('endgame_sound');
 const guessBox = document.getElementById('guessbox');
 function check() {
+    var correctRate = parseInt(localStorage.getItem('cRate'));
+    var wrongRate = parseInt(localStorage.getItem('wRate'));
+    var vicRate = localStorage.getItem('vicRate');
+
     const userGuess = guessBox.value.toLowerCase();
     let nome = currentPokemonName.charAt(0).toUpperCase() + currentPokemonName.slice(1);
 
@@ -281,6 +318,14 @@ function check() {
     let feedbackPontos = document.getElementById('point-back')
 
     if (userGuess === currentPokemonName) {
+        if (padrao) {
+            if (correctRate >= 1) {
+                localStorage.setItem('cRate', (correctRate + 1));
+            } else {
+                localStorage.setItem('cRate', 1);
+            }
+        }
+
         document.getElementById('loading').style.display = "block"
         document.getElementById('pokebox').style.paddingBottom = "1%";
         pause();
@@ -310,14 +355,14 @@ function check() {
             document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/win-GAM.png"
             document.getElementById('loading').style.display = "none";
             document.getElementById('points').innerHTML = "Pontuação: " + pontos + " / 20"
-            if (localStorage.soundPreference === "Off"){
+            if (localStorage.soundPreference === "Off") {
                 rightSound.pause()
-            } else{
+            } else {
                 rightSound.play()
             }
             if (localStorage.musicPreference === "Off") {
-                
-            } else{
+
+            } else {
                 backgroundMusic.pause();
                 victorySong.play();
             }
@@ -331,24 +376,133 @@ function check() {
             document.getElementById('tip-button1').style.display = "none";
             document.getElementById('tip-button2').style.display = "none";
             guessBox.value = '';
+
+            // sistema de salvamento de pontuação:
+            function convertToSec(tempo) {
+                var partes = tempo.split(":");
+                return parseInt(partes[0]) * 60 + parseInt(partes[1]);
+            }
+
+            var finalTime = convertToSec(tempofinal)
+            console.log("Tempo final - " + finalTime)
+            if (padrao) { // sem filtro (geral)
+                if (parseInt(vicRate) >= 1) {
+                    localStorage.setItem('vicRate', (parseInt(vicRate) + 1));
+                } else {
+                    localStorage.setItem('vicRate', 1);
+                }
+
+                if (localStorage.besTime == null) {
+                    localStorage.setItem('besTime', tempofinal);
+                } else {
+                    var timeReg = convertToSec(localStorage.besTime)
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime', tempofinal);
+                    }
+                }
+            } else if (g1) {
+                if (localStorage.besTime1 == null) {
+                    localStorage.setItem('besTime1', tempofinal);
+                } else {
+                    var timeReg = convertToSec(localStorage.besTime1)
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime1', tempofinal);
+                    }
+                }
+            } else if (g2) {
+                if (localStorage.besTime2 == null) {
+                    localStorage.setItem('besTime2', tempofinal);
+                } else {
+                    var timeReg = convertToSec(localStorage.besTime2)
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime2', tempofinal);
+                    }
+                }
+            } else if (g3) {
+                if (localStorage.besTime3 == null) {
+                    localStorage.setItem('besTime3', tempofinal);
+                } else {
+                    var timeReg = convertToSec(localStorage.besTime3)
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime3', tempofinal);
+                    }
+                }
+            } else if (g4) {
+                if (localStorage.besTime4 == null) {
+                    localStorage.setItem('besTime4', tempofinal);
+                } else {
+                    var timeReg = convertToSec(localStorage.besTime4)
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime4', tempofinal);
+                    }
+                }
+            } else if (g5) {
+                if (localStorage.besTime5 == null) {
+                    localStorage.setItem('besTime5', tempofinal);
+                } else {
+                    var timeReg = convertToSec(localStorage.besTime5)
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime5', tempofinal);
+                    }
+                }
+            } else if (g6) {
+                if (localStorage.besTime6 == null) {
+                    localStorage.setItem('besTime6', tempofinal);
+                } else {
+                    var timeReg = convertToSec(localStorage.besTime6)
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime6', tempofinal);
+                    }
+                }
+            } else if (g7) {
+                if (localStorage.besTime7 == null) {
+                    localStorage.setItem('besTime7', tempofinal);
+                } else {
+                    var timeReg = convertToSec(localStorage.besTime7)
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime7', tempofinal);
+                    }
+                }
+            } else if (g8) {
+                if (localStorage.besTime8 == null) {
+                    localStorage.setItem('besTime8', tempofinal);
+                } else {
+                    var timeReg = convertToSec(localStorage.besTime8)
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime8', tempofinal);
+                    }
+                }
+            } else if (g9) {
+                if (localStorage.besTime9 == null) {
+                    localStorage.setItem('besTime9', tempofinal);
+                } else {
+                    var timeReg = convertToSec(localStorage.besTime9)
+                    if (finalTime < timeReg) {
+                        localStorage.setItem('besTime9', tempofinal);
+                    }
+                }
+            }
+
+
             setTimeout(function () {
                 feedbackPontos.style.display = 'none'
             }, 2500);
-            if (localStorage.musicPreference === "Off"){
+            if (localStorage.musicPreference === "Off") {
                 setTimeout(function () {
                     location.reload();
                 }, 5000);
-            } else{
+            } else {
                 setTimeout(function () {
                     location.reload();
                 }, 13000);
             }
             return;
         }
+        // CORRETO
         document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-correto.png"
-        if (localStorage.soundPreference === "Off"){
+        if (localStorage.soundPreference === "Off") {
             rightSound.pause()
-        } else{
+        } else {
             rightSound.play()
         }
         document.getElementById('tip-button1').style.display = "none";
@@ -356,11 +510,19 @@ function check() {
         setTimeout(function () {
             feedbackPontos.style.display = 'none'
         }, 2300);
-    } else { //CORRETO (O JOGO CONTINUA)
+    } else { //ERRADO (O JOGO CONTINUA)
+        if (padrao) {
+            if (wrongRate >= 1) {
+                localStorage.setItem('wRate', (wrongRate + 1));
+            } else {
+                localStorage.setItem('wRate', 1);
+            }
+        }
+
         if (pontos > 0) {
-            if (localStorage.soundPreference === "Off"){
+            if (localStorage.soundPreference === "Off") {
                 wrongSound.pause();
-            } else{
+            } else {
                 wrongSound.play();
             }
             document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-errado.png"
@@ -384,9 +546,9 @@ function check() {
         } else { // FIM DE JOGO (DERROTA)
             document.getElementById('poke-picture').src = "../Guess-a-Mon/static/images/GAM-endgame.png"
             document.getElementById('correction').innerHTML = "O Pokémon era: " + nome
-            if (localStorage.soundPreference === "Off"){
+            if (localStorage.soundPreference === "Off") {
                 wrongSound.pause();
-            } else{
+            } else {
                 wrongSound.play();
             }
             pause();
@@ -459,6 +621,9 @@ function backfilter() {
 }
 
 function howtoplay() {
+    if (window.matchMedia("(max-width:600px)").matches) {
+        document.getElementById("config").style.zIndex = '0'
+    }
     document.getElementById('overlay').style.display = 'block';
     document.getElementById('pop-up').style.display = 'block';
 }
@@ -466,6 +631,9 @@ function howtoplay() {
 function closepopup() {
     document.getElementById('overlay').style.display = 'none';
     document.getElementById('pop-up').style.display = 'none';
+    if (window.matchMedia("(max-width:600px)").matches) {
+        document.getElementById("config").style.zIndex = '2'
+    }
 }
 
 let resultadosFiltrados = [];
@@ -593,6 +761,7 @@ function getAllIndexes(arr, val) {
 let tipName2 = '';
 let tipMax = false;
 let tipActive = false;
+var dicas = localStorage.getItem('tipRate');
 function tip() {
     const dica1 = document.getElementById('dica1');
     const dica2 = document.getElementById('dica2');
@@ -620,6 +789,15 @@ function tip() {
         document.getElementById("tip-bar").onclick = '';
     } else {
         if (tipActive) { //2ª DICA
+            if (padrao) {
+                var dicas = localStorage.getItem('tipRate');
+                if (parseInt(dicas) >= 1) {
+                    localStorage.setItem('tipRate', (parseInt(dicas) + 1))
+                } else {
+                    localStorage.setItem('tipRate', 1)
+                }
+            }
+
             let randomN = () => {
                 let respostaN = 2 * (Math.floor(Math.random() * (currentPokemonName.length - 1)) + 1);
                 return respostaN;
@@ -675,6 +853,15 @@ function tip() {
             }, 3000);
             tipMax = true;
         } else { //1ª DICA
+            if (padrao) {
+                var dicas = localStorage.getItem('tipRate');
+                if (parseInt(dicas) >= 1) {
+                    localStorage.setItem('tipRate', (parseInt(dicas) + 1))
+                } else {
+                    localStorage.setItem('tipRate', 1)
+                }
+            }
+
             document.getElementById('poke-picture').style.display = 'none';
             document.getElementById('tip-content').style.display = 'flex';
             document.getElementById('pokebox').style.height = "200px";
@@ -894,3 +1081,360 @@ function soundChange() {
         localStorage.setItem('soundPreference', "On");
     }
 }
+
+var rate = Math.floor((correctRate / (correctRate + wrongRate)) * 100);
+const pcRate = document.getElementById('pcRate');
+if (rate <= 35) {
+    pcRate.style.color = 'rgb(255, 62, 62)';
+} else if (rate > 35 && rate <= 65) {
+    pcRate.style.color = '#ffda38';
+} else if (rate > 65) {
+    pcRate.style.color = 'rgb(82, 255, 82)';
+} else {
+    pcRate.style.textShadow = 'none';
+}
+
+const userInfoBox = document.getElementById('user-container');
+function recordPage() {
+    if (rate >= 0) {
+        pcRate.innerHTML = rate + "%";
+    } else {
+        pcRate.innerHTML = "-";
+    }
+
+    if (parseInt(dicas) >= 1) {
+        document.getElementById('tipNum').innerHTML = dicas;
+    } else {
+        document.getElementById('tipNum').innerHTML = '0';
+    }
+
+    if (parseInt(vicRate) >= 1) {
+        document.getElementById('vicNum').innerHTML = vicRate;
+    } else {
+        document.getElementById('vicNum').innerHTML = '0';
+    }
+
+    document.getElementById('overlay2').style.display = 'none';
+    document.getElementById('startbutton').style.display = 'none';
+    document.getElementById('actions').style.display = 'none';
+    document.getElementById('level').style.display = 'none';
+    document.getElementById('configBox').style.left = '-210px';
+    document.getElementById('info').style.display = 'none'
+    userInfoBox.style.display = 'flex';
+    document.getElementById('pf-button').style.display = 'block';
+    document.getElementById('pfConfig').style.display = 'none';
+    document.getElementById('pf-title').style.display = 'none';
+    selection()
+}
+
+const recordSelect = document.getElementById('gen-select');
+function backRecord() {
+    document.getElementById('startbutton').style.display = 'block';
+    document.getElementById('actions').style.display = 'flex';
+    document.getElementById('level').style.display = 'block';
+    userInfoBox.style.display = 'none';
+    document.getElementById('info').style.display = 'flex';
+    document.getElementById('name-input').value = '';
+    recordSelect.value = '0';
+}
+function selection() {
+    const recordInfo = document.getElementById('numbers');
+
+    if (recordSelect.value === "0") {
+        if (localStorage.besTime == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime
+        }
+    } else if (recordSelect.value === "1") {
+        if (localStorage.besTime1 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime1
+        }
+    } else if (recordSelect.value === "2") {
+        if (localStorage.besTime2 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime2
+        }
+    } else if (recordSelect.value === "3") {
+        if (localStorage.besTime3 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime3
+        }
+    } else if (recordSelect.value === "4") {
+        if (localStorage.besTime4 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime4
+        }
+    } else if (recordSelect.value === "5") {
+        if (localStorage.besTime5 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime5
+        }
+    } else if (recordSelect.value === "6") {
+        if (localStorage.besTime6 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime6
+        }
+    } else if (recordSelect.value === "7") {
+        if (localStorage.besTime7 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime7
+        }
+    } else if (recordSelect.value === "8") {
+        if (localStorage.besTime8 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime8
+        }
+    } else if (recordSelect.value === "9") {
+        if (localStorage.besTime9 == null) {
+            recordInfo.innerHTML = "Você ainda não possui um tempo recorde registrado nessa modalidade."
+        } else {
+            recordInfo.innerHTML = "Seu melhor tempo foi de " + besTime9
+        }
+    }
+}
+
+function openConfig() {
+    document.getElementById('pf-button').style.display = 'none';
+    document.getElementById('pfConfig').style.display = 'flex';
+    document.getElementById('pf-title').style.display = 'flex';
+}
+function backConfig() {
+    document.getElementById('pf-button').style.display = 'block';
+    document.getElementById('pfConfig').style.display = 'none';
+    document.getElementById('pf-title').style.display = 'none';
+    document.getElementById('name-input').value = '';
+}
+
+var trainerName = localStorage.getItem('name') || '';
+var trainer = localStorage.getItem('trainer');
+function updateName() {
+    var nameInput = document.getElementById('name-input').value;
+    localStorage.setItem('name', nameInput);
+    var trainerName = localStorage.getItem('name') || '';
+    var trainerPn = localStorage.getItem('pn') || '';
+
+    if (trainerPn.length === 1) {
+        if (trainerPn === "m") {
+            document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
+            if (trainerName === '') {
+                document.getElementById('cDesc').innerHTML = 'Treinador ' + 'Pokémon';
+            }
+        } else if (trainerPn === "f") {
+            document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
+            if (trainerName === '') {
+                document.getElementById('cDesc').innerHTML = 'Treinadora ' + 'Pokémon';
+            }
+        } else if (trainerPn === "x") {
+            document.getElementById('cDesc').innerHTML = 'Trainer ' + trainerName;
+            if (trainerName === '') {
+                document.getElementById('cDesc').innerHTML = 'Trainer ' + 'Pokémon';
+            }
+        }
+    } else {
+        document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
+        if (trainerName === '') {
+            document.getElementById('cDesc').innerHTML = 'Treinador ' + 'Pokémon';
+        }
+    }
+
+    document.getElementById('name-input').value = '';
+
+    if (trainerPn === 'm' || trainerPn === '') {
+        if (trainerName.length <= 5) {
+            document.getElementById('cDesc').style.marginLeft = '14%';
+        } else if (trainerName.length > 10) {
+            document.getElementById('cDesc').style.marginLeft = '0';
+        } else {
+            document.getElementById('cDesc').style.marginLeft = '8%';
+        }
+    } else if (trainerPn === 'f') {
+        if (trainerName.length <= 5) {
+            document.getElementById('cDesc').style.marginLeft = '14%';
+        } else if (trainerName.length > 10) {
+            document.getElementById('cDesc').style.marginLeft = '0';
+        } else {
+            document.getElementById('cDesc').style.marginLeft = '6%';
+        }
+    } else if (trainerPn === 'x') {
+        if (trainerName.length <= 5) {
+            document.getElementById('cDesc').style.marginLeft = '14%';
+        } else if (trainerName.length > 10) {
+            document.getElementById('cDesc').style.marginLeft = '0';
+        } else {
+            document.getElementById('cDesc').style.marginLeft = '8%';
+        }
+    }
+
+}
+
+if (trainerPn === 'm' || trainerPn === '') {
+    if (trainerName.length <= 5) {
+        document.getElementById('cDesc').style.marginLeft = '14%';
+    } else if (trainerName.length > 10) {
+        document.getElementById('cDesc').style.marginLeft = '0';
+    } else {
+        document.getElementById('cDesc').style.marginLeft = '8%';
+    }
+} else if (trainerPn === 'f') {
+    if (trainerName.length <= 5) {
+        document.getElementById('cDesc').style.marginLeft = '14%';
+    } else if (trainerName.length > 10) {
+        document.getElementById('cDesc').style.marginLeft = '0';
+    } else {
+        document.getElementById('cDesc').style.marginLeft = '8%';
+    }
+} else if (trainerPn === 'x') {
+    if (trainerName.length <= 5) {
+        document.getElementById('cDesc').style.marginLeft = '14%';
+    } else if (trainerName.length > 10) {
+        document.getElementById('cDesc').style.marginLeft = '0';
+    } else {
+        document.getElementById('cDesc').style.marginLeft = '8%';
+    }
+}
+
+document.getElementById('name-input').addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        updateName();
+    }
+})
+
+if (trainer === "L") {
+    document.getElementById('character').src = "../Guess-a-Mon/static/images/character_leaf.png";
+} else {
+    document.getElementById('character').src = "../Guess-a-Mon/static/images/character_red.png"
+}
+
+if (!trainerName) {
+    document.getElementById('cDesc').innerHTML = 'Trainer Pokémon';
+} else {
+    document.getElementById('cDesc').innerHTML = 'Trainer ' + trainerName;
+}
+
+function changeTrainer() {
+    var trainerName = localStorage.getItem('name') || '';
+    var trainer = localStorage.getItem('trainer');
+    if (trainer === 'L') {
+        document.getElementById('character').src = "../Guess-a-Mon/static/images/character_red.png"
+        localStorage.setItem('trainer', "R");
+    } else {
+        document.getElementById('character').src = "../Guess-a-Mon/static/images/character_leaf.png"
+        localStorage.setItem('trainer', "L");
+    }
+}
+
+var trainerPn = localStorage.getItem('pn') || '';
+if (trainerPn.length === 1) {
+    if (trainerName.length >= 1) {
+        if (trainerPn === "m") {
+            document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
+        } else if (trainerPn === "f") {
+            document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
+        } else if (trainerPn === "x") {
+            document.getElementById('cDesc').innerHTML = 'Trainer ' + trainerName;
+        }
+    } else {
+        if (trainerPn === "m") {
+            document.getElementById('cDesc').innerHTML = 'Treinador ' + 'Pokémon';
+        } else if (trainerPn === "f") {
+            document.getElementById('cDesc').innerHTML = 'Treinadora ' + 'Pokémon';
+        } else if (trainerPn === "x") {
+            document.getElementById('cDesc').innerHTML = 'Trainer ' + 'Pokémon';
+        }
+    }
+} else {
+    if (trainerName.length >= 1) {
+        document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
+    } else {
+        document.getElementById('cDesc').innerHTML = 'Treinador Pokémon';
+    }
+}
+
+function changePn() {
+    var trainerName = localStorage.getItem('name') || '';
+    var trainerPn = localStorage.getItem('pn') || '';
+    if (trainerPn.length === 1) {
+        if (trainerName.length >= 1) {
+            if (trainerPn === "m") {
+                document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
+                localStorage.setItem('pn', 'f');
+            } else if (trainerPn === "f") {
+                document.getElementById('cDesc').innerHTML = 'Trainer ' + trainerName;
+                localStorage.setItem('pn', 'x');
+            } else if (trainerPn === "x") {
+                document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
+                localStorage.setItem('pn', 'm');
+            }
+        } else {
+            if (trainerPn === "m") {
+                document.getElementById('cDesc').innerHTML = 'Treinadora ' + 'Pokémon';
+                localStorage.setItem('pn', 'f');
+            } else if (trainerPn === "f") {
+                document.getElementById('cDesc').innerHTML = 'Trainer ' + 'Pokémon';
+                localStorage.setItem('pn', 'x');
+            } else if (trainerPn === "x") {
+                document.getElementById('cDesc').innerHTML = 'Treinador ' + 'Pokémon';
+                localStorage.setItem('pn', 'm');
+            }
+        }
+    } else {
+        if (trainerName.length >= 1) {
+            document.getElementById('cDesc').innerHTML = 'Treinador ' + trainerName;
+            document.getElementById('cDesc').innerHTML = 'Treinadora ' + trainerName;
+            localStorage.setItem('pn', 'f');
+        } else {
+            document.getElementById('cDesc').innerHTML = 'Treinadora ' + 'Pokémon';
+            localStorage.setItem('pn', 'f');
+        }
+    }
+
+    if (trainerPn === 'm' || trainerPn === '') {
+        if (trainerName.length <= 5) {
+            document.getElementById('cDesc').style.marginLeft = '14%';
+        } else if (trainerName.length > 10) {
+            document.getElementById('cDesc').style.marginLeft = '0';
+        } else {
+            document.getElementById('cDesc').style.marginLeft = '8%';
+        }
+    } else if (trainerPn === 'f') {
+        if (trainerName.length <= 5) {
+            document.getElementById('cDesc').style.marginLeft = '14%';
+        } else if (trainerName.length > 10) {
+            document.getElementById('cDesc').style.marginLeft = '0';
+        } else {
+            document.getElementById('cDesc').style.marginLeft = '6%';
+        }
+    } else if (trainerPn === 'x') {
+        if (trainerName.length <= 5) {
+            document.getElementById('cDesc').style.marginLeft = '14%';
+        } else if (trainerName.length > 10) {
+            document.getElementById('cDesc').style.marginLeft = '0';
+        } else {
+            document.getElementById('cDesc').style.marginLeft = '8%';
+        }
+    }
+}
+
+document.getElementById('info-icon').addEventListener('click', function () {
+    var configPopup = document.getElementById('config-popup');
+    configPopup.style.display = (configPopup.style.display === 'block' ? 'none' : 'block');
+});
+
+document.addEventListener('click', function (event) {
+    var configPopup = document.getElementById('config-popup');
+    var infoIcon = document.getElementById('info-icon');
+
+    if (!infoIcon.contains(event.target) && !configPopup.contains(event.target)) {
+        configPopup.style.display = 'none';
+    }
+});

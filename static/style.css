@@ -808,7 +808,7 @@ header {
 
 #configBox {
   width: 200px;
-  height: 140px;
+  height: 180px;
   padding-top: 10px;
   padding-bottom: 20px;
   background-color: white;
@@ -874,9 +874,282 @@ header {
   width: auto;
   margin-left: 5px;
 }
+#record-icon {
+  width: 20px;
+  margin-left: 0;
+}
 
 #on-off, #sound_on-off {
   color: green;
+}
+
+#recordBox{
+  width: 400px;
+  height: auto;
+  padding-bottom: 20px;
+  margin-top: 3px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+  font-family: sans-serif;
+}
+#user-container{
+  animation: op .8s;
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+}
+#numbers{
+  font-weight: bold;
+  margin-top: 25px;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align: center;
+}
+#record-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#record-filters{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#record-filters div{
+  margin-right: 10px;
+}
+#gen-select{
+  width: 120px;
+  height: 25px;
+  background-color: #facb04;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+#gen-select option{
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: bold;
+  background-color: white;
+  padding: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+#record-button{
+  font-family: sans-serif;
+  font-weight: bold;
+  margin-top: 25px;
+  height: 30px;
+  width: auto;
+  cursor: pointer;
+}
+#record-title{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#record-title div{
+  font-family: 'Patrick Hand', cursive;
+  color: red;
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+#character{
+  width: 22%;
+  height: 220px;
+  margin-top: 10px;
+  margin-left: 35px;
+  margin-bottom: 8px;
+}
+#userBox{
+  width: 400px;
+  height: auto;
+  margin-top: 30px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  display: flex;
+  flex-direction: row;
+}
+#cDesc{
+  text-align: center;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 25px;
+  justify-self: center;
+  font-weight: bold;
+  margin-left: 8%;
+}
+#desContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.container{
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+#taxa{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 7%;
+  margin-left: 9%;
+  display: flex;
+  flex-direction: row;
+}
+#pcRate{
+  margin-left: 8px;
+  align-self: center;
+  text-shadow: 0px 1px 1px rgb(0, 0, 0);
+}
+.pfRate{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 15px;
+  margin-left: 9%;
+  display: flex;
+  flex-direction: row;
+}
+#tipNum{
+  margin-left: 8px;
+}
+#vicNum{
+  margin-left: 8px;
+}
+#info-icon{
+  width: auto;
+  align-self: center;
+  cursor: pointer;
+  display: inline-block;
+}
+#config-popup {
+  position: absolute;
+  display: none;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1;
+  font-family: sans-serif;
+  font-size: 13px;
+  width: 180px;
+  height: auto;
+  text-align: justify;
+  animation: op .4s;
+}
+#pfConfig{
+  margin-top: 5px;
+  margin-left: 9%;
+  animation: op .7s;
+  display: none;
+  flex-direction: row;
+  align-content: center;
+}
+#pf-title{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 0;
+  margin-left: 9%;
+  animation: op .7s;
+  display: none;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#name-input{
+  width: 45%;
+  height: 20px;
+  font-size: 13px;
+  border: 1px solid black;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+#send-name{
+  align-self: center;
+  background-color: rgb(46, 201, 46);
+  border: 1px solid black;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  width: auto;
+  height: 22px;
+  cursor: pointer;
+}
+#trainer{
+  width: 12px;
+  padding: 5px;
+  background-color: rgb(241, 241, 241);
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-right: 3px;
+  align-self: center;
+  cursor: pointer;
+}
+#trainer-name{
+  width: auto;
+  padding: 3px;
+  background-color: rgb(239, 239, 239);
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-right: 3px;
+  align-self: center;
+  cursor: pointer;
+}
+#desContainer hr{
+  margin: 0;
+  width: auto;
+  border: 1px solid;
+  border-radius: 2px;
+  margin-right: 14%;
+  margin-left: 7%;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+#container2{
+  display: flex; 
+  flex-direction: row; 
+  align-items: center; 
+  justify-content: space-around;
+}
+#info-pf{
+  display: none;
+  position: absolute;
+  top: 30%;
+  width: 200px;
+  height: 100px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+#pf-button{
+  justify-self: center;
+  align-self: center;
+  margin-right: 14%;
+  margin-top: 15px;
+  width: 50%;
+  font-family: sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 5px;
+  background-color: #facb04;
+  animation: op .7s;
 }
 
 /* CELULAR (ABAIXO) */
@@ -1209,7 +1482,7 @@ header {
   }
   #configBox {
     width: 200px;
-    height: 150px;
+    height: 180px;
     padding-top: 10px;
     padding-bottom: 20px;
     background-color: white;
@@ -1269,6 +1542,88 @@ header {
     background-color: white;
     cursor: pointer;
     animation: op .6s;
+  }
+
+  #recordBox{
+    width: auto;
+    height: auto;
+    padding-bottom: 20px;
+    margin-top: 3px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 8px;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
+    font-family: sans-serif;
+  }
+  #userBox{
+    width: auto;
+    height: auto;
+    margin-top: 30px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 8px;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    display: flex;
+    flex-direction: row;
+  }
+  #numbers{
+    font-weight: bold;
+    margin-top: 25px;
+    width: 90%;
+    text-align: center;
+  }
+  #record-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #record-filters{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  #record-filters div{
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: auto;
+  }
+  #gen-select{
+    width: 120px;
+    height: 25px;
+    margin-right: 5px;
+    background-color: #facb04;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  #gen-select option{
+    font-family: sans-serif;
+    text-align: center;
+    font-weight: bold;
+    background-color: white;
+    width: auto;
+    height: auto;
+  }
+  #config-popup {
+    position: absolute;
+    display: none;
+    top: 20%;
+    right: 15px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1;
+    font-family: sans-serif;
+    font-size: 13px;
+    width: 180px;
+    height: auto;
+    text-align: justify;
+    animation: op .7s;
   }
 }
 
