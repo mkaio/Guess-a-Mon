@@ -1085,9 +1085,9 @@ function soundChange() {
 var rate = Math.floor((correctRate / (correctRate + wrongRate)) * 100);
 const pcRate = document.getElementById('pcRate');
 if (rate <= 35) {
-    pcRate.style.color = 'red';
+    pcRate.style.color = 'rgb(255, 62, 62)';
 } else if (rate > 35 && rate <= 65) {
-    pcRate.style.color = 'yellow';
+    pcRate.style.color = '#ffda38';
 } else if (rate > 65) {
     pcRate.style.color = 'rgb(82, 255, 82)';
 } else {
